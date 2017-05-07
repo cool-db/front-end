@@ -19,10 +19,14 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json', 'scss'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      'COMPONENTS': resolve('src/components'),
+      'PAGES': resolve('src/pages'),
+      'STYLE': resolve('src/style'),
+      'STORE': resolve('src/store'),
     }
   },
   module: {
