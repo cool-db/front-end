@@ -19,6 +19,10 @@
         </ul>
         <h2>counter</h2>
         <div>
+            <el-button @click="visible = true">按钮</el-button>
+            <el-dialog v-model="visible" title="Hello world">
+                <p>欢迎使用 Element</p>
+            </el-dialog>
             <button @click="add">+</button>
             <span>{{ count }}</span>
             <button @click="sub">-</button>
@@ -33,7 +37,8 @@
   export default {
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App',
+        visible: true
       }
     },
 
