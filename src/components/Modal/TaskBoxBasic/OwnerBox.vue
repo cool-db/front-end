@@ -1,0 +1,61 @@
+/**
+* Created by dustar on 2017/7/10.
+*/
+
+<template>
+  <div class="OwnerBox">
+    <div id="owner-title">执行者</div>
+    <el-dropdown>
+    <div id="owner-info">
+      <img id="owner-avatar" :src="isSet?owner.avatar:blankAvatar">
+      <span id="owner-name" :class="isSet?'':'grey'">{{isSet?owner.name:'未认领'}}</span>
+    </div>
+    </el-dropdown>
+  </div>
+</template>
+
+<script>
+  import select from './ownerSelect.vue'
+  import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
+  export default {
+    name: 'OwnerBox',
+    data () {
+      return {
+        blankAvatar,
+        isSet: false,
+        owner: null
+      }
+    },
+    created () {
+
+    },
+    components: {
+      select
+    }
+  }
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+  .OwnerBox{
+  }
+  #owner-title {
+    font-size: 12px;
+
+  }
+  #owner-info {
+    font-size: 14px;
+    line-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
+
+  }
+  #owner-avatar {
+    height: 22px;
+    margin-right: 8px;
+  }
+  .grey {
+    color: #C0C0C0;
+  }
+</style>
