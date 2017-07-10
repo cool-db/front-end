@@ -5,20 +5,32 @@
 <template>
   <div class="RepeatBox">
     <div id="repeat-title">重复</div>
-    <div id="repeat-info">
-      <img id="repeat-avatar" :src="repeatIcon">
-      <span id="repeat-name" :class="isSet?'':'grey'">{{ isSet?repeat:'点击设置' }}</span>
-    </div>
+    <repeat-select :mode="mode" :items="repeats" @changeR="changeR">
+      <div id="repeat-info">
+        <img id="repeat-avatar" :src="repeatIcon">
+        <span id="repeat-name" :class="mode !== 0?'':'grey'">{{ repeats[mode] }}</span>
+      </div>
+    </repeat-select>
+
   </div>
 </template>
 
 <script>
   import repeatIcon from '@/assets/icons/new_item/repeat.png'
+  import RepeatSelect from './RepeatSelect.vue'
   export default {
+    components: {RepeatSelect},
     name: 'RepeatBox',
     data () {
       return {
-        repeatIcon
+        repeatIcon,
+        mode: 0,
+        repeats: ['不重复', '每天重复', '每周重复', '每月重复', '每年重复', '工作日重复']
+      }
+    },
+    methods: {
+      changeR (command) {
+        this.mode = command
       }
     },
     created () {
@@ -34,7 +46,7 @@
   #repeat-title {
     font-size: 12px;
     repeat: '';
-    isSet: false
+    isSet: false;
 
   }
   #repeat-info {

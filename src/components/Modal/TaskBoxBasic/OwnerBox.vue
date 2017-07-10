@@ -5,17 +5,18 @@
 <template>
   <div class="OwnerBox">
     <div id="owner-title">执行者</div>
-    <el-dropdown>
-    <div id="owner-info">
-      <img id="owner-avatar" :src="isSet?owner.avatar:blankAvatar">
-      <span id="owner-name" :class="isSet?'':'grey'">{{isSet?owner.name:'未认领'}}</span>
-    </div>
-    </el-dropdown>
+    <owner-select :users="users" :owner="owner" @changeOwner="changeOwner">
+      <div id="owner-info">
+        <img id="owner-avatar" :src="isSet?users[owner].avatar:blankAvatar">
+        <span id="owner-name" :class="isSet?'':'grey'">{{isSet?users[owner].name:'未认领'}}</span>
+      </div>
+    </owner-select>
+
   </div>
 </template>
 
 <script>
-  import select from './ownerSelect.vue'
+  import ownerSelect from './ownerSelect.vue'
   import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
   export default {
     name: 'OwnerBox',
@@ -23,14 +24,26 @@
       return {
         blankAvatar,
         isSet: false,
-        owner: null
+        owner: null,
+        users: [
+          {avatar: blankAvatar, name: '王维'},
+          {avatar: blankAvatar, name: '王昌龄'},
+          {avatar: blankAvatar, name: '薛英琛'},
+          {avatar: blankAvatar, name: '李碧纯'}
+        ]
       }
     },
     created () {
 
     },
+    methods: {
+      changeOwner (command) {
+        this.owner = command >= 0 ? command : null
+        this.isSet = this.owner !== null
+      }
+    },
     components: {
-      select
+      ownerSelect
     }
   }
 </script>

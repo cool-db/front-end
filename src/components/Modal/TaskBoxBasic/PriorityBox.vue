@@ -5,10 +5,12 @@
 <template>
   <div class="PriorityBox">
     <div id="priority-title">优先级</div>
-    <div id="priority-info">
-      <img id="priority-avatar" :src="icons[mode]">
-      <span id="priority-name" :class="'mode-'+mode">{{titles[mode]}}</span>
-    </div>
+    <priority-select :items="items" :owner="mode" @changeP="changeP">
+      <div id="priority-info">
+        <img id="priority-avatar" :src="items[mode].icon">
+        <span id="priority-name" :class="'mode-'+mode">{{items[mode].title}}</span>
+      </div>
+    </priority-select>
   </div>
 </template>
 
@@ -16,7 +18,9 @@
   import Vital from '@/assets/icons/new_item/priority-vital.png'
   import Emer from '@/assets/icons/new_item/priority-emergent.png'
   import Easy from '@/assets/icons/new_item/priority-easy.png'
+  import PrioritySelect from './PrioritySelect.vue'
   export default {
+    components: {PrioritySelect},
     name: 'PriorityBox',
     data () {
       return {
@@ -25,18 +29,26 @@
           emer: 1,
           vital: 2
         },
-        isSet: false,
+        isSet: true,
         Vital,
         Emer,
         Easy,
-        icons: [],
-        titles: ['普通', '紧急', '非常紧急'],
+        items: [],
         mode: 0
 
       }
     },
+    methods: {
+      changeP (command) {
+        this.mode = command
+      }
+    },
     created () {
-      this.icons = [this.Easy, this.Emer, this.Vital]
+      this.items = [
+        {icon: this.Easy, title: '普通'},
+        {icon: this.Emer, title: '紧急'},
+        {icon: this.Vital, title: '非常紧急'}
+      ]
     }
   }
 </script>

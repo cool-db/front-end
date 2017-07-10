@@ -33,8 +33,6 @@
 <style scoped>
   .taskBox {
     background: #ffffff;
-    margin-left: 24px;
-    margin-right: 26px;
     flex:1;
     border: 0.5px #dedede solid;
     border-radius: 4px;

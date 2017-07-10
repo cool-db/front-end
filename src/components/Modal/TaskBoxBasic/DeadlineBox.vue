@@ -4,17 +4,22 @@
 
 <template>
   <div class="DeadlineBox">
-    <div id="deadline-title">执行者</div>
-    <div id="deadline-info">
-      <img id="deadline-avatar" :src="iconCalendar">
-      <span id="deadline-name" :class="isSet?'':'grey'">{{ isSet?date:'点击设置' }}</span>
-    </div>
+    <div id="deadline-title">截止时间</div>
+
+    <deadline-select :value2="date">
+      <!--<div id="deadline-info">-->
+        <img id="deadline-avatar" :src="iconCalendar">
+        <!--<span id="deadline-name" :class="isSet?'':'grey'">{{ isSet?date:'点击设置' }}</span>-->
+      <!--</div>-->
+    </deadline-select>
   </div>
 </template>
 
 <script>
   import iconCalendar from '@/assets/icons/nav_bar/calendar.png'
+  import DeadlineSelect from './DeadlineSelect.vue'
   export default {
+    components: {DeadlineSelect},
     name: 'DeadlineBox',
     data () {
       return {
@@ -24,7 +29,7 @@
       }
     },
     created () {
-      this.date = '下周五 18:00'
+      this.date = '07/22 18:00:00'
     }
   }
 </script>

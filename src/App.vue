@@ -1,29 +1,33 @@
 <template>
-    <div id="app">
-        <transition name="router-fade" mode="out-in">
-            <router-view></router-view>
-        </transition>
-    </div>
+  <div id="app">
+    <transition name="router-fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
 </template>
 
 <script>
-  export default {
-  }
+  export default {}
 </script>
 
 <style lang="scss">
-    .router-fade-enter-active, .router-fade-leave-active {
-        transition: opacity .3s;
-    }
-    .router-fade-enter, .router-fade-leave-active {
-        opacity: 0;
-    }
+  .router-fade-enter-active, .router-fade-leave-active {
+    transition: opacity .3s;
+  }
 
-    .el-dialog__wrapper {
-        .el-dialog--small {
-            background: #F8F8F8;
-            max-height: 78vh;
-            overflow: scroll;
-        }
+  .router-fade-enter, .router-fade-leave-active {
+    opacity: 0;
+  }
+
+  .el-dialog__wrapper {
+    .el-dialog--small {
+      background: #F8F8F8;
+      max-height: 78vh;
+      /*overflow-y: scroll;*/
     }
+  }
+
+  .el-input__inner {
+    border: 0 !important;
+  }
 </style>
