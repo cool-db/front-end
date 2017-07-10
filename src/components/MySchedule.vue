@@ -1,32 +1,52 @@
 <template>
   <div id="mySchedule">
     <div id="bar">
-      <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
-        <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-        <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-        <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+      <el-tabs v-model="activeName" @tab-click="handleClick" id="selectLeft">
+        <el-tab-pane label="我执行的" name="first">
+          <recent-issue-item></recent-issue-item>
+          <recent-issue-item></recent-issue-item>
+        </el-tab-pane>
+        <el-tab-pane label="我创建的" name="second">
+          <recent-issue-item></recent-issue-item>
+        </el-tab-pane>
+        <el-tab-pane label="我参与的" name="third">
+          <recent-issue-item></recent-issue-item>
+          <recent-issue-item></recent-issue-item>
+          <recent-issue-item></recent-issue-item>
+        </el-tab-pane>
       </el-tabs>
-  
-      <el-dropdown>
+      
+      <div id="selectRight">
+        <div>
+          <el-dropdown id="selectFinished">
         <span class="el-dropdown-link">
-          下拉菜单
+          {{displayState}}
           <i class="el-icon-caret-bottom el-icon--right"></i>
         </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>黄金糕</el-dropdown-item>
-          <el-dropdown-item>狮子头</el-dropdown-item>
-          <el-dropdown-item>螺蛳粉</el-dropdown-item>
-          <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-          <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-
-
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>未完成</el-dropdown-item>
+              <el-dropdown-item>已完成</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+       
+        <div>
+          <el-dropdown id="selectSorting">
+        <span class="el-dropdown-link">
+          {{displaySorting}}
+          <i class="el-icon-caret-bottom el-icon--right"></i>
+        </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>按优先级排序</el-dropdown-item>
+              <el-dropdown-item>按截止时间排序</el-dropdown-item>
+              <el-dropdown-item>按创建时间最近排序</el-dropdown-item>
+              <el-dropdown-item>按项目名称排序</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+        
+      </div>
     </div>
-    
-    
-
   </div>
   
 </template>
@@ -36,13 +56,47 @@
   export default {
     data () {
       return {
-        count: 2
+        displayState: '未完成',
+        displaySorting: '按优先级排序'
       }
     },
-    component: RecentIssueItem
+    components: {
+      RecentIssueItem
+    }
   }
 </script>
 
 <style>
-
+  #mySchedule{
+    margin: 5% auto auto 10%;
+    padding-top: 13px;
+    display: flex;
+    flex-direction: column;
+    background: #E7F1F0;  /*为了展示大小*/
+    border-radius: 6px;
+    width: 800px;
+    height: 640px;
+  }
+  
+  #selectLeft{
+    margin-left: 32px;
+  }
+  
+  #selectRight{
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+    margin-right: 25px;
+  }
+  
+  #bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  #selectFinished{
+    margin-right: 50px;
+  }
+  
 </style>

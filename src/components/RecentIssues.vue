@@ -5,7 +5,11 @@
       <div id="countHint" style="text-align: center">{{count}}</div>
     </div>
     <div id="line"></div>
-    <recent-issue-item></recent-issue-item>
+    <div id="items">
+      <recent-issue-item></recent-issue-item>
+      <recent-issue-item></recent-issue-item>
+    </div>
+    
   </div>
 </template>
 
@@ -17,7 +21,9 @@
         count: 2
       }
     },
-    component: RecentIssueItem
+    components: {
+      RecentIssueItem
+    }
   }
 </script>
 
@@ -26,7 +32,7 @@
     margin: 5% auto auto 10%;
     display: flex;
     flex-direction: column;
-    background: #E7F1F0;
+    background: #E7F1F0;  /*为了展示大小*/
     border-radius: 6px;
     width: 800px;
     height: 640px;
@@ -70,8 +76,13 @@
     flex-direction: column;
     margin-left: 3%;
     margin-top: 1%;
+    margin-bottom: 1.5%;
     background-color: #C0C0C0;
     width: 740px;
     height: 3px;
+  }
+  
+  #items{
+    margin-left: 3%;
   }
 </style>

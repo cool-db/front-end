@@ -1,16 +1,22 @@
 <template>
   <div id="recentIssueItem">
-    <div id="left"></div>
-    <el-checkbox v-model="checked" id="checkbox"></el-checkbox>
-    <div id="body">
-      <div id="row1">
-        <div id="taskName">{{taskName}}</div>
-        <div id="projectName">{{projectName}}</div>
-        <div id="deadline">{{deadline}}</div>
-        <div id="cutOff">截止</div>
+    <div id="leftSection">
+      <div id="left"></div>
+      <el-checkbox v-model="checked" id="checkbox"></el-checkbox>
+      <div id="body">
+        <div id="row1">
+          <div id="taskName">{{taskName}}</div>
+          <div id="projectName">{{projectName}}</div>
+        </div>
+        <div id="fatherTask">{{fatherTask}}</div>
       </div>
-      <div id="fatherTask">{{fatherTask}}</div>
     </div>
+    
+    <div id="rightSection">
+      <div id="deadline">{{deadline}}</div>
+      <div id="cutOff">截止</div>
+    </div>
+    
   </div>
 </template>
 
@@ -31,8 +37,15 @@
   #recentIssueItem{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     height: 50px;
-    width: 800px;
+    width: 100%;
+    margin-top: 5px;
+  }
+  
+  #leftSection{
+    display: flex;
+    flex-direction: row;
   }
   
   #body{
@@ -55,7 +68,7 @@
   #checkbox{
     display: flex;
     flex-direction: row;
-    margin-left: 50px;
+    margin-left: 13px;
     margin-top: 10px;
   }
   
@@ -66,7 +79,7 @@
     color: #565656;
     font-family: PingFangSC-Regular;
     margin-top: 10px;
-    margin-left: 50px;
+    margin-left: 15px;
   }
   
   #projectName{
@@ -79,13 +92,17 @@
     font-family: PingFangSC-Medium;
   }
   
+  #rightSection{
+    display: flex;
+    flex-direction: row;
+  }
+  
   #deadline{
     display: flex;
     flex-direction: row;
     color: #33CCCC;
     font-size: 12px;
     font-family: PingFangSC-Medium;
-    margin-left: 300px;
     margin-top: 12.5px;
   }
   
@@ -97,6 +114,7 @@
     color: #3A3A3A;
     margin-left: 5px;
     margin-top: 12.5px;
+    margin-right: 35px;
   }
   
   #fatherTask{
@@ -106,7 +124,7 @@
     font-size: 14px;
     color: #888888;
     margin-top: 5px;
-    margin-left: 50px;
+    margin-left: 15px;
   }
   
   
