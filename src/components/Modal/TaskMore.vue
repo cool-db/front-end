@@ -1,19 +1,40 @@
 <template>
-    <el-dropdown-menu slot="dropdown" class="drop-down">
-        <div class="drop-header"></div>
-        <el-dropdown-item>黄金糕</el-dropdown-item>
+    <div>
+        <div class="drop-header">任务名称</div>
+        <el-dropdown-item>
+                <img src="da" alt="..." class="item-icon">
+                <span>复制任务</span>
+        </el-dropdown-item>
         <el-dropdown-item>狮子头</el-dropdown-item>
         <el-dropdown-item>螺蛳粉</el-dropdown-item>
-    </el-dropdown-menu>
+    </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+
+  }
 </script>
 
 <style lang="scss" scoped>
+    .drop-header {
+        height: 38px;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-weight: bold;
+        border-bottom: 1px solid #C0C0C0;
+        text-align: center;
+        padding-top: 8px;
+    }
+    .item-icon {
+        $l: 14px;
+        width: $l;
+        height: $l;
+        background-color: #888888;
+        vertical-align: middle;
+    }
 
-    .drop-down {
-        width: 260px;
+    .dropdown-item {
+        height: 14px;
     }
 </style>

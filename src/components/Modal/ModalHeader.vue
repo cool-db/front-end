@@ -6,7 +6,9 @@
                 <span class="more-operate">
                     更多<i class="el-icon-arrow-down"></i>
                 </span>
-                <task-more></task-more>
+                <el-dropdown-menu slot="dropdown" class="drop-down">
+                    <task-more></task-more>
+                </el-dropdown-menu>
             </el-dropdown>
             <i class="el-icon-close" @click="onClose"></i>
         </span>
@@ -51,8 +53,8 @@
             margin-right: 15px;
         }
     }
-
     .drop-down {
-        width: 260px;
+        width: 261px;
+        font-size: 14px;
     }
 </style>
