@@ -72,7 +72,7 @@
         },
         currentMode: 1,
         currentMenu: '',
-        lastMode: 0,
+        lastMode: 1,
         searchBarInput: '',
         messageCount: 5,
         iconProject,
@@ -105,7 +105,6 @@
       },
       leaveMy () {
         this.currentMode = this.lastMode
-        this.lastMode = this.Mode.my
       }
     },
     watch: {
