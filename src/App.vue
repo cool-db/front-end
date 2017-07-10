@@ -10,11 +10,17 @@
   export default {}
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     .router-fade-enter-active, .router-fade-leave-active {
         transition: opacity .3s;
     }
     .router-fade-enter, .router-fade-leave-active {
         opacity: 0;
+    }
+
+    .el-dialog__wrapper {
+        .el-dialog--small {
+            background: #F8F8F8;
+        }
     }
 </style>
