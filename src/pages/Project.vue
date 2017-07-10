@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id="project-container">
     <el-row id="project-header" ref="choosePage">
         <span class="change-current-page">
@@ -15,12 +16,14 @@
 
 
       <span class="project-menu">
+
         <div class="project-menu-item" :class='{currentmenu: currentMenu === "member"}' @click="currentMenu='member'">1</div>
         <transition name="el-zoom-in-center">
           <div class="project-menu-item" :class='{currentmenu: currentMenu === "view"}' @click="currentMenu='view'" v-if="currentPage==='tasks'">2</div>
         </transition>
         <div class="project-menu-item" :class='{currentmenu: currentMenu === "setting"}' @click="currentMenu='setting'">3</div>
       </span>
+
 
 
     </el-row>
@@ -36,12 +39,10 @@
     </transition>
     <transition name="fade-choose">
       <section v-show="currentPage === 'calenders'" class="calenders-container">
+
         <calenders :id="projectId">3</calenders>
       </section>
     </transition>
-
-
-
   <transition name="slide-fade">
 
       <section v-show="currentMenu==='member'" class="rightbar">
@@ -54,7 +55,9 @@
         </section>
         <div class="rightbar-content"></div>
       </section>
-  </transition>
+
+    </transition>
+
     <transition name="slide-fade">
       <section v-show="currentMenu==='view'" class="rightbar">
         <section class="rightbar-header">
@@ -130,6 +133,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
   #project-container {
     height: 578px;
   }
@@ -154,16 +158,19 @@
   }
   .change-current-page-item :hover {
     border-bottom: 4px #33CCCC solid;
+
   }
   .currentpage {
     font-weight: bold;
     color: #33CCCC;
     border-bottom: 4px #33CCCC solid;
+
   }
   .currentmenu {
     color: #33CCCC;
   }
   .project-menu {
+
     text-align: center;
     float: right;
     margin-right: 5px;
@@ -230,6 +237,7 @@
     width: 350px;
     height: 626px;
     top: 48px;
+
     right: 0px;
     box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.50);
 

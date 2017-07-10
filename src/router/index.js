@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from 'PAGES/home'
 
+
 Vue.use(Router)
 
 const routes = [
