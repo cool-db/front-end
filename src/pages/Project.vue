@@ -5,9 +5,7 @@
       <div class="change-current-page project-header-item">
 
           <div class="change-current-page-item" :class='{currentpage: currentPage==="tasks"}' @click="currentPage = 'tasks'">任务</div>
-
           <div class="change-current-page-item" :class='{currentpage: currentPage==="files"}' @click="currentPage = 'files'">文件</div>
-
           <div class="change-current-page-item" :class='{currentpage: currentPage==="calenders"}' @click="currentPage = 'calenders'">日程</div>
 
       </div>
@@ -26,23 +24,23 @@
       </div>
     </div>
     <transition name="fade-choose">
-      <section v-show="currentPage === 'tasks'" class="tasks-container">
+      <section v-if="currentPage === 'tasks'" class="tasks-container">
         <tasks :id="projectId">1</tasks>
       </section>
     </transition>
     <transition name="fade-choose">
-      <section v-show="currentPage === 'files'" class="files-container">
+      <section v-if="currentPage === 'files'" class="files-container">
         <files :id="projectId">2</files>
       </section>
     </transition>
     <transition name="fade-choose">
-      <section v-show="currentPage === 'calenders'" class="calenders-container">
+      <section v-if="currentPage === 'calenders'" class="calenders-container">
         <calenders :id="projectId">3</calenders>
       </section>
     </transition>
   <transition name="slide-fade">
 
-      <section v-show="currentMenu==='member'" class="rightbar">
+      <section v-if="currentMenu==='member'" class="rightbar">
         <section class="rightbar-header">
           <section>
             <i class="rightbar-icon iconfont icon-gengduo"></i>
@@ -56,7 +54,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <section v-show="currentMenu==='view'" class="rightbar">
+      <section v-if="currentMenu==='view'" class="rightbar">
         <section class="rightbar-header">
           <section>
             <i class="rightbar-icon iconfont icon-gengduo"></i>
@@ -68,7 +66,7 @@
       </section>
     </transition>
     <transition name="slide-fade">
-      <section v-show="currentMenu==='setting'" class="rightbar">
+      <section v-if="currentMenu==='setting'" class="rightbar">
         <section class="rightbar-header">
           <section>
             <i class="rightbar-icon iconfont icon-gengduo"></i>
@@ -93,6 +91,7 @@
     data () {
       return {
         projectId: null,  // 项目ID
+        projectName: 'Default Project',
         projectInfo: {
           name: '默认项目'
         },
@@ -152,7 +151,7 @@
     border-bottom: #A1BDBF 1px solid;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .project-header-item {
 
@@ -179,19 +178,21 @@
 
   }
   .currentmenu {
-    color: #33CCCC;
+    background: #A1BDBF;
   }
   .project-menu {
-
     text-align: center;
     float: right;
     margin-right: 5px;
+    display: flex;
+    justify-content: flex-end;
   }
   .project-menu-item {
     width: 38px;
     display: inline-block;
     font-size: 24px;
-    margin-right: 5px;
+    margin-right: 0px;
+    padding: 0 5px 0 5px;
   }
 
   .project-menu-item :hover {
@@ -269,7 +270,7 @@
     padding: 0 5px 0 25px;
   }
   .rightbar-name {
-    font-size: 24px;
+    font-size: 20px;
   }
   .rightbar-close {
     font-size: 36px;
@@ -278,6 +279,11 @@
   .rightbar-close:hover {
     color: #33CCCC;
   }
-  .img {
+  img {
+    width: 25px;
+
+  }
+  #project-header-left, .project-menu {
+    width: 300px;
   }
 </style>
