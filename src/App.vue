@@ -20,9 +20,17 @@
 
     .el-dialog__wrapper {
         .el-dialog--small {
-            background: #F8F8F8;
+            background: #F8F8F8!important;
             max-height: 78vh;
-            overflow: scroll;
+            overflow-y: scroll;
         }
+    }
+
+    .ql-toolbar {
+        background-color: #eeeeee;
+    }
+
+    #quill-container {
+        height: 200px!important;
     }
 </style>
