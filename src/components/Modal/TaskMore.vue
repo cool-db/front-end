@@ -2,8 +2,8 @@
     <div>
         <div class="drop-header">任务名称</div>
         <el-dropdown-item>
-                <img src="da" alt="..." class="item-icon">
-                <span>复制任务</span>
+            <img src="da" alt="..." class="item-icon">
+            <span>复制任务</span>
         </el-dropdown-item>
         <el-dropdown-item>狮子头</el-dropdown-item>
         <el-dropdown-item>螺蛳粉</el-dropdown-item>
@@ -11,9 +11,7 @@
 </template>
 
 <script>
-  export default {
-
-  }
+  export default {}
 </script>
 
 <style lang="scss" scoped>
@@ -26,6 +24,7 @@
         text-align: center;
         padding-top: 8px;
     }
+
     .item-icon {
         $l: 14px;
         width: $l;
