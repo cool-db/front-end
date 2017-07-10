@@ -5,34 +5,56 @@
 <template>
   <div id="home-container">
     <div id="home-header">
-      <span id="home-left">
-        <span id="project-header" v-show="currentMode === Mode.index">
-          <div id="project-icon">Icon</div>
+      <div id="home-left">
+        <div id="project-header" v-show="currentMode === Mode.index">
+          <div id="project-icon"><img :src="iconProject"></div>
           <div id="project-name">项目名称</div>
           <div id="project-search">
             <el-input
               placeholder="在个人项目中搜索"
               icon="search"
-              v-model="input2">
+              v-model="searchBarInput">
             </el-input>
           </div>
-          <div id="project-add">+</div>
-        </span>
-      </span>
-      <span id="home-right">
-            <span class="home-menu">
-              <div class="home-menu-item" :class='{currentmenu: currentMenu === "member"}' @click="currentMenu='member'">1</div>
-              <div class="home-menu-item" :class='{currentmenu: currentMenu === "view"}' @click="currentMenu='view'">2</div>
-              <div class="home-menu-item" :class='{currentmenu: currentMenu === "setting"}' @click="currentMenu='setting'">3</div>
-            </span>
-      </span>
+          <div id="project-add"><img :src="iconAdd"></div>
+        </div>
+      </div>
+      <div id="home-right">
+            <div class="home-menu">
+              <div class="home-menu-item" :class='{currentmenu: currentMenu === "feedback"}' @click="currentMenu='feedback'">
+                <img :src="iconFeedback">
+              </div>
+              <div class="home-menu-item" :class='{currentmenu: currentMenu === "my"}' @click="currentMode=currentMenu='my'">
+                <img :src="iconMy">
+              </div>
+
+
+              <div class="home-menu-item" :class='{currentmenu: currentMenu === "message"}' @click="currentMenu='message'">
+                <img :src="iconMessage">
+              </div>
+              <el-badge v-show="messageCount>0" :value="messageCount" class="item">
+              </el-badge>
+              <div @click="currentMenu='setting'">
+                <img id="avatar" :src="avatarDefault">
+              </div>
+            </div>
+      </div>
     </div>
-    <project></project>
+    <project v-if="currentMode === Mode.project"></project>
+    <my v-else-if="currentMode === Mode.my"></my>
   </div>
 </template>
 
 <script>
   import Project from './Project.vue'
+  import My from './My.vue'
+  import iconProject from '@/assets/icons/nav_bar/project.png'
+  import iconProjectOn from '@/assets/icons/nav_bar/project-on.png'
+  import iconAdd from '@/assets/icons/nav_bar/add.png'
+  import iconFeedback from '@/assets/icons/nav_bar/feedback.png'
+  import iconMy from '@/assets/icons/nav_bar/my-profile.png'
+  import iconMessage from '@/assets/icons/nav_bar/message.png'
+  import avatarDefault from '@/assets/icons/nav_bar/blank-avatar.png'
   export default {
     data () {
       return {
@@ -43,7 +65,15 @@
         },
         currentMode: 0,
         currentMenu: '',
-        input2: ''
+        searchBarInput: '',
+        messageCount: 5,
+        iconProject,
+        iconProjectOn,
+        iconAdd,
+        iconFeedback,
+        iconMy,
+        iconMessage,
+        avatarDefault
       }
     },
     created () {
@@ -56,7 +86,8 @@
 
     ],
     components: {
-      Project
+      Project,
+      My
     },
     computed: {
 
@@ -79,52 +110,92 @@
     height: 626px;
   }
 
+  img {
+    width: 20px;
+    height: 20px;
+    margin: 15px 10px 15px 10px;
+  }
+
+  #project-add {
+    height: 100%;
+  }
+
+  #home-left img {
+
+  }
+
+  #project-add img {
+    width: 20px;
+    height: 20px;
+  }
+
   #home-header {
-    padding-left: 40px;
+    padding-left: 30px;
     height: 49px;
     background: #ffffff;
-    line-height: 50px;
+    line-height: 49px;
     font-size: 18px;
     color:#3E5568;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
     z-index: 10;
     position: relative;
-    width: auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
-  #home-header div {
-
-  }
-
-  #home-left {
+  #home-left{
+    height: 49px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   #home-left div {
-    display: inline-block;
+    display:inline-flex;
+    margin-right: 8px;
   }
 
   #home-right {
+    height: 49px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
   }
   #home-right div {
-    display: inline-block;
+    display: inline-flex;
   }
 
   #project-search {
     width: 300px;
+    padding: 8px 0 0 20px;
   }
 
   .home-menu {
-
     text-align: center;
     margin-right: 5px;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
   .home-menu-item {
-    width: 38px;
-    font-size: 24px;
-    margin-right: 5px;
-    background: blue;
+    width: 40px;
+    height: 49px;
+    padding-right: 5px;
+    padding-left: 5px;
+    line-height: 49px;
+  }
+  #avatar {
+    width:40px;
+    height:40px;
+    margin: 5px 5px 0 5px;
+  }
+
+  .item {
+    position: relative;
+    margin-top: 10px;
+    margin-left: -25px;
+    margin-right: 10px;
   }
 
 </style>

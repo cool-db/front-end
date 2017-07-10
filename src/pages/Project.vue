@@ -1,31 +1,30 @@
 <template>
   <div id="project-container">
-    <el-row id="project-header" ref="choosePage">
-        <span class="change-current-page">
-          <el-col :span="2" :offset="9">
-            <div class="change-current-page-item" :class='{currentpage: currentPage==="tasks"}' @click="currentPage = 'tasks'"><div>任务</div></div>
-          </el-col>
-          <el-col :span="2">
-            <div class="change-current-page-item" :class='{currentpage: currentPage==="files"}' @click="currentPage = 'files'"><div>文件</div></div>
-          </el-col>
-          <el-col :span="2">
-            <div class="change-current-page-item" :class='{currentpage: currentPage==="calenders"}' @click="currentPage = 'calenders'"><div>日程</div></div>
-          </el-col>
-        </span>
+    <div id="project-header" ref="choosePage">
+      <div id="project-header-left" class="project-header-item"></div>
+      <div class="change-current-page project-header-item">
 
+          <div class="change-current-page-item" :class='{currentpage: currentPage==="tasks"}' @click="currentPage = 'tasks'">任务</div>
 
-      <span class="project-menu">
+          <div class="change-current-page-item" :class='{currentpage: currentPage==="files"}' @click="currentPage = 'files'">文件</div>
 
-        <div class="project-menu-item" :class='{currentmenu: currentMenu === "member"}' @click="currentMenu='member'">1</div>
+          <div class="change-current-page-item" :class='{currentpage: currentPage==="calenders"}' @click="currentPage = 'calenders'">日程</div>
+
+      </div>
+      <div class="project-menu project-header-item">
+        <div class="project-menu-item" :class='{currentmenu: currentMenu === "member"}' @click="currentMenu='member'">
+          <img id="icon-member" :src="iconMember">
+        </div>
         <transition name="el-zoom-in-center">
-          <div class="project-menu-item" :class='{currentmenu: currentMenu === "view"}' @click="currentMenu='view'" v-if="currentPage==='tasks'">2</div>
+          <div class="project-menu-item" :class='{currentmenu: currentMenu === "view"}' @click="currentMenu='view'" v-if="currentPage==='tasks'">
+            <img id="icon-view" :src="iconView">
+          </div>
         </transition>
-        <div class="project-menu-item" :class='{currentmenu: currentMenu === "setting"}' @click="currentMenu='setting'">3</div>
-      </span>
-
-
-
-    </el-row>
+        <div class="project-menu-item" :class='{currentmenu: currentMenu === "setting"}' @click="currentMenu='setting'">
+          <img id="icon-more" :src="iconMore">
+        </div>
+      </div>
+    </div>
     <transition name="fade-choose">
       <section v-show="currentPage === 'tasks'" class="tasks-container">
         <tasks :id="projectId">1</tasks>
@@ -38,7 +37,6 @@
     </transition>
     <transition name="fade-choose">
       <section v-show="currentPage === 'calenders'" class="calenders-container">
-
         <calenders :id="projectId">3</calenders>
       </section>
     </transition>
@@ -87,6 +85,10 @@
 </template>
 
 <script>
+  import iconMember from '@/assets/icons/nav_bar/project-member.png'
+  import iconView from '@/assets/icons/nav_bar/view.png'
+  import iconMore from '@/assets/icons/nav_bar/menu.png'
+
   export default {
     data () {
       return {
@@ -96,7 +98,10 @@
         },
         showLoading: false, // 显示加载动画
         currentPage: 'tasks', // 当前页面
-        currentMenu: ''
+        currentMenu: '',
+        iconMember,
+        iconView,
+        iconMore
       }
     },
     created () {
@@ -133,6 +138,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+
   #project-container {
     height: 578px;
   }
@@ -144,11 +150,18 @@
     font-size: 16px;
     color:#97A4B1;
     border-bottom: #A1BDBF 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .project-header-item {
+
   }
 
 
   .change-current-page-item {
-    width: 100%;
+    display: inline-block;
+    width: 80px;
     line-height: 40px;
     height: 40px;
     border-bottom: 4px transparent;
@@ -179,7 +192,6 @@
     display: inline-block;
     font-size: 24px;
     margin-right: 5px;
-    background: red;
   }
 
   .project-menu-item :hover {
@@ -234,9 +246,8 @@
   .rightbar {
     position: absolute;
     width: 350px;
-    height: 626px;
-    top: 48px;
-
+    height: 566px;
+    top: 98px;
     right: 0px;
     box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.50);
 
@@ -266,5 +277,7 @@
   }
   .rightbar-close:hover {
     color: #33CCCC;
+  }
+  .img {
   }
 </style>
