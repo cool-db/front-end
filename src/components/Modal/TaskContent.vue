@@ -13,8 +13,8 @@
   export default {
     data () {
       return {
-        taskTitle: '',
-        richText: '<h1>aaa<h1>'
+        taskTitle: '这是一个标题',
+        richText: '<h3>aaa<h1>'
       }
     },
     components: {
@@ -28,6 +28,6 @@
     .divider {
         width: 100%;
         border-bottom: 1px solid #dedede;
-        margin: 10px 0;
+        margin: 13px 0;
     }
 </style>

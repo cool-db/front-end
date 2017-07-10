@@ -20,7 +20,7 @@
 
     .el-dialog__wrapper {
         .el-dialog--small {
-            background: #F8F8F8!important;
+            background: #f7f7f7!important;
             max-height: 78vh;
             overflow-y: scroll;
         }

@@ -67,6 +67,7 @@
         padding: 10px;
         border: 1px solid #dedede;
         border-radius: 4px;
+        background-color: #ffffff;
     }
 
     .outer {
