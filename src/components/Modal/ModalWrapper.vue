@@ -4,10 +4,17 @@
             :lock-scroll="true"
             :show-close="false"
             size="small">
-        <span slot="title" style="width: 100%">
-            <modal-header title="nihao" :onClose="closeModal"></modal-header>
+        <span slot="title">
+            <modal-header :onClose="closeModal">
+                <span slot="title">
+                    <slot name="title"></slot>
+                </span>
+                <div slot="drop-down">
+                    <slot name="drop-down"></slot>
+                </div>
+            </modal-header>
         </span>
-        <span>这是一段信息</span>
+        <slot name="content">默认信息</slot>
         <span slot="footer" class="dialog-footer">
             footer
         </span>
@@ -33,6 +40,6 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss">
 
 </style>

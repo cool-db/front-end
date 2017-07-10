@@ -1,17 +1,30 @@
 <template>
     <div>
         <div class="drop-header">任务名称</div>
-        <el-dropdown-item>
-            <img src="da" alt="..." class="item-icon">
-            <span>复制任务</span>
+        <el-dropdown-item v-for="(item, index) in imgData" :key="index">
+            <img :src="item.src" alt="..." class="item-icon">
+            <span>{{ item.text }}</span>
         </el-dropdown-item>
-        <el-dropdown-item>狮子头</el-dropdown-item>
-        <el-dropdown-item>螺蛳粉</el-dropdown-item>
     </div>
 </template>
 
 <script>
-  export default {}
+  import copy from '@/assets/icons/drop_down_menu/copy.png'
+  import copyLink from '@/assets/icons/drop_down_menu/copy-link.png'
+
+  export default {
+    data () {
+      return {
+        imgData: [{
+          src: copy,
+          text: '复制任务'
+        }, {
+          src: copyLink,
+          text: '复制任务链接'
+        }]
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -29,7 +42,6 @@
         $l: 14px;
         width: $l;
         height: $l;
-        background-color: #888888;
         vertical-align: middle;
     }
 

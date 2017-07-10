@@ -1,13 +1,13 @@
 <template>
     <header class="header-wrapper">
-        <span>{{title}}</span>
+        <slot name="title">默认显示</slot>
         <span class="icon-style">
             <el-dropdown trigger="click" class="drop-down-wrapper">
                 <span class="more-operate">
                     更多<i class="el-icon-arrow-down"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown" class="drop-down">
-                    <task-more></task-more>
+                    <slot name="drop-down"></slot>
                 </el-dropdown-menu>
             </el-dropdown>
             <i class="el-icon-close" @click="onClose"></i>
@@ -16,14 +16,9 @@
 </template>
 
 <script>
-  import TaskMore from './TaskMore.vue'
   export default {
     props: {
-      title: String,
       onClose: Function
-    },
-    components: {
-      TaskMore
     }
   }
 </script>

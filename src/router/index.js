@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ModalWrapper from 'COMPONENTS/Modal/ModalWrapper.vue'
+import TaskModal from 'COMPONENTS/TaskModal.vue'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: ModalWrapper
+    component: TaskModal
   }
 ]
 
