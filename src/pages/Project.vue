@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div id="project-container">
     <el-row id="project-header" ref="choosePage">
         <span class="change-current-page">
