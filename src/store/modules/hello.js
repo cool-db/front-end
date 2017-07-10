@@ -1,8 +1,9 @@
-const namespace = 'hello'
+import { addNamespace } from '@/util/commonUtil'
+const namespace = addNamespace('hello')
 
-const INCREASE = `${namespace}/INCREASE`
-const DOWN = `${namespace}/DOWN`
-const RESET = `${namespace}/RESET`
+export const INCREASE = namespace('INCREASE')
+export const DOWN = namespace('DOWN')
+export const RESET = namespace('RESET')
 
 const state = {
   count: 0
