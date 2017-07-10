@@ -12,9 +12,17 @@ const getters = {
   count: state => state.count
 }
 
+const actions = {
+  asyncIncrease ({commit}) {
+    setTimeout(() => {
+      commit(INCREASE, 5)
+    }, 1000)
+  }
+}
+
 const mutations = {
-  [INCREASE] (state) {
-    state.count += 1
+  [INCREASE] (state, data) {
+    state.count += data
   },
   [DOWN] (state) {
     state.count -= 1
@@ -27,6 +35,7 @@ const mutations = {
 export default {
   state,
   getters,
+  actions,
   mutations
 }
 
