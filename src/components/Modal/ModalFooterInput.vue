@@ -46,7 +46,7 @@
     margin-right: -20px;
     flex: 1;
     background: white;
-    border-top: 1px solid #888888;
+    border-top: 1px solid #dedede;
     padding-bottom: 10px;
     margin-bottom: -15px;
     display:flex;
