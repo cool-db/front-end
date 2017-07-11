@@ -30,7 +30,7 @@
     },
     methods: {
       changeR (command) {
-        this.mode = command
+        this.mode = parseInt(command)
       }
     },
     created () {

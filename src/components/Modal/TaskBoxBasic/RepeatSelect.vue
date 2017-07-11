@@ -8,7 +8,7 @@
       Error
     </slot>
     <el-dropdown-menu slot="dropdown">
-      <el-dropdown-item v-for="(item, key) in items" :key="key" :command="key">
+      <el-dropdown-item v-for="(item, key) in items" :key="key" :command="key.toString()">
           <span class="item">
             <div :class="mode===key?'active':''" class="r-item">{{item}}</div>
             <div v-if="mode === key"><i class="el-icon-check"></i></div>

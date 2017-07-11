@@ -12,9 +12,11 @@
             <task-more></task-more>
         </div>
         <div slot="content">
-            <TaskContent></TaskContent>
+            <task-content></task-content>
         </div>
-
+        <div slot="footer">
+            <modal-footer-input></modal-footer-input>
+        </div>
     </modal-wrapper>
 </template>
 
@@ -22,12 +24,14 @@
   import ModalWrapper from '@/components/Modal/ModalWrapper.vue'
   import TaskMore from '@/components/Modal/TaskMore.vue'
   import TaskContent from '@/components/Modal/TaskContent.vue'
+  import ModalFooterInput from '@/components/Modal/ModalFooterInput.vue'
 
   export default {
     components: {
       ModalWrapper,
       TaskMore,
-      TaskContent
+      TaskContent,
+      ModalFooterInput
     }
   }
 </script>
