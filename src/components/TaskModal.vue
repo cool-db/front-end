@@ -1,5 +1,5 @@
 <template>
-    <ModalWrapper>
+    <modal-wrapper>
         <div slot="title" class="catelog">
             <span>
                 任务列表
@@ -14,7 +14,8 @@
         <div slot="content">
             <TaskContent></TaskContent>
         </div>
-    </ModalWrapper>
+
+    </modal-wrapper>
 </template>
 
 <script>
