@@ -10,7 +10,7 @@
                             :executor="scope.props.executor"
                             :avatar="scope.props.avatar">
                         <div class="task-slot" @mouseenter="show[scope.index]=true" @mouseleave="show[scope.index]=false">
-                            <el-checkbox v-model="scope.props.checked">{{scope.props.title}}</el-checkbox>
+                            <el-checkbox v-model="scope.props.checked">{{scope.index}}+{{scope.props.title}}</el-checkbox>
                             <div>{{scope.props.state}}
                               <modal-attach-delete :show="show[scope.index]"></modal-attach-delete>
                             </div>
