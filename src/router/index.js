@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import project from 'PAGES/project'
+import TaskIndex from 'COMPONENTS/TaskIndex'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: project
+    component: TaskIndex
   }
 ]
 
