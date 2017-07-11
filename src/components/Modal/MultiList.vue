@@ -4,7 +4,7 @@
              :class="'multi-list-item ' + (isHead(index) ? 'head-item ': '') + (isTail(index) ? 'tail-item': '')">
             <slot name="item"
                   :props="item"
-                  class="abc"
+                  :index="index"
             ></slot>
         </div>
     </div>

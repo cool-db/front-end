@@ -1,7 +1,7 @@
 <template>
     <div>
         <modal-attach-head
-                type="任务" :icon="task">
+                type="任务" :icon="icon">
         </modal-attach-head>
         <div>
             <multi-list :list="fileList">
@@ -30,6 +30,7 @@
   export default {
     data () {
       return {
+        icon: task,
         fileList: [{
           executor: 'Simon',
           avatar: task,
