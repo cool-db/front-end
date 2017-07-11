@@ -8,6 +8,7 @@
         <modal-file-list class="box"></modal-file-list>
         <modal-calendar-list class="box"></modal-calendar-list>
         <modal-new-attach-box class="box"></modal-new-attach-box>
+        <modal-participators class="box"></modal-participators>
     </div>
 </template>
 
@@ -19,6 +20,7 @@
   import TaskBoxBasic from './TaskBoxBasic.vue'
   import ModalCalendarList from './ModalCalendarList.vue'
   import ModalNewAttachBox from './ModalNewAttachBox.vue'
+  import ModalParticipators from './ModalParticipators.vue'
 
   export default {
     data () {
@@ -33,6 +35,7 @@
       }
     },
     components: {
+      ModalParticipators,
       ModalNewAttachBox,
       TextEdit,
       RichEditor,

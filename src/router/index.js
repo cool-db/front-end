@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ModalSelectAttach from 'COMPONENTS/ModalSelectAttach.vue'
+import TaskModal from 'COMPONENTS/TaskModal.vue'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: ModalSelectAttach
+    component: TaskModal
   }
 ]
 
