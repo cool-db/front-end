@@ -42,13 +42,15 @@
 
       <section v-if="currentMenu==='member'" class="rightbar">
         <section class="rightbar-header">
+          <section class="rightbar-blank"></section>
           <section>
-            <i class="rightbar-icon iconfont icon-gengduo"></i>
             <span class="rightbar-name">项目成员</span>
           </section>
-          <span class="rightbar-close iconfont icon-close" @click="currentMenu=''"></span>
+          <span class="rightbar-close el-icon-close" @click="currentMenu=''"></span>
         </section>
-        <div class="rightbar-content"></div>
+        <div class="rightbar-content">
+          <menu-member></menu-member>
+        </div>
       </section>
 
     </transition>
@@ -56,11 +58,11 @@
     <transition name="slide-fade">
       <section v-if="currentMenu==='view'" class="rightbar">
         <section class="rightbar-header">
+          <section class="rightbar-blank"></section>
           <section>
-            <i class="rightbar-icon iconfont icon-gengduo"></i>
             <span class="rightbar-name">视图</span>
           </section>
-          <span class="rightbar-close iconfont icon-close" @click="currentMenu=''"></span>
+          <span class="rightbar-close el-icon-close" @click="currentMenu=''"></span>
         </section>
         <div class="rightbar-content"></div>
       </section>
@@ -68,11 +70,11 @@
     <transition name="slide-fade">
       <section v-if="currentMenu==='setting'" class="rightbar">
         <section class="rightbar-header">
+          <section class="rightbar-blank"></section>
           <section>
-            <i class="rightbar-icon iconfont icon-gengduo"></i>
             <span class="rightbar-name">{{projectInfo.name}}</span>
           </section>
-          <span class="rightbar-close iconfont icon-close" @click="currentMenu=''"></span>
+          <span class="rightbar-close el-icon-close" @click="currentMenu=''"></span>
         </section>
         <div class="rightbar-content"></div>
       </section>
@@ -86,6 +88,7 @@
   import iconMember from '@/assets/icons/nav_bar/project-member.png'
   import iconView from '@/assets/icons/nav_bar/view.png'
   import iconMore from '@/assets/icons/nav_bar/menu.png'
+  import MenuMember from '../components/Menu/MenuMember.vue'
 
   export default {
     data () {
@@ -113,7 +116,7 @@
 
     ],
     components: {
-
+      MenuMember
     },
     computed: {
 
@@ -154,7 +157,9 @@
     justify-content: space-between;
   }
   .project-header-item {
-
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
 
@@ -188,7 +193,7 @@
     justify-content: flex-end;
   }
   .project-menu-item {
-    width: 38px;
+    width: 42px;
     display: inline-block;
     font-size: 24px;
     margin-right: 0px;
@@ -207,7 +212,7 @@
 
   }
   .fade-choose-enter-active, .fade-choose-leave-active {
-    transition: opacity 1s;
+    transition: 1s;
   }
   .fade-choose-leave, .fade-choose-leave-active {
     display: none;
@@ -216,14 +221,14 @@
     opacity: 0;
   }
   .slide-fade-enter-active {
-    transition: all .5s ease;
+    transition: all .3s ease;
   }
   .slide-fade-leave-active {
-    transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
   }
   .slide-fade-enter, .slide-fade-leave-active {
     transform: translateX(300px);
-    opacity: 0;
+    opacity: 0.5;
   }
   .tasks-container {
     background: #ffffff;
@@ -247,34 +252,34 @@
   .rightbar {
     position: absolute;
     width: 350px;
-    height: 566px;
     top: 98px;
     right: 0px;
-    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.50);
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.20);
 
   }
   .rightbar-header {
-    line-height: 77px;
+    line-height: 60px;
     background: #E8E8E8;
     color: #565656;
-    height: 77px;
+    height: 60px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+  }
+  .rightbar-blank {
+    width:50px;
   }
   .rightbar-content {
     background: #F8F8F8;
     height: 549px;
   }
-  .rightbar-icon {
-    font-size: 36px;
-    padding: 0 5px 0 25px;
-  }
   .rightbar-name {
-    font-size: 20px;
+    font-size: 18px;
   }
   .rightbar-close {
-    font-size: 36px;
-    padding-right: 20px;
+    font-size: 20px;
+    padding-right: 15px;
+    padding-top: 20px;
   }
   .rightbar-close:hover {
     color: #33CCCC;
@@ -282,6 +287,12 @@
   img {
     width: 25px;
 
+  }
+  #icon-member, #icon-view, #icon-more {
+    width:21px;
+  }
+  #icon-more {
+    width:18px;
   }
   #project-header-left, .project-menu {
     width: 300px;
