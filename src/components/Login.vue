@@ -1,78 +1,34 @@
 <template>
 
-  <el-card class="box-card">
-  <div class="accountPassword">
-      <div class="bar">
-        <img class="picture" :src="preference">
-        <div>
-          账号密码
-        </div>
-      </div>
+  <div class="login">
+    <img class="picture" :src="project">
 
-      <div class="mailSection">
-        <div class="mail">
-          <div class="text">
-            邮箱账号
-          </div>
-          <el-input class="input" placeholder="请输入内容"></el-input>
-        </div>
+    <el-input v-model="input" placeholder="邮箱／手机号"></el-input>
 
-        <div class="mail1">
-          <div class="text1">
-            此行隐形
-          </div>
-          <el-button class="button" type="primary">添加主邮箱</el-button>
-        </div>
+    <el-input v-model="input" placeholder="密码"></el-input>
 
-      </div>
+    <el-button class="button" type="primary">登录</el-button>
 
+    <div class="line">
+    </div>
 
-      <div class="line">
-      </div>
-
-
-      <div class="phoneSection">
-        <div class="phone">
-          <div class="text">
-            手机账号
-          </div>
-
-          <div class="text2">
-            12345678910
-          </div>
-        </div>
-
-        <div class="phone1">
-          <div class="text1">
-            此行隐形
-          </div>
-          <el-button class="unbind">解绑</el-button>
-        </div>
-
-        <div class="phone2">
-          <div class="text1">
-            此行隐形
-          </div>
-          <el-button class="button" type="primary">修改密码</el-button>
-        </div>
-
-
-      </div>
+    <div class="textButton">
+      <el-button type="text">还没有账号？</el-button>
+      <el-button type="text">注册新账号</el-button>
+    </div>
 
   </div>
-  </el-card>
+
 </template>
 
 <script>
 
   import project from '@/assets/icons/nav_bar/project.png'
-  import preference from '@/assets/icons/nav_bar/preferences.png'
 
   export default {
     data () {
       return {
         project,
-        preference,
         input: ''
       }
     }
@@ -84,6 +40,15 @@
   .box-card{
     height:410px;
     width:430px;
+  }
+
+  .picture {
+    height: 78px;
+    width: 280px;
+    /*margin-top: 5px;*/
+    /*margin-bottom: 5px;*/
+    /*margin-right: 10px;*/
+    /*margin-left: 20px;*/
   }
 
   .accountPassword {
@@ -116,14 +81,7 @@
     flex-direction:row;
   }
 
-  .picture {
-    height: 27px;
-    width: 27px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 10px;
-    margin-left: 20px;
-  }
+
 
   .mailSection {
     display: flex;
