@@ -18,7 +18,6 @@
         <el-dropdown-item v-for="(user, key) in users" :key="key" :command="key.toString()">
           <span class="user">
             <div :class="owner===key?'active':''" class="user-item"><img class="avatar" :src="user.avatar">{{user.name}}</div>
-
             <div v-if="owner === key"><i class="el-icon-check"></i></div>
           </span>
         </el-dropdown-item>

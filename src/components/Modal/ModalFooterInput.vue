@@ -1,9 +1,11 @@
 <template>
   <div id="comment-box">
-    <el-input id="comment-input" size="large" v-model="input" placeholder="请输入内容" @focus="showPanel" @blur="hidePanel"></el-input>
+    <el-input id="comment-input" size="large" v-model="input" placeholder="@提及他人，按Enter键快速发布" @focus="showPanel" @blur="hidePanel"></el-input>
     <div id="comment-panel" v-show="isShowPanel">
-
-      <el-button id="submit" type="primary" @click="comment">发 布</el-button>
+      <span class="tip" v-if="userCount>0">将有{{userCount}}个人接收通知</span>
+      <span class="tip blank" v-else>没有人会收到通知</span>
+      <el-button type="text" @click="cancel" icon="close"> 清 空</el-button>
+      <el-button id="submit" type="primary" @click="comment" icon="check"> 发 布</el-button>
     </div>
   </div>
 </template>
@@ -13,7 +15,8 @@
     data () {
       return {
         input: '1',
-        isShowPanel: false
+        isShowPanel: false,
+        userCount: 0
       }
     },
     props: [
@@ -28,6 +31,9 @@
         }, 100)
       },
       comment () {
+        this.input = ''
+      },
+      cancel () {
         this.input = ''
       }
     }
@@ -64,9 +70,19 @@
   }
 
   #submit {
+    margin-left: 15px;
     margin-right: 5px;
     margin-top: 2px;
     width: 100px;
+  }
+
+  .tip {
+    float: left;
+    margin: 10px 0 0 10px;
+    color: #A1BDBF;
+  }
+  .blank {
+    color: #D8D8D8;
   }
 
 </style>
