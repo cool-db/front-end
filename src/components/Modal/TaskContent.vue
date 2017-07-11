@@ -3,6 +3,8 @@
         <text-edit :title.sync="taskTitle"></text-edit>
         <div class="divider"></div>
         <rich-editor :text.sync="richText"></rich-editor>
+        <task-box-basic></task-box-basic>
+        <sub-tasks-box></sub-tasks-box>
         <modal-file></modal-file>
     </div>
 </template>
@@ -11,6 +13,9 @@
   import TextEdit from './TextEdit.vue'
   import RichEditor from './RichEditor.vue'
   import ModalFile from './ModalFile.vue'
+
+  import TaskBoxBasic from './TaskBoxBasic.vue'
+  import SubTasksBox from './MultiBoxs/SubTasksBox.vue'
 
   export default {
     data () {
@@ -22,7 +27,9 @@
     components: {
       TextEdit,
       RichEditor,
-      ModalFile
+      ModalFile,
+      SubTasksBox,
+      TaskBoxBasic
     }
   }
 </script>

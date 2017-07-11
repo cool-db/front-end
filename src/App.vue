@@ -14,13 +14,10 @@
     .router-fade-enter-active, .router-fade-leave-active {
         transition: opacity .3s;
     }
-    .router-fade-enter, .router-fade-leave-active {
-        opacity: 0;
-    }
 
     .el-dialog__wrapper {
         .el-dialog--small {
-            background: #f7f7f7!important;
+            background: #f7f7f7 !important;
             max-height: 78vh;
             overflow-y: scroll;
         }
@@ -31,6 +28,22 @@
     }
 
     #quill-container {
-        height: 200px!important;
+        height: 200px !important;
+    }
+
+    .router-fade-enter, .router-fade-leave-active {
+        opacity: 0;
+    }
+
+    .el-dialog__wrapper {
+        .el-dialog--small {
+            background: #F8F8F8;
+            max-height: 78vh;
+            overflow-y: scroll;
+        }
+    }
+
+    .el-input__inner {
+        border: 0 !important;
     }
 </style>
