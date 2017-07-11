@@ -43,7 +43,7 @@
         }
     }
 
-    .el-input__inner {
+    .el-date-editor > .el-input__inner {
         border: 0 !important;
     }
 </style>

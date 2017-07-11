@@ -9,16 +9,15 @@
     </slot>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item disabled>可认领用户列表</el-dropdown-item>
-        <el-dropdown-item :command="-1">
+        <el-dropdown-item :command="'-1'">
           <span class="user">
             <div :class="owner===null?'active':''" class="user-item"><img class="avatar" :src="blankAvatar">未认领</div>
             <div v-if="owner === null"><i class="el-icon-check"></i></div>
           </span>
         </el-dropdown-item>
-        <el-dropdown-item v-for="(user, key) in users" :key="key" :command="key">
+        <el-dropdown-item v-for="(user, key) in users" :key="key" :command="key.toString()">
           <span class="user">
             <div :class="owner===key?'active':''" class="user-item"><img class="avatar" :src="user.avatar">{{user.name}}</div>
-
             <div v-if="owner === key"><i class="el-icon-check"></i></div>
           </span>
         </el-dropdown-item>

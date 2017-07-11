@@ -38,6 +38,7 @@
     },
     methods: {
       changeOwner (command) {
+        command = parseInt(command)
         this.owner = command >= 0 ? command : null
         this.isSet = this.owner !== null
       }

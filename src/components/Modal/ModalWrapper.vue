@@ -16,7 +16,7 @@
         </span>
         <slot name="content">默认信息</slot>
         <span slot="footer" class="dialog-footer">
-            footer
+            <slot name="footer"></slot>
         </span>
     </el-dialog>
 </template>

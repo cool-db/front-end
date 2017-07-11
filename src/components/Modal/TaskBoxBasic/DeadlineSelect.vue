@@ -12,7 +12,7 @@
       <el-date-picker
         v-model="value2"
         type="date"
-        editable="true"
+        :editable="true"
         placeholder="选择日期"
         align="left"
         size="small"

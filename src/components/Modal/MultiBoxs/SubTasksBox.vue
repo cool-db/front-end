@@ -5,6 +5,7 @@
 <template>
     <div class="SubTasksBox">
       <multi-box :boxs="boxs"></multi-box>
+      <multi-box :boxs="boxs1"></multi-box>
     </div>
 </template>
 
@@ -22,6 +23,9 @@
           {name: 'task', data: '对讲机的居然夫人天津天津提高警惕阮经天金融界突然'},
           {name: 'task', data: '东京教父'},
           {name: 'new-sub-task', data: ''}
+        ],
+        boxs1: [
+
         ]
       }
     }
