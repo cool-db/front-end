@@ -1,13 +1,23 @@
 <template>
-  <el-card id="selector">
+  <el-card id="selector" v-if="a">
     <div id="personalInformation" onclick="personal">
       个人信息
     </div>
-    <div id="accountPassward" onclick="account">
+    <div id="accountPassword" onclick="account">
       账号密码
     </div>
   </el-card>
 </template>
+
+<script>
+  export default {
+    data () {
+      return {
+        a: true
+      }
+    }
+  }
+</script>
 
 <style>
   #selector{
@@ -29,7 +39,7 @@
     padding-left: 20px;
   }
   
-  #accountPassward{
+  #accountPassword{
     display: flex;
     align-items: center;
     height: 65px;

@@ -74,19 +74,40 @@
     data () {
       return {
         project,
-        logo
+        logo,
+        pickerOptions1: {
+          shortcuts: [{
+            text: '今天',
+            onClick (picker) {
+              picker.$emit('pick', new Date())
+            }
+          }, {
+            text: '昨天',
+            onClick (picker) {
+              const date = new Date()
+              date.setTime(date.getTime() - 3600 * 1000 * 24)
+              picker.$emit('pick', date)
+            }
+          }, {
+            text: '一周前',
+            onClick (picker) {
+              const date = new Date()
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
+              picker.$emit('pick', date)
+            }
+          }]
+        },
+        value1: '',
+        value2: ''
       }
-    },
-    components: {
     }
   }
+
 </script>
 
 
 <style>
   #personalInformation{
-    margin-left: 20px;
-    margin-top: 20px;
     padding-top: 0;
     display: flex;
     flex-direction: column;
