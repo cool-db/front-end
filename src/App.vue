@@ -10,7 +10,7 @@
   export default {}
 </script>
 
-<style scoped lang="scss">
+<style scoped="" lang="scss">
     .router-fade-enter-active, .router-fade-leave-active {
         transition: opacity .3s;
     }
@@ -20,4 +20,5 @@
   #app{
     background-color:#ffffff;
   }
+
 </style>
