@@ -14,7 +14,7 @@
   export default {
     data () {
       return {
-        input: '1',
+        input: '',
         isShowPanel: false,
         userCount: 0
       }

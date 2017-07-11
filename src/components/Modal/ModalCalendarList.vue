@@ -1,16 +1,17 @@
 <template>
     <div>
         <modal-attach-head
-                type="文件" :icon="file">
+                type="日程" :icon="calendar">
         </modal-attach-head>
         <div>
-            <multi-list :list="fileList">
+            <multi-list :list="calendarList">
                 <template slot="item" scope="scope">
                     <modal-attach-body
                             :executor="scope.props.executor"
                             :avatar="scope.props.avatar">
                         <div class="file-slot">
-                          <img :src="scope.props.icon"><div>{{scope.props.filename}}</div>
+                          <div class="title">{{scope.props.title}}</div>
+                          <div>{{scope.props.startAt}} - {{scope.props.endAt}}</div>
                         </div>
                     </modal-attach-body>
                 </template>
@@ -24,26 +25,24 @@
   import ModalAttachBody from './ModalAttachBody.vue'
   import MultiList from './MultiList.vue'
 
-  import file from '@/assets/icons/new_item/related-file.png'
+  import calendar from '@/assets/icons/new_item/calendar_and_date.png'
 
   export default {
     data () {
       return {
-        file,
-        fileList: [{
+        calendar,
+        calendarList: [{
           executor: 'Simon',
-          filename: 'hello.jpg',
-          icon: file,
-          checked: false,
-          title: 'first',
-          state: '未处理'
+          avatar: calendar,
+          title: '谷歌开发者大会',
+          startAt: '12月31日 19:00',
+          endAt: '1月1日 2:45'
         }, {
           executor: ' dustark',
-          filename: 'm.gif',
-          icon: file,
-          checked: true,
-          title: 'second',
-          state: '已处理'
+          avatar: calendar,
+          title: '数据库课程设计',
+          startAt: '7月6日 19:50',
+          endAt: '8月1日 18:35'
         }]
       }
     },
@@ -56,16 +55,17 @@
 </script>
 
 <style lang="scss" scoped>
-    .file-slot {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
+    .calendar-slot {
+        /*display: flex;*/
+        /*flex-direction: row;*/
+        /*justify-content: flex-start;*/
+        /*align-items: center;*/
+      font-size: 14px;
+      color: #888888;
     }
-  img {
-    height: 20px;
-    width: 20px;
-    margin-right: 10px;
-    border: 0.5px darkgrey solid;
+  .title {
+    font-size: 16px;
+    color: #565656;
+    line-height: 24px;
   }
 </style>

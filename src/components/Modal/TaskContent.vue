@@ -4,15 +4,19 @@
         <div class="divider"></div>
         <rich-editor :text.sync="richText"></rich-editor>
         <task-box-basic></task-box-basic>
+        <modal-task-list></modal-task-list>
         <modal-file-list></modal-file-list>
+        <modal-calendar-list></modal-calendar-list>
     </div>
 </template>
 
 <script>
   import TextEdit from './TextEdit.vue'
   import RichEditor from './RichEditor.vue'
+  import ModalTaskList from './ModalTaskList.vue'
   import ModalFileList from './ModalFileList.vue'
   import TaskBoxBasic from './TaskBoxBasic.vue'
+  import ModalCalendarList from './ModalCalendarList.vue'
 
   export default {
     data () {
@@ -30,7 +34,9 @@
       TextEdit,
       RichEditor,
       TaskBoxBasic,
-      ModalFileList
+      ModalFileList,
+      ModalTaskList,
+      ModalCalendarList
     }
   }
 </script>
