@@ -34,6 +34,7 @@
     align-items: center;
   }
   img {
-    height: 30px;
+    height: 20px;
+    padding-right: 5px;
   }
 </style>
