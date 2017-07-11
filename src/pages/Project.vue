@@ -289,10 +289,10 @@
 
   }
   #icon-member, #icon-view, #icon-more {
-    width:21px;
+    width: 21px;
   }
   #icon-more {
-    width:18px;
+    width: 18px;
   }
   #project-header-left, .project-menu {
     width: 300px;
