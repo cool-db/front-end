@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import TaskModal from 'COMPONENTS/TaskModal.vue'
+import Home from 'PAGES/Home.vue'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: TaskModal
+    component: Home
   }
 ]
 

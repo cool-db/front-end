@@ -11,6 +11,11 @@
 </script>
 
 <style lang="scss">
+    html, body, #app {
+        height: 100vh;
+        min-width: 100%;
+    }
+
     .router-fade-enter-active, .router-fade-leave-active {
         transition: opacity .3s;
     }
@@ -46,4 +51,5 @@
     .el-date-editor > .el-input__inner {
         border: 0 !important;
     }
+
 </style>
