@@ -18,6 +18,6 @@
         opacity: 0;
     }
   #app{
-    background-color: #cccccc;
+    background-color:#ffffff;
   }
 </style>
