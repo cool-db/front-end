@@ -47,4 +47,8 @@
     border-right: 0.5px #dedede solid;
   }
 
+  #repeatBox {
+    min-width: 90px;
+  }
+
 </style>

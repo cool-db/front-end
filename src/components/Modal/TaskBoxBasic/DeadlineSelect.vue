@@ -11,12 +11,12 @@
       <!--</slot>-->
       <el-date-picker
         v-model="value2"
-        type="datetime"
+        type="date"
         editable="true"
-        placeholder="选择日期时间"
+        placeholder="选择日期"
         align="left"
         size="small"
-        format="MM月dd日 HH:mm:ss"
+        format="MM月dd日"
         :picker-options="pickerOptions1">
       </el-date-picker>
     </div>
