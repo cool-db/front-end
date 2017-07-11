@@ -1,21 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import project from 'PAGES/project'
-// import recentIssues from 'COMPONENTS/RecentIssues'
-// import recentIssueItem from 'COMPONENTS/RecentIssueItem'
-// import mySchedule from 'COMPONENTS/MySchedule'
-// import personalInformation from 'COMPONENTS/PersonalInformation'
-// import selector from 'COMPONENTS/Selector'
-// import personalSetting from 'COMPONENTS/PersonalSetting'
-// import avatar from 'COMPONENTS/Avatar'
-// import personalSetting from 'COMPONENTS/PersonalSetting'
-import addIcon from 'COMPONENTS/AddIcon'
+import Home from 'PAGES/Home.vue'
+
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: addIcon
+    component: Home
   }
 ]
 

@@ -1,48 +1,46 @@
 <template>
-  <div class="project-container">
-    <el-row class="project-header" ref="choosePage">
-        <span class="change-current-page">
-          <el-col :span="2" :offset="9" :class='{currentpage: currentPage==="tasks"}'>
-            <span @click="currentPage = 'tasks'">任务</span>
-          </el-col>
-          <el-col :span="2" :class='{currentpage: currentPage==="files"}'>
-            <span @click="currentPage = 'files'">文件</span>
-          </el-col>
-          <el-col :span="2" :class='{currentpage: currentPage==="calenders"}'>
-            <span @click="currentPage = 'calenders'">日程</span>
-          </el-col>
-        </span>
+  <div id="project-container">
+    <div id="project-header" ref="choosePage">
+      <div id="project-header-left" class="project-header-item"></div>
+      <div class="change-current-page project-header-item">
 
+          <div class="change-current-page-item" :class='{currentpage: currentPage==="tasks"}' @click="currentPage = 'tasks'">任务</div>
+          <div class="change-current-page-item" :class='{currentpage: currentPage==="files"}' @click="currentPage = 'files'">文件</div>
+          <div class="change-current-page-item" :class='{currentpage: currentPage==="calenders"}' @click="currentPage = 'calenders'">日程</div>
 
-      <span class="project-menu">
-            <i class="iconfont icon-friend" :class='{currentmenu: currentMenu === "member"}' @click="currentMenu='member'"></i>
-            <el-badge :value="12" class="item"></el-badge>
-            <transition name="el-zoom-in-center">
-              <i class="iconfont icon-eye" :class='{currentmenu: currentMenu === "view"}' @click="currentMenu='view'" v-if="currentPage==='tasks'"></i>
-            </transition>
-            <i class="iconfont icon-more" :class='{currentmenu: currentMenu === "setting"}' @click="currentMenu='setting'"></i>
-          </span>
-
-
-    </el-row>
+      </div>
+      <div class="project-menu project-header-item">
+        <div class="project-menu-item" :class='{currentmenu: currentMenu === "member"}' @click="currentMenu='member'">
+          <img id="icon-member" :src="iconMember">
+        </div>
+        <transition name="el-zoom-in-center">
+          <div class="project-menu-item" :class='{currentmenu: currentMenu === "view"}' @click="currentMenu='view'" v-if="currentPage==='tasks'">
+            <img id="icon-view" :src="iconView">
+          </div>
+        </transition>
+        <div class="project-menu-item" :class='{currentmenu: currentMenu === "setting"}' @click="currentMenu='setting'">
+          <img id="icon-more" :src="iconMore">
+        </div>
+      </div>
+    </div>
     <transition name="fade-choose">
-      <section v-show="currentPage === 'tasks'" class="tasks-container">
+      <section v-if="currentPage === 'tasks'" class="tasks-container">
         <tasks :id="projectId">1</tasks>
       </section>
     </transition>
     <transition name="fade-choose">
-      <section v-show="currentPage === 'files'" class="files-container">
+      <section v-if="currentPage === 'files'" class="files-container">
         <files :id="projectId">2</files>
       </section>
     </transition>
     <transition name="fade-choose">
-      <section v-show="currentPage === 'calenders'" class="calenders-container">
-        <calender :id="projectId">3</calender>
+      <section v-if="currentPage === 'calenders'" class="calenders-container">
+        <calenders :id="projectId">3</calenders>
       </section>
     </transition>
+  <transition name="slide-fade">
 
-    <transition name="slide-fade">
-      <section v-show="currentMenu==='member'" class="rightbar">
+      <section v-if="currentMenu==='member'" class="rightbar">
         <section class="rightbar-header">
           <section>
             <i class="rightbar-icon iconfont icon-gengduo"></i>
@@ -52,9 +50,11 @@
         </section>
         <div class="rightbar-content"></div>
       </section>
+
     </transition>
+
     <transition name="slide-fade">
-      <section v-show="currentMenu==='view'" class="rightbar">
+      <section v-if="currentMenu==='view'" class="rightbar">
         <section class="rightbar-header">
           <section>
             <i class="rightbar-icon iconfont icon-gengduo"></i>
@@ -66,7 +66,7 @@
       </section>
     </transition>
     <transition name="slide-fade">
-      <section v-show="currentMenu==='setting'" class="rightbar">
+      <section v-if="currentMenu==='setting'" class="rightbar">
         <section class="rightbar-header">
           <section>
             <i class="rightbar-icon iconfont icon-gengduo"></i>
@@ -83,16 +83,24 @@
 </template>
 
 <script>
+  import iconMember from '@/assets/icons/nav_bar/project-member.png'
+  import iconView from '@/assets/icons/nav_bar/view.png'
+  import iconMore from '@/assets/icons/nav_bar/menu.png'
+
   export default {
     data () {
       return {
         projectId: null,  // 项目ID
+        projectName: 'Default Project',
         projectInfo: {
           name: '默认项目'
         },
         showLoading: false, // 显示加载动画
         currentPage: 'tasks', // 当前页面
-        currentMenu: ''
+        currentMenu: '',
+        iconMember,
+        iconView,
+        iconMore
       }
     },
     created () {
@@ -128,47 +136,75 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .project-container {
-    height: 626px;
+
+
+  #project-container {
+    height: 578px;
   }
 
-  .project-header {
-    height: 50px;
+  #project-header {
+    height: 48px;
     background: #E7F1F0;
-    line-height: 50px;
-    font-size: 18px;
+    line-height: 48px;
+    font-size: 16px;
     color:#97A4B1;
     border-bottom: #A1BDBF 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
-  .change-current-page > :hover{
-    border-bottom: 4px #33CCCC solid;
+  .project-header-item {
+
+  }
+
+
+  .change-current-page-item {
+    display: inline-block;
+    width: 80px;
+    line-height: 40px;
+    height: 40px;
+    border-bottom: 4px transparent;
     padding-top: 4px;
-    line-height: 42px;
+    text-align: center;
+  }
+  .change-current-page-item :hover {
+    border-bottom: 4px #33CCCC solid;
+
   }
   .currentpage {
     font-weight: bold;
     color: #33CCCC;
     border-bottom: 4px #33CCCC solid;
-    padding-top: 4px;
-    line-height: 42px;
+
   }
   .currentmenu {
-    color: #33CCCC;
+    background: #A1BDBF;
   }
   .project-menu {
+    text-align: center;
     float: right;
-    text-align: right;
     margin-right: 5px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .project-menu-item {
+    width: 38px;
+    display: inline-block;
+    font-size: 24px;
+    margin-right: 0px;
+    padding: 0 5px 0 5px;
+  }
+
+  .project-menu-item :hover {
+
   }
 
   .project-menu > i {
-    text-align: right;
-    font-size: 24px;
-    margin-right: 15px;
+    color: #33CCCC;
   }
 
   .project-menu > i:hover {
-    color: #33CCCC;
+
   }
   .fade-choose-enter-active, .fade-choose-leave-active {
     transition: opacity 1s;
@@ -211,8 +247,8 @@
   .rightbar {
     position: absolute;
     width: 350px;
-    height: 626px;
-    top: 50px;
+    height: 566px;
+    top: 98px;
     right: 0px;
     box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.50);
 
@@ -234,7 +270,7 @@
     padding: 0 5px 0 25px;
   }
   .rightbar-name {
-    font-size: 24px;
+    font-size: 20px;
   }
   .rightbar-close {
     font-size: 36px;
@@ -242,5 +278,12 @@
   }
   .rightbar-close:hover {
     color: #33CCCC;
+  }
+  img {
+    width: 25px;
+
+  }
+  #project-header-left, .project-menu {
+    width: 300px;
   }
 </style>
