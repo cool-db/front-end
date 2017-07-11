@@ -32,7 +32,6 @@
     margin: 5% auto auto 10%;
     display: flex;
     flex-direction: column;
-    background: #E7F1F0;  /*为了展示大小*/
     border-radius: 6px;
     width: 800px;
     height: 640px;
