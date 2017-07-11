@@ -22,8 +22,6 @@
 
 <style lang="scss" scoped>
     .list-item {
-        border: 1px solid #dedede;
-        border-radius: 4px;
         min-height: 36px;
         height: 100%;
         background-color: #ffffff;

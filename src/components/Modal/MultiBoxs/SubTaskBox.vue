@@ -3,7 +3,7 @@
 */
 
 <template>
-    <div class="SubTaskBox">
+    <div class="">
       {{ data }}
     </div>
 </template>
