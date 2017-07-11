@@ -9,63 +9,64 @@
           <el-breadcrumb-item>文件夹二</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
-
       <div>
-        <img id="picture3" :src="uploadFolder">
-
+        <img class="picture" :src="uploadFolder">
+        <img class="picture" :src="upload">
       </div>
-
     </div>
 
 
     <div id="check">
-      <el-checkbox v-model="checked">名称</el-checkbox>
-      <a class="text" style="margin:0px 100px 0px 200px">大小</a>
-      <a class="text" style="margin:0px 80px 0px 50px">创建者</a>
-      <a class="text" style="margin:0px 30px 0px 50px" width="100px">更新时间</a>
 
-
-      <div id="line">
+      <div class="namespace">
+        <el-checkbox v-model="checked">
+        </el-checkbox>
+        <div class="text1">名称</div>
       </div>
 
-      <div class="item" id="item1">
-        <el-checkbox v-model="checked"></el-checkbox>
-        <img id="picture5" style="background-color: #5e7382">
-        <a class="text" style="margin:0px 60px 0px 220px">11.26M</a>
-        <a class="text" style="margin:2px 60px 0px 70px">创建者名称</a>
-        <a class="text" style="margin:2px 30px 0px 50px" width="100px">4月12日</a>
-        <!--<img id="picture3" :src="file" >-->
-        <!--<img id="picture4" >-->
+      <div class="text1">大小</div>
+      <div class="text1">创建者</div>
+      <div class="text1">更新时间</div>
+      <div>
+        <img class="picture" :src="menu">
+        <img class="picture" :src="project">
       </div>
 
-
-      <div class="item" id="item2">
-        <el-checkbox v-model="checked"></el-checkbox>
-        <img id="picture6" style="background-color: #5e7382">
-        <a class="text" style="margin:0px 60px 0px 220px">11.26M</a>
-        <a class="text" style="margin:2px 60px 0px 70px">创建者名称</a>
-        <a class="text" style="margin:2px 30px 0px 50px" width="100px">4月12日</a>
-
-      </div>
-      <file-item v-for="(item, index) in fake"
-                 :key="index"
-                 :checkState="item.checkState"
-                 :img="item.img"
-                 :size="item.size"
-                 :name="item.name"
-                 :date="item.date">
-
-      </file-item>
 
     </div>
 
+
+    <div class="line">
+    </div>
+
+
+    <file-item v-for="(item, index) in fake"
+               :key="index"
+               :checkState="item.checkState"
+               :img="item.img"
+               :size="item.size"
+               :name="item.name"
+               :date="item.date"
+               :search="item.search"
+               :move="item.move"
+               :edit="item.edit"
+               :projectName="item.projectName">
+    </file-item>
 
   </div>
 </template>
 
 <script>
-  import file from '@/assets/icons/index/file.png'
   import uploadFolder from '@/assets/icons/new_item/upload-folder.png'
+  import upload from '@/assets/icons/new_item/upload.png'
+
+  import menu from '@/assets/icons/new_item/menu.png'
+  import project from '@/assets/icons/nav_bar/project.png'
+
+  import search from '@/assets/icons/nav_bar/search.png'
+  import move from '@/assets/icons/new_item/move.png'
+  import edit from '@/assets/icons/drop_down_menu/edit.png'
+  import projectName from '@/assets/icons/my_profile/project-name.png'
 
   import FileItem from './FileItem.vue'
 
@@ -73,17 +74,37 @@
     data () {
       return {
         checked: true,
-        file,
         uploadFolder,
+        upload,
+        menu,
+        project,
+        search,
+        move,
+        edit,
+        projectName,
         fake: [
           {
             checkState: true,
-            img: file,
+            img: menu,
             size: 11.26,
             name: 'chuichui',
-            date: '4yue25ri'
-          }
-        ]
+            date: '4月25日',
+            search: search,
+            move: move,
+            edit: edit,
+            projectName: projectName
+          },
+          {
+            checkState: true,
+            img: menu,
+            size: 16,
+            name: 'hha',
+            date: '4月28日',
+            search: search,
+            move: move,
+            edit: edit,
+            projectName: projectName
+          }]
       }
     },
     components: {
@@ -95,24 +116,30 @@
 
 <style scoped>
   .file {
-    margin: 200px 400px 200px 200px;
+    margin: 0px 400px 0px 200px;
     left: 60px;
     top: 30px;
-    background-color: #cccccc;
+    background-color: #ffffff;
     width: 1040px;
     height: 635px;
   }
 
-  .text {
-    /*display:flex;*/
-    /*flex-direction:row;*/
-    background-color: transparent;
+  .picture {
+    height: 23px;
+    width: 27px;
+    margin-top:5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
   }
 
-  .item {
-    /*display:flex;*/
-    /*flex-direction:row;*/
-    margin: 2px
+  .text1 {
+    font-size: 16px;
+    color: #888888;
+  }
+
+  .namespace {
+    display: flex;
+    flex-direction: row;
   }
 
   .route {
@@ -125,25 +152,27 @@
   .bread-wrapper {
     display: flex;
     align-items: center;
-    border-left: 5px green solid;
-    height: 50px;
+    border-left: #33CCCC solid;
+    height: 30px;
     padding-left: 20px;
   }
 
+
   #check {
-    /*display:flex;*/
-    /*flex-direction:row;*/
-    margin: 10px 26px 557px 5px;
-    padding: 0px 150px 50px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0px 0px 20px;
+    height:26px;
+    /*padding: 0px 150px 0px 30px;*/
   }
 
-  #line {
-    display: flex;
-    flex-direction: column;
-    margin-left: -4.2%;
-    margin-top: 8px;
-    background-color: #8c939d;
+  .line {
     width: 1040px;
-    height: 1px;
+    height: 3px;
+    margin-top:3px;
+    /*left:144px;*/
+    /*top:140px;*/
+    background-color:#C0C0C0 ;
   }
 </style>
