@@ -5,7 +5,6 @@
       <div id="avatar1">
         <avatar></avatar>
       </div>
-
       <el-card id="selector">
         <div id="personalInformation1" @click="personalTurn()">
           个人信息
@@ -20,11 +19,11 @@
       <div id="personal" v-if="personal">
         <personal-information></personal-information>
       </div>
-
       <div id="account" v-if="account">
         <account-password></account-password>
       </div>
     </div>
+
   </div>
 </template>
 
