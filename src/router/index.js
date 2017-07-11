@@ -6,14 +6,16 @@ import Router from 'vue-router'
 // import mySchedule from 'COMPONENTS/MySchedule'
 // import personalInformation from 'COMPONENTS/PersonalInformation'
 // import selector from 'COMPONENTS/Selector'
-import personalSetting from 'COMPONENTS/PersonalSetting'
+// import personalSetting from 'COMPONENTS/PersonalSetting'
 // import avatar from 'COMPONENTS/Avatar'
+// import personalSetting from 'COMPONENTS/PersonalSetting'
+import addIcon from 'COMPONENTS/AddIcon'
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: personalSetting
+    component: addIcon
   }
 ]
 
