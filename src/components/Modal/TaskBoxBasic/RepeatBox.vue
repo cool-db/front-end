@@ -58,7 +58,7 @@
 
   }
   #repeat-avatar {
-    height: 22px;
+    height: 16px;
     margin-right: 8px;
   }
   .grey {
