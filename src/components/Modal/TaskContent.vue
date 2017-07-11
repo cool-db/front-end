@@ -3,12 +3,14 @@
         <text-edit :title.sync="taskTitle"></text-edit>
         <div class="divider"></div>
         <rich-editor :text.sync="richText"></rich-editor>
+        <modal-file></modal-file>
     </div>
 </template>
 
 <script>
-  import TextEdit from '../TextEdit.vue'
-  import RichEditor from '../RichEditor.vue'
+  import TextEdit from './TextEdit.vue'
+  import RichEditor from './RichEditor.vue'
+  import ModalFile from './ModalFile.vue'
 
   export default {
     data () {
@@ -19,7 +21,8 @@
     },
     components: {
       TextEdit,
-      RichEditor
+      RichEditor,
+      ModalFile
     }
   }
 </script>
