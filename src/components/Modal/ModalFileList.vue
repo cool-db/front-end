@@ -1,7 +1,7 @@
 <template>
     <div>
         <modal-attach-head
-                type="文件" :icon="file">
+                type="日程" :icon="icon">
         </modal-attach-head>
         <div>
             <multi-list :list="fileList">
@@ -29,7 +29,7 @@
   export default {
     data () {
       return {
-        file,
+        icon: file,
         fileList: [{
           executor: 'Simon',
           filename: 'hello.jpg',
