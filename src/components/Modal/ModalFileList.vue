@@ -9,8 +9,9 @@
                     <modal-attach-body
                             :executor="scope.props.executor"
                             :avatar="scope.props.avatar">
-                        <div class="file-slot">
-                          <img :src="scope.props.icon"><div>{{scope.props.filename}}</div>
+                        <div class="file-slot" @mouseenter="currentMouseOn = scope.index" @mouseleave="currentMouseOn = null">
+                          <div class="item"><img class="img" :src="scope.props.icon"><div>{{scope.props.filename}}</div></div>
+                          <modal-attach-delete :index="scope.index" :mouse="currentMouseOn"></modal-attach-delete>
                         </div>
                     </modal-attach-body>
                 </template>
@@ -25,10 +26,12 @@
   import MultiList from './MultiList.vue'
 
   import file from '@/assets/icons/new_item/related-file.png'
+  import ModalAttachDelete from './ModalAttachDelete.vue'
 
   export default {
     data () {
       return {
+        currentMouseOn: null,
         icon: file,
         fileList: [{
           executor: 'Simon',
@@ -48,6 +51,7 @@
       }
     },
     components: {
+      ModalAttachDelete,
       ModalAttachHead,
       ModalAttachBody,
       MultiList
@@ -59,10 +63,15 @@
     .file-slot {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
     }
-  img {
+    .item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  .img {
     height: 20px;
     width: 20px;
     margin-right: 10px;

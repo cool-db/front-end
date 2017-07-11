@@ -9,9 +9,12 @@
                     <modal-attach-body
                             :executor="scope.props.executor"
                             :avatar="scope.props.avatar">
-                        <div class="file-slot">
-                          <div class="title">{{scope.props.title}}</div>
-                          <div>{{scope.props.startAt}} - {{scope.props.endAt}}</div>
+                        <div class="calendar-slot" @mouseenter="currentMouseOn = scope.index" @mouseleave="currentMouseOn = null">
+                          <div>
+                            <div class="title">{{scope.props.title}}</div>
+                            <div>{{scope.props.startAt}} - {{scope.props.endAt}}</div>
+                          </div>
+                          <modal-attach-delete :index="scope.index" :mouse="currentMouseOn"></modal-attach-delete>
                         </div>
                     </modal-attach-body>
                 </template>
@@ -24,12 +27,14 @@
   import ModalAttachHead from './ModalAttachHead.vue'
   import ModalAttachBody from './ModalAttachBody.vue'
   import MultiList from './MultiList.vue'
+  import ModalAttachDelete from './ModalAttachDelete.vue'
 
   import calendar from '@/assets/icons/new_item/calendar_and_date.png'
 
   export default {
     data () {
       return {
+        currentMouseOn: null,
         calendar,
         calendarList: [{
           executor: 'Simon',
@@ -49,6 +54,7 @@
     components: {
       ModalAttachHead,
       ModalAttachBody,
+      ModalAttachDelete,
       MultiList
     }
   }
@@ -60,6 +66,10 @@
         /*flex-direction: row;*/
         /*justify-content: flex-start;*/
         /*align-items: center;*/
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       font-size: 14px;
       color: #888888;
     }

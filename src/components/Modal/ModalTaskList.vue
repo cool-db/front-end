@@ -9,10 +9,11 @@
                     <modal-attach-body
                             :executor="scope.props.executor"
                             :avatar="scope.props.avatar">
-                        <div class="task-slot" @mouseenter="show[scope.index]=true" @mouseleave="show[scope.index]=false">
-                            <el-checkbox v-model="scope.props.checked">{{scope.index}}+{{scope.props.title}}</el-checkbox>
-                            <div>{{scope.props.state}}
-                              <modal-attach-delete :show="show[scope.index]"></modal-attach-delete>
+                        <div class="task-slot" @mouseenter="currentMouseOn = scope.index" @mouseleave="currentMouseOn = null">
+                            <el-checkbox v-model="scope.props.checked">{{scope.props.title}}</el-checkbox>
+                            <div class="right">
+                              <div>{{scope.props.state}}</div>
+                              <modal-attach-delete :index="scope.index" :mouse="currentMouseOn"></modal-attach-delete>
                             </div>
                         </div>
                     </modal-attach-body>
@@ -34,7 +35,7 @@
     data () {
       return {
         task,
-        show: [false, false],
+        currentMouseOn: null,
         taskList: [{
           executor: 'Simon',
           avatar: task,
@@ -66,4 +67,9 @@
         justify-content: space-between;
         align-items: center;
     }
+  .right {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+  }
 </style>
