@@ -50,6 +50,7 @@
 </template>
 
 <script>
+  import Recent from '@/components/My/RecentTask.vue'
   export default {
     name: 'My',
     data () {
@@ -61,7 +62,8 @@
       leaveMy () {
         this.$emit('leaveMy')
       }
-    }
+    },
+    components: {Recent}
   }
 </script>
 
