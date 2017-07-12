@@ -4,7 +4,7 @@ import Router from 'vue-router'
 // import Home from 'PAGES/Home.vue'
 
 import PersonalSetting from 'COMPONENTS/PersonalSetting'
-import login from 'COMPONENTS/Login'
+import Login from 'COMPONENTS/Login'
 
 Vue.use(Router)
 
@@ -12,7 +12,7 @@ const routes = [
   {
     path: '/',
     // component: Home
-    component: login
+    component: Login
   },
   {
     path: '/d',
