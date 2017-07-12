@@ -15,10 +15,10 @@
           <recent-issue-item></recent-issue-item>
         </el-tab-pane>
       </el-tabs>
-      
+
     </div>
   </div>
-  
+
 </template>
 
 <script>
@@ -36,7 +36,7 @@
   }
 </script>
 
-<style>
+<style scoped="">
   #mySchedule{
     margin: 5% auto auto 10%;
     padding-top: 13px;
@@ -46,9 +46,9 @@
     width: 800px;
     height: 640px;
   }
-  
+
   #selectLeft{
     margin-left: 32px;
   }
-  
+
 </style>

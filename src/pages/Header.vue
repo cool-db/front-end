@@ -159,7 +159,6 @@
         padding-left: 5px;
         line-height: 49px;
     }
-
     #avatar {
         width: 40px;
         height: 40px;

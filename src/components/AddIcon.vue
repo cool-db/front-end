@@ -109,7 +109,7 @@
   }
 </script>
 
-<style>
+<style scoped="">
     .itemSection {
         cursor: pointer;
         display: flex;
