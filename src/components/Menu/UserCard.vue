@@ -19,13 +19,13 @@
             <img :src="user.avatar">
           </div>
           <div class="my-name">
-            {{user.name}}
+            {{user.name?user.name:'无姓名'}}
             <el-dropdown>
               <span class="my-per">
                 {{ user.permission }} <i class="el-icon-caret-bottom"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>{{ user.permission }}</el-dropdown-item>
+                <el-dropdown-item>{{ user.permission?user.permission:'default' }}</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>

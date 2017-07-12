@@ -45,9 +45,11 @@
     padding-left: 15px;
     flex-direction: row;
     display: flex;
+    color: #565656;
   }
   .item:hover {
     background: white;
+    font-weight: bold;
   }
   .avatar img {
     width: 45px;
@@ -67,7 +69,6 @@
     align-items: center;
   }
   .name {
-    color: #565656;
     font-size: 16px;
     line-height: 16px;
   }

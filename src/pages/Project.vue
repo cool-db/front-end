@@ -64,7 +64,9 @@
           </section>
           <span class="rightbar-close el-icon-close" @click="currentMenu=''"></span>
         </section>
-        <div class="rightbar-content"></div>
+        <div class="rightbar-content">
+          <menu-view></menu-view>
+        </div>
       </section>
     </transition>
     <transition name="slide-fade">
@@ -89,6 +91,7 @@
   import iconView from '@/assets/icons/nav_bar/view.png'
   import iconMore from '@/assets/icons/nav_bar/menu.png'
   import MenuMember from '../components/Menu/MenuMember.vue'
+  import MenuView from '../components/Menu/MenuView.vue'
 
   export default {
     data () {
@@ -116,6 +119,7 @@
 
     ],
     components: {
+      MenuView,
       MenuMember
     },
     computed: {
