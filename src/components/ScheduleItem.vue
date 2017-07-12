@@ -53,7 +53,7 @@
   }
 </script>
 
-<style>
+<style scoped="">
     .scheduleItem {
         display: flex;
         flex-direction: row;

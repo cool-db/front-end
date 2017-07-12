@@ -126,7 +126,7 @@
 </script>
 
 
-<style>
+<style scoped="">
   .reverse-avatar {
     display: flex;
     justify-content: flex-end;

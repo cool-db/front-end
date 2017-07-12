@@ -47,7 +47,7 @@
 
 </script>
 
-<style>
+<style scoped="">
   .reverse-avatar {
     margin-top: 10px;
   }

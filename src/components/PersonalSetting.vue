@@ -60,7 +60,7 @@
 
 </script>
 
-<style>
+<style scoped="">
   .container {
     background: blue;
     width: 100%;

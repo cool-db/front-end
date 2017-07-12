@@ -52,7 +52,7 @@
   }
 </script>
 
-<style>
+<style scoped="">
     .schedule {
         margin-top: 14px;
         display: flex;
