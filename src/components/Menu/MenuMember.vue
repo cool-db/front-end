@@ -4,23 +4,23 @@
 
 <template>
     <div class="container">
-      <!--<menu-member-search></menu-member-search>-->
-      <el-input
-        @change="onChange"
-        class="search-bar"
-        icon="close"
-        :on-icon-click="clearInput"
-        placeholder="输入用户名或邮箱，可查找或邀请新成员"
-        @select="handleSelect"
-        v-model="current"
-      >
-      </el-input>
-      <div class="members-panel">
-        <transition name="fade">
-        <member-add-item :username="current" v-if="current !== ''"></member-add-item>
-        </transition>
-        <member-item v-for="user in results" :user="user" :key="user.name" class="list-complete-item"></member-item>
-      </div>
+        <!--<menu-member-search></menu-member-search>-->
+        <el-input
+                @change="onChange"
+                class="search-bar"
+                icon="close"
+                :on-icon-click="clearInput"
+                placeholder="输入用户名或邮箱，可查找或邀请新成员"
+                @select="handleSelect"
+                v-model="current"
+        >
+        </el-input>
+        <div class="members-panel">
+            <transition name="fade">
+                <member-add-item :username="current" v-if="current !== ''"></member-add-item>
+            </transition>
+            <member-item v-for="user in results" :user="user" :key="user.name" class="list-complete-item"></member-item>
+        </div>
     </div>
 </template>
 
@@ -100,23 +100,29 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .container {
-    flex: 1;
-    padding: 10px 10px 10px 10px;
-  }
-  .search-bar {
-    width: 100%;
-  }
-  .members-panel {
-    padding-top: 10px;
-  }
-  .fade-enter-active, .fade-leave-active {
-    transition: .5s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-    transform: translateX(100px);
-    opacity: 0;
-  }
+    .container {
+        flex: 1;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .members-panel {
+        padding-top: 10px;
+        font-size: 16px;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: .5s;
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */
+    {
+        transform: translateX(100px);
+        opacity: 0;
+    }
 
 
 </style>

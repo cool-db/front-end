@@ -88,6 +88,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 16px;
   }
   .menu-item {
     width: 100%;
