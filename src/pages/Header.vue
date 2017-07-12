@@ -3,56 +3,39 @@
 */
 
 <template>
-    <div>
-        <div id="home-header">
-            <div id="home-left">
-                <div id="project-header"
-                     v-if="currentMode === Mode.project || (currentMode === Mode.my && lastMode === Mode.project)">
-                    <div id="project-icon"><img :src="iconProject"></div>
-                    <div id="project-name">{{ projectName }}</div>
-                </div>
-                <div id="index-header" v-else-if="currentMode === Mode.index">
-                    <div id="index-name">{{ websiteName }}</div>
-                </div>
-                <div id="project-search">
-                    <el-input
-                            placeholder="在个人项目中搜索"
-                            icon="search"
-                            v-model="searchBarInput">
-                    </el-input>
-                </div>
-                <div id="project-add">
-                    <add-icon></add-icon>
-                </div>
-            </div>
-            <div id="home-right">
-                <div class="home-menu">
-                    <div class="home-menu-item" :class='{currentmenu: currentMenu === "feedback"}'
-                         @click="currentMenu='feedback'">
-                        <img :src="iconFeedback">
-                    </div>
-                    <div class="home-menu-item" :class='{currentmenu: currentMenu === "my"}'
-                         @click="currentMode=Mode.my;currentMenu='my'">
-                        <img :src="iconMy">
-                    </div>
-                    <div class="home-menu-item" :class='{currentmenu: currentMenu === "message"}'
-                         @click="currentMenu='message'">
-                        <img :src="iconMessage">
-                    </div>
-                    <el-badge v-show="messageCount>0" :value="messageCount" class="item">
-                    </el-badge>
-                    <avatar-dropdown>
-                        <div @click="currentMenu='setting'">
-                            <img id="avatar" :src="avatarDefault">
-                        </div>
-                    </avatar-dropdown>
-                </div>
-            </div>
+  <div>
+    <div id="home-header">
+      <div id="home-left">
+        <div id="title-bar">
+          <div id="project-icon"><img :src="iconProject"></div>
+          <div id="project-name">{{ pageTitle }}</div>
         </div>
-        <div id="home-container">
-            <router-view></router-view>
+        <div id="project-search">
+          <el-input
+            placeholder="在个人项目中搜索"
+            icon="search"
+            v-model="searchBarInput">
+          </el-input>
         </div>
+        <div id="project-add">
+          <add-icon></add-icon>
+        </div>
+      </div>
+      <div id="home-right">
+        <div class="home-menu">
+          <div class="home-menu-item"><img :src="iconFeedback"></div>
+          <div class="home-menu-item"><img :src="iconMy"></div>
+          <div class="home-menu-item"><img :src="iconMessage"></div>
+          <avatar-dropdown>
+            <img id="avatar" :src="avatar?avatar:avatarDefault">
+          </avatar-dropdown>
+        </div>
+      </div>
     </div>
+    <div id="home-container">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -63,21 +46,13 @@
   import iconMy from '@/assets/icons/nav_bar/my-profile.png'
   import iconMessage from '@/assets/icons/nav_bar/message.png'
   import avatarDefault from '@/assets/icons/nav_bar/blank-avatar.png'
+
   import AddIcon from '@/components/AddIcon.vue'
   import AvatarDropdown from '@/components/AvatarDropdown.vue'
   export default {
     data () {
       return {
-        websiteName: 'GroupUp',
-        projectName: 'Default Project',
-        Mode: {
-          index: 0,
-          project: 1,
-          my: 2
-        },
-        currentMode: 1,
-        currentMenu: '',
-        lastMode: 1,
+        pageTitle: 'Default Project',
         searchBarInput: '',
         messageCount: 5,
         iconProject,
@@ -86,137 +61,121 @@
         iconFeedback,
         iconMy,
         iconMessage,
-        avatarDefault
+        avatarDefault,
+        avatar: null
       }
     },
-    created () {
-      this.initData()
-    },
-    mounted () {
-
-    },
-    mixins: [],
     components: {
       AddIcon,
       AvatarDropdown
     },
     computed: {},
-    methods: {
-      initData () {
-      },
-      enterMy () {
-        this.lastMode = this.currentMode
-        this.currentMode = this.Mode.my
-      },
-      leaveMy () {
-        this.currentMode = this.lastMode
-      }
-    },
-    watch: {
-      currentMode: function () {
-        this.currentMenu = ''
-      }
-    }
+    methods: {}
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    img {
-        width: 20px;
-        height: 20px;
-        margin: 15px 10px 15px 10px;
-    }
+  img {
+    width: 20px;
+    height: 20px;
+    margin: 15px 10px 15px 10px;
+  }
 
-    #project-add {
-        height: 100%;
-        margin-top: 13px;
-    }
+  #project-add {
+    cursor: pointer;
+    height: 100%;
+    margin-top: 13px;
+  }
 
-    #home-left img {
+  #home-left img {
 
-    }
+  }
 
-    #project-add img {
-        width: 20px;
-        height: 20px;
-    }
+  #project-add img {
+    width: 20px;
+    height: 20px;
+  }
 
-    #home-header {
-        padding-left: 30px;
-        height: 49px;
-        background: #ffffff;
-        line-height: 49px;
-        font-size: 18px;
-        color: #3E5568;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-        z-index: 10;
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+  #home-header {
+    padding-left: 30px;
+    height: 49px;
+    background: #ffffff;
+    line-height: 49px;
+    font-size: 18px;
+    color: #3E5568;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    #home-left {
-        height: 49px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
+  #home-left {
+    height: 49px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
-    #home-left div {
-        display: inline-flex;
-        margin-right: 8px;
-    }
+  #home-left div {
+    display: inline-flex;
+    margin-right: 8px;
+  }
 
-    #home-right {
-        height: 49px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+  #home-right {
+    height: 49px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-    }
+  }
 
-    #home-right div {
-        display: inline-flex;
-    }
+  #home-right div {
+    display: inline-flex;
+  }
 
-    #project-search {
-        width: 300px;
-        padding: 0px 0 0 20px;
-    }
+  #project-search {
+    width: 300px;
+    padding: 0px 0 0 20px;
+  }
 
-    .home-menu {
-        text-align: center;
-        margin-right: 5px;
-        margin-bottom: 0;
-        padding-bottom: 0;
-    }
+  .home-menu {
+    text-align: center;
+    margin-right: 5px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
-    .home-menu-item {
-        width: 40px;
-        height: 49px;
-        padding-right: 5px;
-        padding-left: 5px;
-        line-height: 49px;
-    }
+  .home-menu-item {
+    cursor: pointer;
+    width: 40px;
+    height: 49px;
+    padding-right: 5px;
+    padding-left: 5px;
+    line-height: 49px;
+  }
 
-    #avatar {
-        width: 40px;
-        height: 40px;
-        margin: 5px 5px 0 5px;
-    }
+  #avatar {
+    width: 40px;
+    height: 40px;
+    margin: 5px 5px 0 10px;
+    cursor: pointer;
+  }
 
-    .item {
-        position: relative;
-        margin-top: 10px;
-        margin-left: -25px;
-        margin-right: 10px;
-    }
-
-    #home-container {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
+  #home-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  #title-bar {
+    cursor: pointer;
+  }
+  #title-bar :hover {
+    color: #33cccc;
+  }
 </style>
