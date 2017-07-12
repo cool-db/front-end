@@ -16,12 +16,13 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+  import { ADDTASK } from 'MODULE/process'
 
   import addIcon from '@/assets/icons/nav_bar/add.png'
 
   export default {
     props: {
-      onClick: Function,
       id: Number
     },
     data () {
@@ -34,8 +35,14 @@
     methods: {
       handleClick () {
         this.isEdit = false
-        this.onClick(this.id - 1, this.content)
-      }
+        this.addTask({
+          id: this.id,
+          name: this.content
+        }).catch(err => this.$message.error(err.message))
+      },
+      ...mapActions({
+        addTask: ADDTASK
+      })
     }
   }
 </script>

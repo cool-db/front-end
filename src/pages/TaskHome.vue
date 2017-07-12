@@ -1,9 +1,9 @@
 <template>
     <div class="task-home">
         <process-board v-for="item, index in process" :key="index"
-                       :processName="item.title"
+                       :processName="item.name"
                        :taskList="item.tasks"
-                       :processID="index"></process-board>
+                       :processID="item.id"></process-board>
         <new-process></new-process>
     </div>
 </template>

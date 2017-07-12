@@ -8,11 +8,13 @@ import request from 'superagent'
  * @param {Function} errHandler
  * @return {Function} errXhrWrapper
  */
-const baseXhr = (errHandler) => ({url, method = 'GET', body = null}) =>
-  new Promise((resolve, reject) =>
+const baseXhr = (errHandler) => ({url, method = 'GET', body = null}) => {
+
+  return new Promise((resolve, reject) =>
     request(method, url)
       .send(body)
       .end((err, res) => {
+        console.log(err)
         if (res.statusCode === 200) {
           if (res.body.code === 200) {
             resolve(res.body.data)
@@ -22,6 +24,8 @@ const baseXhr = (errHandler) => ({url, method = 'GET', body = null}) =>
         }
       })
   ).catch(errHandler)
+}
+
 
 /**
  * error-handler是直接更改位于root的toast的状态
@@ -68,4 +72,4 @@ export const httpPut = (url, body) => errorXhr({url, method: 'PUT', body})
  */
 export const httpDel = (url) => errorXhr({url, method: 'DELETE', body})
 
-export const baseURL = '123.207.222.112:5001/api/'
+export const baseURL = 'http://localhost:5001/api/'

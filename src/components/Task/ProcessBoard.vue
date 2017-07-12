@@ -13,13 +13,12 @@
             <task-card v-for="task, index in list" :key="index"
                        :task="task"></task-card>
         </draggable>
-        <new-task :onClick="addTask" :id="processID"></new-task>
+        <new-task :id="processID"></new-task>
     </div>
 </template>
 
 <script>
   import Draggable from 'vuedraggable'
-  import { mapMutations } from 'vuex'
 
   import addIcon from '@/assets/icons/nav_bar/add.png'
 
@@ -27,8 +26,6 @@
   import Badge from '../Badge.vue'
   import NewTask from './NewTask.vue'
   import TextEdit from '../TextEdit.vue'
-
-  import { ADDTASK } from 'MODULE/process'
 
   export default {
     props: {
@@ -61,11 +58,7 @@
         return this.list.filter(item => !item.state).length
       }
     },
-    methods: {
-      ...mapMutations({
-        addTask: ADDTASK
-      })
-    }
+    methods: {}
   }
 </script>
 

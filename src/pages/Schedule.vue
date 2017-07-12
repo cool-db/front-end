@@ -25,10 +25,8 @@
         fake: [
           {
             date: '5月9日'
-          },
-          {
-            date: '5月10日'
-          }]
+          }
+        ]
       }
     },
     components: {
@@ -39,13 +37,11 @@
 
 <style scoped="">
     .schedule {
-      max-height: calc(100vh - 98px);
-      overflow-y: scroll;
+        height: calc(100vh - 98px);
+        overflow-y: scroll;
         display: flex;
-        /*height:500px;*/
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
 
     }
 
@@ -59,8 +55,8 @@
         background-color: #E7F1F0;
         border-radius: 4px;
         margin-left: 0;
-      margin-top: 20px;
-      margin-top: 0;
+        margin-top: 20px;
+        margin-top: 0;
     }
 
     .addSchedule {

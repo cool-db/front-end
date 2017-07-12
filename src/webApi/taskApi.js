@@ -1,14 +1,11 @@
 const util = require('../util/httpUtil.js')
 
-function createTask (name, content, creatorId, memberId, progressId, file, ddl) {
+function createTask (name, creatorId, progressId, content="content") {
   return util.httpPost(util.baseURL + 'task', {
     name: name,
-    content: content,
     creatorId: creatorId,
-    memberIds: memberIds,
     progressId: progressId,
-    file: file,
-    ddl: ddl
+    content: content
   })
 }
 
@@ -86,6 +83,7 @@ function deleteMember (taskId, participatorIds) {
 function getMemberList (taskId) {
   return util.httpGet(util.httpGet + 'task/participator/list?taskId=“ + taskId')
 }
+
 
 module.exports = {
   createTask,
