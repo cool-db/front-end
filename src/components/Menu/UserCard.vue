@@ -14,7 +14,7 @@
       width="180"
       trigger="click">
       <div class="card">
-        <div class="my-left">
+        <div class="info-panel">
           <div class="my-avatar">
             <img :src="user.avatar">
           </div>
@@ -57,7 +57,7 @@
     display: flex;
     flex-direction: row;
   }
-  .my-left {
+  .info-panel {
     width: 200px;
     height: 100%;
     background: #3e5568;
