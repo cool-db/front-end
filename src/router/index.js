@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from 'PAGES/Home.vue'
+// import Home from 'PAGES/Home.vue'
+import HomepageProject from 'COMPONENTS/HomepageProject.vue'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: Home
+    component: HomepageProject
   }
 ]
 
