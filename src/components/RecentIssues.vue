@@ -9,7 +9,7 @@
       <recent-issue-item></recent-issue-item>
       <recent-issue-item></recent-issue-item>
     </div>
-    
+
   </div>
 </template>
 
@@ -27,7 +27,7 @@
   }
 </script>
 
-<style>
+<style scoped="">
   #recentIssues{
     margin: 5% auto auto 10%;
     display: flex;
@@ -36,7 +36,7 @@
     width: 800px;
     height: 640px;
   }
-  
+
   #bar{
     display: flex;
     flex-direction: row;
@@ -45,7 +45,7 @@
     width: 200px;
     height: 25px;
   }
-  
+
   #headline{
     display: flex;
     flex-direction: row;
@@ -53,7 +53,7 @@
     font-size: 18px;
     color: #888888;
   }
-  
+
   #countHint{
     text-align: center;
     display: flex;
@@ -69,7 +69,7 @@
     padding-left: 10px;
     padding-right: 10px;
   }
-  
+
   #line{
     display: flex;
     flex-direction: column;
@@ -80,7 +80,7 @@
     width: 740px;
     height: 3px;
   }
-  
+
   #items{
     margin-left: 3%;
   }

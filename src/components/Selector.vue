@@ -19,14 +19,14 @@
   }
 </script>
 
-<style>
+<style scoped="">
   #selector{
     display: flex;
     flex-direction: column;
     width: 300px;
     height: 350px;
   }
-  
+
   #personalInformation{
     display: flex;
     align-items: center;
@@ -38,7 +38,7 @@
     color: #3E5568;
     padding-left: 20px;
   }
-  
+
   #accountPassword{
     display: flex;
     align-items: center;
@@ -49,5 +49,5 @@
     color: #3E5568;
     padding-left: 20px;
   }
-  
+
 </style>

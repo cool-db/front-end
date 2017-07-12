@@ -37,9 +37,10 @@
   }
 </script>
 
-<style>
+<style scoped="">
     .schedule {
-        margin-top: 14px;
+      max-height: calc(100vh - 98px);
+      overflow-y: scroll;
         display: flex;
         /*height:500px;*/
         flex-direction: column;
@@ -57,6 +58,9 @@
         height: 40px;
         background-color: #E7F1F0;
         border-radius: 4px;
+        margin-left: 0;
+      margin-top: 20px;
+      margin-top: 0;
     }
 
     .addSchedule {

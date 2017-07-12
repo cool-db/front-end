@@ -1,29 +1,27 @@
 <template>
-  <div id="personalSetting">
-
-    <div id="leftSection">
-      <div id="avatar1">
-        <avatar></avatar>
-      </div>
-      <el-card id="selector">
-        <div id="personalInformation1" @click="personalTurn()">
-          个人信息
+  <div class="setting-container">
+    <div id="setting">
+      <div id="leftSection">
+        <div class="usercard">
+          <avatar :src="null" class="my-avatar"></avatar>
+          <div id="username">李碧纯</div>
         </div>
-        <div id="accountPassword1" @click="accountTurn()">
-          账号密码
-        </div>
-      </el-card>
-    </div>
-
-    <div id="rightSection">
-      <div id="personal" v-if="personal">
-        <personal-information></personal-information>
+        <el-card id="selector">
+          <div class="page-switch" :class="{'page-switch-active': pageSwitch === 0}" @click="pageSwitch=0">
+            个人信息
+          </div>
+          <div class="page-switch" :class="{'page-switch-active': pageSwitch === 1}"@click="pageSwitch=1">
+            账号密码
+          </div>
+        </el-card>
       </div>
-      <div id="account" v-if="account">
-        <account-password></account-password>
+      <div id="rightSection">
+        <el-card class="box-card">
+          <personal-information v-if="pageSwitch===0"></personal-information>
+          <account-password v-else=""></account-password>
+        </el-card>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -35,8 +33,7 @@
   export default {
     data () {
       return {
-        personal: true,
-        account: false
+        pageSwitch: 0
       }
     },
     components: {
@@ -45,82 +42,80 @@
       Avatar
     },
     methods: {
-      personalTurn: function () {
-        this.personal = true
-        this.account = false
-        var obj1 = document.getElementById('personalInformation1')
-        obj1.style.backgroundColor = '#E7F1F0'
-        var obj2 = document.getElementById('accountPassword1')
-        obj2.style.backgroundColor = '#FFFFFF'
-      },
-      accountTurn: function () {
-        this.account = true
-        this.personal = false
-        var obj1 = document.getElementById('personalInformation1')
-        obj1.style.backgroundColor = '#FFFFFF'
-        var obj2 = document.getElementById('accountPassword1')
-        obj2.style.backgroundColor = '#E7F1F0'
-      }
     }
   }
 
 </script>
 
-<style>
-  #personalSetting{
+<style scoped="">
+  .reverse-avatar {
+    margin-top: 10px;
+  }
+  .usercard {
+    background: #33cccc;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .setting-container {
+    padding-top: 20px;
+  }
+
+  #setting {
     display: flex;
     flex-direction: row;
+    justify-content: center;
   }
 
-  #leftSection{
+  #username {
+    font-size: 18px;
+  }
+
+  #leftSection {
+  }
+
+  #rightSection {
+    margin-left: 10px;
+    width: 430px;
     display: flex;
     flex-direction: column;
-  }
-
-  #rightSection{
-    display: flex;
-    flex-direction: column;
-  }
-  #avatar1 {
-
+    height: 550px;
   }
 
   #selector {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 300px;
-    height: 350px;
-    margin-top: 50px;
+    height: 225px;
+    /*margin-top: 50px;*/
   }
 
-  #personalInformation1 {
+  .page-switch {
     display: flex;
     align-items: center;
     height: 65px;
     width: 300px;
-    margin-left: -20px;
-    margin-top: -20px;
-    background-color: #E7F1F0;
+    /*margin-left: -20px;*/
+    /*margin-top: -20px;*/
+    /*background-color: #E7F1F0;*/
     color: #3E5568;
-    padding-left: 20px;
+    padding-left: 60px;
+    cursor: pointer;
+  }
+  .page-switch:hover {
+    color: #33cccc;
+  }
+  .page-switch-active {
+    background: #e7f1f0;
   }
 
-  #accountPassword1 {
-    display: flex;
-    align-items: center;
-    height: 65px;
-    width: 300px;
-    margin-left: -20px;
-    background-color: #FFFFFF;
-    color: #3E5568;
-    padding-left: 20px;
-  }
-
-  #personal {
-    margin-left: 50px;
-  }
-
-  #account {
-    margin-left: 50px;
+  .my-avatar {
+    width: 100px;
+    height: 100px;
+    background: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
 </style>

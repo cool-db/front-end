@@ -11,12 +11,12 @@
         <div id="fatherTask">{{fatherTask}}</div>
       </div>
     </div>
-    
+
     <div id="rightSection">
       <div id="deadline">{{deadline}}</div>
       <div id="cutOff">截止</div>
     </div>
-    
+
   </div>
 </template>
 
@@ -33,7 +33,7 @@
   }
 </script>
 
-<style>
+<style scoped="">
   #recentIssueItem{
     display: flex;
     flex-direction: row;
@@ -42,12 +42,12 @@
     width: 100%;
     margin-top: 5px;
   }
-  
+
   #leftSection{
     display: flex;
     flex-direction: row;
   }
-  
+
   #body{
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: row;
   }
-  
+
   #left{
     display: flex;
     flex-direction: row;
@@ -64,14 +64,14 @@
     width: 10px;
     background-color: #FF4949;
   }
-  
+
   #checkbox{
     display: flex;
     flex-direction: row;
     margin-left: 13px;
     margin-top: 10px;
   }
-  
+
   #taskName{
     display: flex;
     flex-direction: row;
@@ -81,7 +81,7 @@
     margin-top: 10px;
     margin-left: 15px;
   }
-  
+
   #projectName{
     display: flex;
     flex-direction: row;
@@ -91,12 +91,12 @@
     margin-left: 15px;
     font-family: PingFangSC-Medium;
   }
-  
+
   #rightSection{
     display: flex;
     flex-direction: row;
   }
-  
+
   #deadline{
     display: flex;
     flex-direction: row;
@@ -105,7 +105,7 @@
     font-family: PingFangSC-Medium;
     margin-top: 12.5px;
   }
-  
+
   #cutOff{
     display: flex;
     flex-direction: row;
@@ -116,7 +116,7 @@
     margin-top: 12.5px;
     margin-right: 35px;
   }
-  
+
   #fatherTask{
     display: flex;
     flex-direction: column;
@@ -126,6 +126,6 @@
     margin-top: 5px;
     margin-left: 15px;
   }
-  
-  
+
+
 </style>
