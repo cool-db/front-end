@@ -11,7 +11,7 @@
       ref="popover1"
       placement="left-start"
       :visible-arrow="false"
-      width="262"
+      width="180"
       trigger="click">
       <div class="card">
         <div class="my-left">
@@ -20,14 +20,18 @@
           </div>
           <div class="my-name">
             {{user.name}}
+            <el-dropdown>
+              <span class="my-per">
+                {{ user.permission }} <i class="el-icon-caret-bottom"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>{{ user.permission }}</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
           </div>
           <div class="my-email">
             {{user.email}}
           </div>
-        </div>
-        <div class="my-right">
-          <div class="task-btn">5</div>
-          <div class="per-btn">6</div>
         </div>
       </div>
     </el-popover>
@@ -48,13 +52,13 @@
     margin-top: -10px;
     margin-bottom: -10px;
     height: 183px;
-    width: 284px;
+    width: 200px;
     border-bottom: 10px solid #33cccc;
     display: flex;
     flex-direction: row;
   }
   .my-left {
-    width: 180px;
+    width: 200px;
     height: 100%;
     background: #3e5568;
     display: flex;
@@ -81,6 +85,18 @@
     height: 22px;
     /*margin-top: 10px;*/
     color: #A1BDBF;
+  }
+  .my-per {
+    cursor: pointer;
+    color: #dddddd;
+    font-size: 14px;
+    margin-left: 5px;
+  }
+  .my-per i {
+    font-size: 5px;
+  }
+  .my-per:hover {
+    color: #33cccc;
   }
   .task-btn, .per-btn {
     background: yellow;
