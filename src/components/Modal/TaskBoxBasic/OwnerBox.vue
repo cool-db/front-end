@@ -3,7 +3,7 @@
 */
 
 <template>
-  <div class="OwnerBox">
+  <div class="owner-box">
     <div id="owner-title">执行者</div>
     <owner-select :users="users" :owner="owner" @changeOwner="changeOwner">
       <div id="owner-info">
@@ -19,7 +19,6 @@
   import ownerSelect from './ownerSelect.vue'
   import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
   export default {
-    name: 'OwnerBox',
     data () {
       return {
         blankAvatar,

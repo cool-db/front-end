@@ -2,6 +2,7 @@
     <input type="text" spellcheck="false"
            :class="textClass"
            :value="textData"
+           ref="textEdit"
            @click="focus"
            @blur="lose"
            @change="changeValue">
@@ -10,19 +11,23 @@
 <script>
   export default {
     props: {
-      title: String
+      content: String
     },
     data () {
       return {
         blurState: false
       }
     },
+    mounted () {
+      const node = this.$refs.textEdit
+      node.style.width = `${parseInt(getComputedStyle(node).fontSize) * node.value.length}px`
+    },
     computed: {
       textClass () {
         return 'text-input ' + (this.blurState ? 'text-bg' : '')
       },
       textData () {
-        return this.title
+        return this.content
       }
     },
     methods: {
@@ -33,8 +38,11 @@
         this.blurState = false
       },
       changeValue (e) {
-        const value = e.target.value || this.title
-        this.$emit('update:title', value)
+        const node = this.$refs.textEdit
+        const etv = e.target.value
+        node.style.width = `${parseInt(getComputedStyle(node).fontSize) * etv.length}px`
+        const value = etv || this.content
+        this.$emit('update:content', value)
       }
     }
   }
@@ -51,7 +59,6 @@
         background-color: #F8F8F8;
         line-height: 32px;
         font-size: 24px;
-        width: 100%;
         border-radius: 4px;
 
         &:hover {

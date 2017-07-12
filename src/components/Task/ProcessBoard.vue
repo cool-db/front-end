@@ -2,19 +2,18 @@
     <div class="process-board">
         <header class="process-head">
             <div class="left">
-                <span class="state">{{processName}}</span>
-                <badge>12</badge>
+                <text-edit :content.sync="taskName" class="state"></text-edit>
+                <badge>{{taskNumber}}</badge>
             </div>
-            <i class="el-icon-more"></i>
+            <span class="el-dropdown-link">
+                <i class="el-icon-close"></i>
+            </span>
         </header>
         <draggable v-model="list" class="drag-wrapper" :options="dragOptions">
             <task-card v-for="task, index in list" :key="index"
                        :title="task"></task-card>
         </draggable>
-        <footer class="process-foot">
-            <img :src="addIcon" alt="..." class="icon">
-            <span class="text">添加任务</span>
-        </footer>
+        <new-task></new-task>
     </div>
 </template>
 
@@ -22,24 +21,31 @@
   import Draggable from 'vuedraggable'
 
   import addIcon from '@/assets/icons/nav_bar/add.png'
+
   import TaskCard from './TaskCard.vue'
   import Badge from '../Badge.vue'
+  import NewTask from './NewTask.vue'
+  import TextEdit from '../TextEdit.vue'
 
   export default {
     props: {
       processName: String,
-      taskList: Array
+      taskList: Array,
+      processID: Number
     },
     data () {
       return {
         addIcon,
-        list: this.taskList
+        list: this.taskList,
+        taskName: this.processName
       }
     },
     components: {
       TaskCard,
       Badge,
-      Draggable
+      Draggable,
+      NewTask,
+      TextEdit
     },
     computed: {
       dragOptions () {
@@ -47,6 +53,9 @@
           group: 'task',
           ghostClass: 'ghost'
         }
+      },
+      taskNumber () {
+        return this.list.length
       }
     }
   }
@@ -54,8 +63,7 @@
 
 <style lang="scss" scoped>
     .ghost {
-        opacity: .5;
-        background: #C8EBFB;
+        opacity: 0.3;
     }
 
     .process-board {
@@ -86,11 +94,19 @@
                 align-items: center;
 
                 .state {
-                    margin-right: 6px;
+                    font-size: 16px;
+                    background-color: #E7F1F0;
+                    line-height: 16px;
+                    overflow-y: visible;
+                    margin-right: 5px;
                 }
             }
 
             & > i {
+                cursor: pointer;
+            }
+
+            .el-dropdown-link {
                 cursor: pointer;
             }
         }

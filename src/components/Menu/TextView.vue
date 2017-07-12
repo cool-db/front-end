@@ -1,17 +1,15 @@
 /**
-* Created by dustar on 2017/7/11.
+* Created by dustar on 2017/7/12.
 */
 
 <template>
-    <div class="">
-      {{ data }}
+    <div class="TextView">
     </div>
 </template>
 
 <script>
     export default {
-      name: 'SubTaskBox',
-      props: ['data']
+        name: 'TextView',
     }
 </script>
 
