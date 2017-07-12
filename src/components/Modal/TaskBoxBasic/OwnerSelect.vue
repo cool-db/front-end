@@ -8,7 +8,7 @@
       Error
     </slot>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item disabled>可认领用户列表</el-dropdown-item>
+        <el-dropdown-item disabled>可选择用户列表</el-dropdown-item>
         <el-dropdown-item :command="'-1'">
           <span class="user">
             <div :class="owner===null?'active':''" class="user-item"><img class="avatar" :src="blankAvatar">未认领</div>
@@ -28,7 +28,6 @@
 <script>
   import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
   export default {
-    name: 'OwnerSelect',
     data () {
       return {
         name: 'hi',

@@ -1,7 +1,7 @@
 <template>
   <el-card class="box-card" id="personalInformation">
     <div id="bar">
-      <img class="picture" :src="executive">
+      <img class="picture" :src="project"/>
       <div id="headline">
         个人信息
       </div>
@@ -14,7 +14,7 @@
         <img class="avatar" :src="logo"/>
         <el-button>上传新头像</el-button>
       </div>
-
+    
       <div id="nameSection">
         <div class="Text">
           姓名
@@ -22,15 +22,16 @@
         <div class="input">
           <el-input v-model="nameInput" placeholder="请输入内容"></el-input>
         </div>
-
+       
       </div>
-
+    
       <div id="birthdaySection">
         <div class="Text">
           生日
         </div>
         <div class="birthdaySelect">
           <el-date-picker
+            
             v-model="value1"
             type="date"
             placeholder="选择日期"
@@ -38,7 +39,7 @@
           </el-date-picker>
         </div>
       </div>
-
+    
       <div id="phoneSection">
         <div class="Text">
           联系电话
@@ -47,7 +48,7 @@
           <el-input v-model="phoneNumberInput" placeholder="请输入内容"></el-input>
         </div>
       </div>
-
+    
       <div id="websiteSection">
         <div class="Text">
           网址
@@ -55,7 +56,7 @@
         <div class="input">
           <el-input v-model="websiteInput" placeholder="请输入内容"></el-input>
         </div>
-
+        
       </div>
       <div >
         <div></div>
@@ -69,17 +70,16 @@
 <script>
   import project from '@/assets/icons/nav_bar/project.png'
   import logo from '@/assets/logo.png'
-  import executive from '@/assets/icons/my_profile/executive.png'
   export default {
     data () {
       return {
         project,
         logo,
-        executive,
         value1: ''
       }
     }
   }
+
 </script>
 
 
@@ -91,7 +91,7 @@
     width: 430px;
     height: 500px;
   }
-
+  
   #bar{
     display: flex;
     flex-direction: row;
@@ -104,21 +104,21 @@
   }
 
   .picture {
-    height: 27px;
+    height: 23px;
     width: 27px;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 10px;
     margin-left: 20px;
   }
-
+  
   #headline{
     display: flex;
     flex-direction: row;
     font-size: 18px;
     color: #3E5568;
   }
-
+  
   #avatarSection{
     display: flex;
     flex-direction: row;
@@ -126,64 +126,64 @@
     align-items: center;
     margin-top: 20px;
   }
-
+  
   .Text{
     color: #A1BDBF;
     font-size: 16px;
   }
-
+  
   .avatar{
     width: 90px;
     height: 90px;
     border-radius: 50%;
   }
-
+  
   #nameSection{
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 20px;
   }
-
+  
   .input{
     margin-left: 50px;
     width: 193px;
     height: 40px;
   }
-
+  
   #birthdaySection{
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 20px;
   }
-
+  
   .birthdaySelect{
     margin-left: 50px;
     width: 100px;
     height: 40px;
   }
-
+  
   #phoneSection{
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 20px;
   }
-
+  
   .inputPhone{
     margin-left: 18px;
     width: 193px;
     height: 40px;
   }
-
+  
   #websiteSection{
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 20px;
   }
-
+  
   #buttonSection{
     align-items: center;
     margin-top: 20px;
@@ -191,5 +191,5 @@
     width: 193px;
     text-align: center;
   }
-
+  
 </style>

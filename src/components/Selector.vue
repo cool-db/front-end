@@ -1,5 +1,5 @@
 <template>
-  <el-card id="selector">
+  <el-card id="selector" v-if="a">
     <div id="personalInformation" onclick="personal">
       个人信息
     </div>
@@ -9,6 +9,16 @@
   </el-card>
 </template>
 
+<script>
+  export default {
+    data () {
+      return {
+        a: true
+      }
+    }
+  }
+</script>
+
 <style>
   #selector{
     display: flex;
@@ -16,7 +26,7 @@
     width: 300px;
     height: 350px;
   }
-
+  
   #personalInformation{
     display: flex;
     align-items: center;
@@ -28,7 +38,7 @@
     color: #3E5568;
     padding-left: 20px;
   }
-
+  
   #accountPassword{
     display: flex;
     align-items: center;
@@ -39,5 +49,5 @@
     color: #3E5568;
     padding-left: 20px;
   }
-
+  
 </style>

@@ -3,22 +3,13 @@ import Router from 'vue-router'
 
 import Home from 'PAGES/Home.vue'
 
-// import PersonalSetting from 'COMPONENTS/PersonalSetting'
-// import Login from 'COMPONENTS/Login'
-
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
     component: Home
-    // component: Login
   }
-  // {
-  //   path: '/d',
-  //   component: PersonalSetting,
-  //   name: 'd'
-  // }
 ]
 
 export default new Router({

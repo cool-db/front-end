@@ -1,7 +1,7 @@
 <template>
     <div>
         <modal-attach-head
-                type="任务" :icon="icon">
+                type="日程" :icon="icon">
         </modal-attach-head>
         <div>
             <multi-list :list="fileList">
@@ -9,9 +9,9 @@
                     <modal-attach-body
                             :executor="scope.props.executor"
                             :avatar="scope.props.avatar">
-                        <div class="task-slot">
-                            <el-checkbox v-model="scope.props.checked">{{scope.props.title}}</el-checkbox>
-                            <div>{{scope.props.state}}</div>
+                        <div class="file-slot" @mouseenter="currentMouseOn = scope.index" @mouseleave="currentMouseOn = null">
+                          <div class="item"><img class="img" :src="scope.props.icon"><div>{{scope.props.filename}}</div></div>
+                          <modal-attach-delete :index="scope.index" :mouse="currentMouseOn"></modal-attach-delete>
                         </div>
                     </modal-attach-body>
                 </template>
@@ -25,21 +25,25 @@
   import ModalAttachBody from './ModalAttachBody.vue'
   import MultiList from './MultiList.vue'
 
-  import task from '@/assets/icons/nav_bar/project.png'
+  import file from '@/assets/icons/new_item/related-file.png'
+  import ModalAttachDelete from './ModalAttachDelete.vue'
 
   export default {
     data () {
       return {
-        icon: task,
+        currentMouseOn: null,
+        icon: file,
         fileList: [{
           executor: 'Simon',
-          avatar: task,
+          filename: 'hello.jpg',
+          icon: file,
           checked: false,
           title: 'first',
           state: '未处理'
         }, {
           executor: ' dustark',
-          avatar: task,
+          filename: 'm.gif',
+          icon: file,
           checked: true,
           title: 'second',
           state: '已处理'
@@ -47,6 +51,7 @@
       }
     },
     components: {
+      ModalAttachDelete,
       ModalAttachHead,
       ModalAttachBody,
       MultiList
@@ -55,10 +60,21 @@
 </script>
 
 <style lang="scss" scoped>
-    .task-slot {
+    .file-slot {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
+    .item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  .img {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    border: 0.5px darkgrey solid;
+  }
 </style>

@@ -20,7 +20,9 @@
             v-model="searchBarInput">
           </el-input>
         </div>
-        <div id="project-add"><img :src="iconAdd"></div>
+        <div id="project-add">
+          <add-icon></add-icon>
+        </div>
       </div>
       <div id="home-right">
         <div class="home-menu">
@@ -39,9 +41,13 @@
           </div>
           <el-badge v-show="messageCount>0" :value="messageCount" class="item">
           </el-badge>
-          <div @click="currentMenu='setting'">
+
+          <avatar-dropdown>
+            <div @click="currentMenu='setting'">
             <img id="avatar" :src="avatarDefault">
           </div>
+          </avatar-dropdown>
+
         </div>
       </div>
     </div>
@@ -60,6 +66,8 @@
   import iconMy from '@/assets/icons/nav_bar/my-profile.png'
   import iconMessage from '@/assets/icons/nav_bar/message.png'
   import avatarDefault from '@/assets/icons/nav_bar/blank-avatar.png'
+  import AddIcon from '@/components/AddIcon.vue'
+  import AvatarDropdown from '@/components/AvatarDropdown.vue'
   export default {
     data () {
       return {
@@ -93,7 +101,9 @@
     mixins: [],
     components: {
       Project,
-      My
+      My,
+      AddIcon,
+      AvatarDropdown
     },
     computed: {},
     methods: {
@@ -131,6 +141,7 @@
 
   #project-add {
     height: 100%;
+    margin-top: 13px;
   }
 
   #home-left img {
