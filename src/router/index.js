@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MyTask from '@/components/MyTask.vue'
+// import MyTask from '@/components/MyTask.vue'
+// import RecentTask from '@/components/RecentTask.vue'
+import MyCalendar from '@/components/MyCalendar.vue'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: MyTask
+    component: MyCalendar
   }
 ]
 

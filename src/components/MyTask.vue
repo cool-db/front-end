@@ -16,10 +16,6 @@
         </el-tabs>
       </div>
 
-      <div class="task-area">
-
-      </div>
-
     </div>
   </div>
 </template>
