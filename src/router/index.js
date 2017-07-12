@@ -8,6 +8,7 @@ import Schedule from 'PAGES/Schedule.vue'
 import File from 'PAGES/File.vue'
 import My from 'PAGES/My.vue'
 import PersonalSetting from 'PAGES/PersonalSetting.vue'
+import TaskModal from 'COMPONENTS/TaskModal.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,9 @@ const routes = [{
     path: '/setting',
     component: PersonalSetting
   }]
+}, {
+  path: '/modal',
+  component: TaskModal
 }]
 
 export default new Router({

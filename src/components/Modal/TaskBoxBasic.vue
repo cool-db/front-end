@@ -18,14 +18,14 @@
   import DeadlineBox from './TaskBoxBasic/DeadlineBox.vue'
   import PriorityBox from './TaskBoxBasic/PriorityBox.vue'
   import RepeatBox from './TaskBoxBasic/RepeatBox.vue'
+
   export default {
     components: {
       RepeatBox,
       PriorityBox,
       DeadlineBox,
       OwnerBox
-    },
-    name: 'TaskBoxBasic'
+    }
   }
 </script>
 

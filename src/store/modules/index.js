@@ -1,6 +1,8 @@
 import hello from './hello'
+import task from './task'
 
 export default {
-  hello
+  hello,
+  task
  // users
 }

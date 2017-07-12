@@ -1,26 +1,28 @@
 <template>
-    <div>
-        <text-edit :content.sync="taskTitle"></text-edit>
-        <div class="divider"></div>
-        <rich-editor :text.sync="richText"></rich-editor>
-        <task-box-basic class="box"></task-box-basic>
-        <modal-task-list class="box"></modal-task-list>
-        <modal-file-list class="box"></modal-file-list>
-        <modal-calendar-list class="box"></modal-calendar-list>
-        <modal-new-attach-box class="box"></modal-new-attach-box>
-        <modal-participators class="box"></modal-participators>
-    </div>
+  <div>
+    <text-edit :content.sync="taskname"></text-edit>
+    <div class="divider"></div>
+    <rich-editor :text.sync="taskcontent">task</rich-editor>
+    <task-box-basic class="box"></task-box-basic>
+    <!--<modal-task-list class="box"></modal-task-list>-->
+    <modal-file-list class="box"></modal-file-list>
+    <!--<modal-calendar-list class="box"></modal-calendar-list>-->
+    <modal-new-attach-box class="box"></modal-new-attach-box>
+    <modal-participators class="box"></modal-participators>
+  </div>
 </template>
 
 <script>
   import TextEdit from '../TextEdit.vue'
   import RichEditor from './RichEditor.vue'
-  import ModalTaskList from './ModalTaskList.vue'
+  //  import ModalTaskList from './ModalTaskList.vue'
   import ModalFileList from './ModalFileList.vue'
   import TaskBoxBasic from './TaskBoxBasic.vue'
-  import ModalCalendarList from './ModalCalendarList.vue'
+  //  import ModalCalendarList from './ModalCalendarList.vue'
   import ModalNewAttachBox from './ModalNewAttachBox.vue'
   import ModalParticipators from './ModalParticipators.vue'
+
+  import {mapGetters} from 'vuex'
 
   export default {
     data () {
@@ -34,26 +36,36 @@
         }]
       }
     },
+
+    computed: mapGetters([
+      'taskcontent',
+      'taskname',
+      'taskstate'
+    ]),
+
+    methods: {},
+
     components: {
       ModalParticipators,
       ModalNewAttachBox,
       TextEdit,
       RichEditor,
       TaskBoxBasic,
-      ModalFileList,
-      ModalTaskList,
-      ModalCalendarList
+      ModalFileList
+      // ModalTaskList,
+      // ModalCalendarList
     }
   }
 </script>
 
 <style lang="scss" scoped>
-    .divider {
-        width: 100%;
-        border-bottom: 1px solid #dedede;
-        margin: 13px 0;
-    }
-    .box {
-      margin-top: 13.5px;
-    }
+  .divider {
+    width: 100%;
+    border-bottom: 1px solid #dedede;
+    margin: 13px 0;
+  }
+
+  .box {
+    margin-top: 13.5px;
+  }
 </style>

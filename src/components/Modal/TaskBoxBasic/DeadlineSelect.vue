@@ -25,7 +25,6 @@
 
 <script>
     export default {
-      name: 'DeadlineSelect',
       data () {
         return {
           pickerOptions1: {

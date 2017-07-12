@@ -6,11 +6,8 @@
   <div class="DeadlineBox">
     <div id="deadline-title">截止时间</div>
 
-    <deadline-select :value2="date">
-      <!--<div id="deadline-info">-->
-        <img id="deadline-avatar" :src="iconCalendar">
-        <!--<span id="deadline-name" :class="isSet?'':'grey'">{{ isSet?date:'点击设置' }}</span>-->
-      <!--</div>-->
+    <deadline-select :value2="taskddl">
+      <img id="deadline-avatar" :src="iconCalendar">
     </deadline-select>
   </div>
 </template>
@@ -18,6 +15,7 @@
 <script>
   import iconCalendar from '@/assets/icons/nav_bar/calendar.png'
   import DeadlineSelect from './DeadlineSelect.vue'
+  import {mapGetters, mapMutations} from 'vuex'
   export default {
     components: {DeadlineSelect},
     name: 'DeadlineBox',
@@ -28,20 +26,36 @@
         isSet: false
       }
     },
-    created () {
-      this.date = '07/22 18:00:00'
+    computed: mapGetters([
+      'taskddl'
+    ]),
+    watch: {
+      taskdll: function () {
+        // this.ce(this.taskdll)
+      }
+    },
+    methods: {
+      ...mapMutations({
+        // 'ce': 'task/CHANGEEMER'
+      })
+//      changeP (command) {
+//        // this.mode = parseInt(command)
+//        this.ce(parseInt(command))
+//      }
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .deadlineBox{
+  .deadlineBox {
   }
+
   #deadline-title {
     font-size: 12px;
 
   }
+
   #deadline-info {
     font-size: 14px;
     line-height: 40px;
@@ -50,10 +64,12 @@
     flex-direction: row;
 
   }
+
   #deadline-avatar {
     height: 20px;
     margin-right: 8px;
   }
+
   .grey {
     color: #C0C0C0;
   }

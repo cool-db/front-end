@@ -5,7 +5,7 @@
 <template>
   <div class="owner-box">
     <div id="owner-title">执行者</div>
-    <owner-select :users="users" :owner="owner" @changeOwner="changeOwner">
+    <owner-select :users="users" :owner="task.executorId" @changeOwner="changeOwner">
       <div id="owner-info">
         <img id="owner-avatar" :src="isSet?users[owner].avatar:blankAvatar">
         <span id="owner-name" :class="isSet?'':'grey'">{{isSet?users[owner].name:'未认领'}}</span>
@@ -18,12 +18,14 @@
 <script>
   import ownerSelect from './ownerSelect.vue'
   import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
+
+  import {mapState} from 'vuex'
+
   export default {
     data () {
       return {
         blankAvatar,
         isSet: false,
-        owner: null,
         users: [
           {avatar: blankAvatar, name: '王维'},
           {avatar: blankAvatar, name: '王昌龄'},
@@ -32,9 +34,9 @@
         ]
       }
     },
-    created () {
-
-    },
+    computed: mapState({
+      'task': state => state.task.task
+    }),
     methods: {
       changeOwner (command) {
         command = parseInt(command)

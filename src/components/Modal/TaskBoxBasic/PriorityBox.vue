@@ -5,10 +5,10 @@
 <template>
   <div class="PriorityBox">
     <div id="priority-title">优先级</div>
-    <priority-select :items="items" :owner="mode" @changeP="changeP">
+    <priority-select :items="items" :owner="taskemergency" @changeP="changeP">
       <div id="priority-info">
-        <img id="priority-avatar" :src="items[mode].icon">
-        <span id="priority-name" :class="'mode-'+mode">{{items[mode].title}}</span>
+        <img id="priority-avatar" :src="items[taskemergency].icon">
+        <span id="priority-name" :class="'mode-'+taskemergency">{{items[taskemergency].title}}</span>
       </div>
     </priority-select>
   </div>
@@ -19,9 +19,9 @@
   import Emer from '@/assets/icons/new_item/priority-emergent.png'
   import Easy from '@/assets/icons/new_item/priority-easy.png'
   import PrioritySelect from './PrioritySelect.vue'
+  import {mapGetters, mapMutations} from 'vuex'
   export default {
     components: {PrioritySelect},
-    name: 'PriorityBox',
     data () {
       return {
         Modes: {
@@ -29,26 +29,28 @@
           emer: 1,
           vital: 2
         },
-        isSet: true,
         Vital,
         Emer,
         Easy,
-        items: [],
-        mode: 0
-
+        items: [
+          {icon: Easy, title: '普通'},
+          {icon: Emer, title: '紧急'},
+          {icon: Vital, title: '非常紧急'}
+        ],
+        isSet: true
       }
     },
+    computed: mapGetters([
+      'taskemergency'
+    ]),
     methods: {
+      ...mapMutations({
+        'ce': 'task/CHANGEEMER'
+      }),
       changeP (command) {
-        this.mode = parseInt(command)
+        // this.mode = parseInt(command)
+        this.ce(parseInt(command))
       }
-    },
-    created () {
-      this.items = [
-        {icon: this.Easy, title: '普通'},
-        {icon: this.Emer, title: '紧急'},
-        {icon: this.Vital, title: '非常紧急'}
-      ]
     }
   }
 </script>
