@@ -235,10 +235,6 @@
         padding: 0 5px 0 5px;
     }
 
-    .currentmenu {
-        background: #A1BDBF;
-    }
-
     .project-menu {
         text-align: center;
         float: right;
@@ -319,35 +315,10 @@
         position: absolute;
         width: 350px;
         top: 98px;
-        right: 0px;
+        right: 0;
         height: calc(100vh - 98px);
         overflow-y: scroll;
         box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.20);
-    }
-
-    .fade-choose-enter-active, .fade-choose-leave-active {
-        transition: opacity 1s;
-    }
-
-    .fade-choose-leave, .fade-choose-leave-active {
-        display: none;
-    }
-
-    .fade-choose-enter, .fade-choose-leave-active {
-        opacity: 0;
-    }
-
-    .slide-fade-enter-active {
-        transition: all .5s ease;
-    }
-
-    .slide-fade-leave-active {
-        transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-    }
-
-    .slide-fade-enter, .slide-fade-leave-active {
-        transform: translateX(300px);
-        opacity: 0;
     }
 
     .tasks-container {
@@ -419,11 +390,6 @@
         font-size: 36px;
         padding: 0 5px 0 25px;
     }
-
-    .rightbar-name {
-        font-size: 20px;
-    }
-
     img {
         width: 25px;
 
