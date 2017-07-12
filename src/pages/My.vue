@@ -16,7 +16,7 @@
 
       </div>
       <div class="my-close my-header-item" @click="leaveMy">
-        X
+        <i class="el-icon-close"></i>
       </div>
     </div>
     <transition name="fade-choose">
@@ -95,6 +95,7 @@
     border-bottom: 4px transparent;
     padding-top: 4px;
     text-align: center;
+    cursor: pointer;
   }
   .change-current-page-item :hover {
     border-bottom: 4px #33CCCC solid;
@@ -128,5 +129,12 @@
   }
   .my-close,#my-header-left {
     width: 30px;
+  }
+  .my-close {
+    font-size: 14px;
+  }
+  .my-close:hover {
+    color: #33cccc;
+    cursor: pointer;
   }
 </style>
