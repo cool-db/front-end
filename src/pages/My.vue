@@ -51,6 +51,10 @@
 
 <script>
   import Recent from '@/components/My/RecentTask.vue'
+  import MyCalenders from '@/components/My/MyCalendar.vue'
+  import Files from '@/components/My/FileMaster.vue'
+  import Tasks from '@/components/My/MyTask.vue'
+
   export default {
     name: 'My',
     data () {
@@ -63,7 +67,7 @@
         this.$emit('leaveMy')
       }
     },
-    components: {Recent}
+    components: {Recent, MyCalenders, Files, Tasks}
   }
 </script>
 
