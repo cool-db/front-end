@@ -66,4 +66,6 @@ export const httpPut = (url, body) => errorXhr({url, method: 'PUT', body})
  * @param {String} url
  * @return {Promise}
  */
-export const httpDel = (url) => errorXhr({url, method: 'DELETE'})
+export const httpDel = (url) => errorXhr({url, method: 'DELETE', body})
+
+export const baseURL = '123.207.222.112:5001/api/'
