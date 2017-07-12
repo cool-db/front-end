@@ -291,9 +291,6 @@
   #icon-member, #icon-view, #icon-more {
     width: 21px;
   }
-  #icon-more {
-    width: 18px;
-  }
   #project-header-left, .project-menu {
     width: 300px;
   }
