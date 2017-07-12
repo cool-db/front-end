@@ -1,5 +1,4 @@
 <template>
-  
   <el-card class="box-card">
     <div class="avatar1">
       <img class="picture1" >

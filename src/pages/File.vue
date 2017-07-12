@@ -68,7 +68,7 @@
   import edit from '@/assets/icons/drop_down_menu/edit.png'
   import projectName from '@/assets/icons/my_profile/project-name.png'
 
-  import FileItem from './FileItem.vue'
+  import FileItem from 'COMPONENTS/FileItem.vue'
 
   export default {
     data () {
@@ -164,15 +164,12 @@
     justify-content: space-between;
     margin: 20px 0px 0px 20px;
     height:26px;
-    /*padding: 0px 150px 0px 30px;*/
   }
 
   .line {
     width: 1040px;
     height: 3px;
     margin-top:3px;
-    /*left:144px;*/
-    /*top:140px;*/
     background-color:#C0C0C0 ;
   }
 </style>
