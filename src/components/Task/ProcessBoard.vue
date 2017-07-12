@@ -2,10 +2,12 @@
     <div class="process-board">
         <header class="process-head">
             <div class="left">
-                <span class="state">{{processName}}</span>
+                <text-edit :content.sync="taskName" class="state"></text-edit>
                 <badge>12</badge>
             </div>
-            <i class="el-icon-more"></i>
+            <span class="el-dropdown-link">
+                <i class="el-icon-close"></i>
+            </span>
         </header>
         <draggable v-model="list" class="drag-wrapper" :options="dragOptions">
             <task-card v-for="task, index in list" :key="index"
@@ -23,6 +25,7 @@
   import TaskCard from './TaskCard.vue'
   import Badge from '../Badge.vue'
   import NewTask from './NewTask.vue'
+  import TextEdit from '../TextEdit.vue'
 
   export default {
     props: {
@@ -32,14 +35,16 @@
     data () {
       return {
         addIcon,
-        list: this.taskList
+        list: this.taskList,
+        taskName: this.processName
       }
     },
     components: {
       TaskCard,
       Badge,
       Draggable,
-      NewTask
+      NewTask,
+      TextEdit
     },
     computed: {
       dragOptions () {
@@ -85,11 +90,18 @@
                 align-items: center;
 
                 .state {
-                    margin-right: 6px;
+                    font-size: 16px;
+                    background-color: #E7F1F0;
+                    line-height: 16px;
+                    overflow-y: visible;
                 }
             }
 
             & > i {
+                cursor: pointer;
+            }
+
+            .el-dropdown-link {
                 cursor: pointer;
             }
         }

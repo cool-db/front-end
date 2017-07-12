@@ -1,6 +1,6 @@
 <template>
     <div>
-        <text-edit :title.sync="taskTitle"></text-edit>
+        <text-edit :content.sync="taskTitle"></text-edit>
         <div class="divider"></div>
         <rich-editor :text.sync="richText"></rich-editor>
         <task-box-basic></task-box-basic>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import TextEdit from './TextEdit.vue'
+  import TextEdit from '../TextEdit.vue'
   import RichEditor from './RichEditor.vue'
   import ModalFileList from './ModalFileList.vue'
   import TaskBoxBasic from './TaskBoxBasic.vue'
