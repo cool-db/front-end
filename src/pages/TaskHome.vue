@@ -1,33 +1,31 @@
 <template>
     <div class="task-home">
-
-        <process-board v-for="item, index in data" :key="index"
-                       :processName="item.process"
-                       :taskList="item.tasks"></process-board>
-        <!--<process-board></process-board>-->
-        <!--<process-board></process-board>-->
-        <!--<process-board></process-board>-->
-        <!--<process-board></process-board>-->
+        <process-board v-for="item, index in process" :key="index"
+                       :processName="item.title"
+                       :taskList="item.tasks"
+                       :processID="index"></process-board>
         <new-process></new-process>
     </div>
 </template>
 
 <script>
+  // import { mapState } from 'vuex'
   import ProcessBoard from 'COMPONENTS/Task/ProcessBoard.vue'
   import NewProcess from 'COMPONENTS/Task/NewProcess.vue'
 
-  import { data } from 'COMPONENTS/Task/fake'
-
   export default {
     data () {
-      return {
-        data
-      }
+      return {}
     },
     components: {
       ProcessBoard,
       NewProcess
     }
+//    computed: {
+//      ...mapState({
+//        process: state => state.process.data
+//      })
+//    }
   }
 </script>
 

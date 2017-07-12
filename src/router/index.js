@@ -12,6 +12,29 @@ import TaskModal from 'COMPONENTS/TaskModal.vue'
 
 Vue.use(Router)
 
+// const routes = [{
+//   path: '/',
+//   component: Header,
+//   redirect: '/project',
+//   children: [{
+//     path: '/project',
+//     redirect: '/project/task',
+//     component: Project,
+//     children: [{
+//       path: '/project/task',
+//       component: TaskHome
+//     }, {
+//       path: '/project/schedule',
+//       component: Schedule
+//     }, {
+//       path: '/project/file',
+//       component: File
+//     }]
+//   }, {
+//     path: '/my',
+//     component: My
+//   }]
+// }]
 const routes = [{
   path: '/',
   component: Header,

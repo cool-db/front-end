@@ -3,7 +3,7 @@
         <header class="process-head">
             <div class="left">
                 <text-edit :content.sync="taskName" class="state"></text-edit>
-                <badge>12</badge>
+                <badge>{{taskNumber}}</badge>
             </div>
             <span class="el-dropdown-link">
                 <i class="el-icon-close"></i>
@@ -30,7 +30,8 @@
   export default {
     props: {
       processName: String,
-      taskList: Array
+      taskList: Array,
+      processID: Number
     },
     data () {
       return {
@@ -52,6 +53,9 @@
           group: 'task',
           ghostClass: 'ghost'
         }
+      },
+      taskNumber () {
+        return this.list.length
       }
     }
   }

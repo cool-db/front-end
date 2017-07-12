@@ -12,8 +12,6 @@
         <div class="change-current-page-item" :class='{currentpage: currentPage==="tasks"}' @click="currentPage = 'tasks'">任务</div>
         <div class="change-current-page-item" :class='{currentpage: currentPage==="calenders"}' @click="currentPage = 'calenders'">日程</div>
         <div class="change-current-page-item" :class='{currentpage: currentPage==="files"}' @click="currentPage = 'files'">文件</div>
-        <div class="change-current-page-item" :class='{currentpage: currentPage==="favorites"}' @click="currentPage = 'favorites'">收藏</div>
-
       </div>
       <div class="my-close my-header-item" @click="leaveMy">
         <i class="el-icon-close"></i>
@@ -39,17 +37,22 @@
         <files>Files</files>
       </section>
     </transition>
-    <transition name="fade-choose">
-      <section v-show="currentPage === 'favorites'" class="favorites-container">
-        <favorite>Favorites</favorite>
-      </section>
-    </transition>
+    <!--<transition name="fade-choose">-->
+      <!--<section v-show="currentPage === 'favorites'" class="favorites-container">-->
+        <!--<favorite>Favorites</favorite>-->
+      <!--</section>-->
+    <!--</transition>-->
 
 
   </div>
 </template>
 
 <script>
+  import Recent from '@/components/My/RecentTask.vue'
+  import MyCalenders from '@/components/My/MyCalendar.vue'
+  import Files from '@/components/My/FileMaster2.vue'
+  import Tasks from '@/components/My/MyTask.vue'
+
   export default {
     name: 'My',
     data () {
@@ -59,9 +62,10 @@
     },
     methods: {
       leaveMy () {
-        this.$emit('leaveMy')
+        this.$router.go(-1)
       }
-    }
+    },
+    components: {Recent, MyCalenders, Files, Tasks}
   }
 </script>
 
