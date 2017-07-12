@@ -21,12 +21,14 @@
   }
 </script>
 
-<style>
+<style scoped>
   #project{
     width: 240px;
     height: 120px;
     position: relative;
-    z-index: -2;
+    z-index: 1;
+    margin-top: 30px;
+    margin-left: 50px;
   }
   .projectPicture{
     margin-top: -20px;
@@ -34,11 +36,11 @@
     width: 240px;
     height: 120px;
     position: relative;
-    z-index: -1;
+    z-index: 2;
   }
   .Text{
     position: relative;
-    z-index: 1;
+    z-index: 3;
     font-size: 14px;
     color: #FFFFFF;
     text-shadow:1px 1px 1px #000;

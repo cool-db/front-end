@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import Home from 'PAGES/Home.vue'
-import HomepageProject from 'COMPONENTS/HomepageProject.vue'
+import HomepageSection from 'COMPONENTS/HomepageSection.vue'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: HomepageProject
+    component: HomepageSection
   }
 ]
 
