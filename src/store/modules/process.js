@@ -7,10 +7,11 @@ const namespace = addNamespace('process')
 
 export const DELETE = namespace('DELETE')
 export const ADDTASK = namespace('ADDTASK')
-export const RESET = namespace('RESET')
+export const ADDPROCESS = namespace('ADDPROCESS')
+export const CHANGEPROCESSNAME = namespace('CHANGEPROCESSNAME')
 
 const state = {
-  processes: [{
+  data: [{
     title: '简单了解',
     tasks: ['↓点击蓝色按钮，添加任务', '√ 点击左侧方框，完成任务', '→ 点按拖动任务至右边的阶段']
   }, {
@@ -20,18 +21,23 @@ const state = {
 }
 
 const getters = {
-  taskCount: state => state.processes.length
 }
 
 const mutations = {
   [DELETE] (state, index) {
-    state.processes.splice(index, 1)
+    state.data.splice(index, 1)
   },
   [ADDTASK] (state, index, title) {
-    state.push({})
+    state.data[index][title] = title
   },
-  [RESET] (state) {
-    state.count = 0
+  [ADDPROCESS] (state, name) {
+    state.data.push({
+      title: name,
+      tasks: []
+    })
+  },
+  [CHANGEPROCESSNAME] (state, index, title) {
+    state.data[index].title = title
   }
 }
 

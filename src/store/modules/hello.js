@@ -6,7 +6,7 @@ export const DOWN = namespace('DOWN')
 export const RESET = namespace('RESET')
 
 const state = {
-
+  count: 1
 }
 
 const getters = {
