@@ -2,7 +2,7 @@
  * Created by xueyingchen.
  */
 
-import { addNamespace } from '@/util/commonUtil'
+import { addNamespace, getList } from '@/util/commonUtil'
 const namespace = addNamespace('process')
 
 export const DELETE = namespace('DELETE')
@@ -10,17 +10,35 @@ export const ADDTASK = namespace('ADDTASK')
 export const ADDPROCESS = namespace('ADDPROCESS')
 export const CHANGEPROCESSNAME = namespace('CHANGEPROCESSNAME')
 
+const taskItem = {
+  'taskId': 1,
+  'name': 'asd',
+  'content': 'sdfvx',
+  'state': false,
+  'executorId': 1,
+  'memberId': [{
+    'id': 1
+  }],
+  'progressId': 1,
+  'emergency': 1,
+  'comments': [],
+  'files': [],
+  'subtasks': [],
+  'ddl': '2017-07-12T23:30:00'
+}
+
 const state = {
   data: [{
     title: '简单了解',
-    tasks: ['↓点击蓝色按钮，添加任务', '√ 点击左侧方框，完成任务', '→ 点按拖动任务至右边的阶段']
+    tasks: getList(taskItem, 10)
   }, {
     title: '开始协作',
-    tasks: ['点击查看这条任务女屌丝', '② 将自己的同伴添加到项目中', '管理项目中的应用', '满足企业管理统计需求']
+    tasks: getList(taskItem, 10)
   }]
 }
 
 const getters = {
+
 }
 
 const mutations = {

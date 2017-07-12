@@ -5,16 +5,13 @@
             <div>
                 <check-box :checked="checked" :disabled="disabled"
                            class="check"></check-box>
-                <span>{{title}}</span>
+                <span>{{task.name}}</span>
             </div>
             <img src="" alt="..." class="avatar">
         </div>
         <div class="body">
-            <badge class="normal-tag">4月28日截止</badge>
-            <div class="icon">
-                <i class="el-icon-document"></i>
-                <span>0/2</span>
-            </div>
+            <badge class="normal-tag">{{task.ddl | ddlFormat}}</badge>
+            <i class="icon el-icon-date"></i>
         </div>
     </div>
 </template>
@@ -25,17 +22,23 @@
 
   export default {
     props: {
-      title: String
+      task: Object
     },
     data () {
       return {
-        checked: false,
+        checked: this.task.state,
         disabled: false
       }
     },
     components: {
       CheckBox,
       Badge
+    },
+    filters: {
+      ddlFormat (value) {
+        const date = new Date(value)
+        return `${date.getMonth() + 1}月${date.getDate()}日截止`
+      }
     }
   }
 </script>
@@ -90,12 +93,12 @@
         }
 
         .body {
-            background-color: #3E5568;
+            background-color: #fff;
             display: flex;
             flex-direction: row;
             align-items: center;
             flex-wrap: wrap;
-            padding: 9px 35px 11px 40px;
+            padding: 4px 35px 8px 40px;
             border-radius: 0 0 5px 5px;
 
             & > * {
@@ -103,14 +106,14 @@
             }
 
             .icon {
-                color: #fff;
+                color: #d8d8d8;
                 font-weight: lighter;
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .normal-tag {
-                background-color: #E7F1F0;
-                color: #3E5568;
+                background-color: #3E5568;
+                color: #fff;
             }
 
             .emer-tag {

@@ -11,7 +11,7 @@
                   placeholder="请输入任务"
                   v-model="content">
         </el-input>
-        <el-button type="primary" @click="isEdit=false">创建</el-button>
+        <el-button type="primary" @click="handleClick">创建</el-button>
     </div>
 </template>
 
@@ -20,11 +20,21 @@
   import addIcon from '@/assets/icons/nav_bar/add.png'
 
   export default {
+    props: {
+      onClick: Function,
+      id: Number
+    },
     data () {
       return {
         addIcon,
         isEdit: false,
         content: ''
+      }
+    },
+    methods: {
+      handleClick () {
+        this.isEdit = false
+        this.onClick(this.id - 1, this.content)
       }
     }
   }
