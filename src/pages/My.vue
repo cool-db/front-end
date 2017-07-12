@@ -52,7 +52,7 @@
 <script>
   import Recent from '@/components/My/RecentTask.vue'
   import MyCalenders from '@/components/My/MyCalendar.vue'
-  import Files from '@/components/My/FileMaster.vue'
+  import Files from '@/components/My/FileMaster2.vue'
   import Tasks from '@/components/My/MyTask.vue'
 
   export default {
