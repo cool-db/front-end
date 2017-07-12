@@ -1,7 +1,7 @@
 <template>
   <div class="each-calendar-main">
 
-    <div class="time-span" :data="calendarDatas">
+    <div class="time-span">
       {{startDate}} {{startTime}} - {{endDate}} {{endTime}}
     </div>
 

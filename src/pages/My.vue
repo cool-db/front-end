@@ -39,11 +39,11 @@
         <files>Files</files>
       </section>
     </transition>
-    <transition name="fade-choose">
-      <section v-show="currentPage === 'favorites'" class="favorites-container">
-        <favorite>Favorites</favorite>
-      </section>
-    </transition>
+    <!--<transition name="fade-choose">-->
+      <!--<section v-show="currentPage === 'favorites'" class="favorites-container">-->
+        <!--<favorite>Favorites</favorite>-->
+      <!--</section>-->
+    <!--</transition>-->
 
 
   </div>

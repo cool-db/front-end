@@ -1,39 +1,40 @@
 <template>
   <div class="file-master-2-main">
-    <div class="file-master-2-box">
+  <div class="file-master-2-box">
 
+    <single-file fileInfo="邱宇航.avi"></single-file>
+    <single-file fileInfo="邱宇航.avi"></single-file>
+    <single-file fileInfo="邱宇航.avi"></single-file>
+    <single-file fileInfo="邱宇航.avi"></single-file>
+    <single-file fileInfo="邱宇航.avi"></single-file>
 
-      <el-row>
-        <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
-          <el-card :body-style="{ padding: '0px'}">
-            <img :src="iconLogo" class="image">
-            <div style="padding: 14px;">
-              <span>邱宇航竟干这...事！.avi</span>
-              <div class="bottom clearfix">
-
-                <el-button type="text" class="button">操作按钮</el-button>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-
-
+    <div class="uploader-last">
       <el-upload
+        class="avatar-uploader"
         action="https://jsonplaceholder.typicode.com/posts/"
-        list-type="picture-card"
-        :on-preview="handlePictureCardPreview"
-        :on-remove="handleRemove">
-        <i class="el-icon-plus"></i>
+        :show-file-list="false">
+        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
-      <el-dialog v-model="dialogVisible" size="tiny">
-        <img width="100%" :src="dialogImageUrl" alt="">
-        <span>邱宇航.avi</span>
-      </el-dialog>
-
     </div>
+
+
+
+  </div>
   </div>
 </template>
+
+<script>
+  import SingleFile from '@/components/My/SingleFile.vue'
+  export default {
+    components: {SingleFile},
+    data () {
+      return {
+        imageUrl: ''
+      }
+    }
+  }
+</script>
 
 <style scoped>
   .file-master-2-main{
@@ -43,64 +44,43 @@
   }
 
   .file-master-2-box{
-    margin-top: 30px;
-    width: 950px;
     display: flex;
     display: -webkit-flex;
-
+    width: 800px;
+    justify-content: flex-start;
+    margin-top: 20px;
+    flex-wrap: wrap;
   }
 
-  .time {
-    font-size: 13px;
-    color: #999;
+  .uploader-last{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
   }
 
-  .bottom {
-    margin-top: 13px;
-    line-height: 12px;
+  .avatar-uploader {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
   }
-
-  .button {
-    padding: 0;
-    float: right;
+  .avatar-uploader:hover {
+    border-color: #20a0ff;
   }
-
-  .image {
-    width: 100px;
-    height: 100px;
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 148px;
+    height: 180px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
     display: block;
   }
-
-  .clearfix:before,
-  .clearfix:after {
-    display: table;
-    content: "";
-  }
-
-  .clearfix:after {
-    clear: both
-  }
 </style>
-
-<script>
-  import iconLogo from '@/assets/logo.png'
-  export default {
-    data () {
-      return {
-        currentDate: new Date(),
-        dialogImageUrl: '',
-        dialogVisible: false,
-        iconLogo
-      }
-    },
-    methods: {
-      handleRemove (file, fileList) {
-        console.log(file, fileList)
-      },
-      handlePictureCardPreview (file) {
-        this.dialogImageUrl = file.url
-        this.dialogVisible = true
-      }
-    }
-  }
-</script>
