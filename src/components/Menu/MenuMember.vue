@@ -4,7 +4,6 @@
 
 <template>
     <div class="container">
-        <!--<menu-member-search></menu-member-search>-->
         <el-input
                 @change="onChange"
                 class="search-bar"
@@ -28,6 +27,7 @@
   import MemberAddItem from './MemberAddItem.vue'
   import MemberItem from './MemberItem.vue'
   import MenuMemberSearch from './MenuMemberSearch.vue'
+  import { mapMutations, mapState } from 'vuex'
 
   export default {
     components: {
@@ -39,12 +39,20 @@
       return {
         current: '',
         users: [],
-        results: []
+        results: [],
+        ...mapState({
+          members: state => state.users.members,
+          permissions: state => state.users.permissions,
+          usersCount: state => state.users.usersCount,
+          permissionsCount: state => state.users.permissionsCount
+        })
       }
     },
     methods: {
+      ...mapMutations({
+        'invite': 'hello/INVITE'
+      }),
       onChange (value) {
-        console.log(value)
         this.querySearch(value)
       },
       querySearch (queryString) {
