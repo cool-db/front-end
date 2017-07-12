@@ -1,21 +1,32 @@
 <template>
 
-    <div class="login">
+    <div class="Register">
 
         <div class="content">
 
             <img class="picture" :src="logo">
 
-            <el-form class="myform" :model="ruleForm2" ref="ruleForm2" label-width="100px">
-                <el-form-item label="邮箱" prop="pass">
+            <el-form class="myform" :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px">
+                <el-form-item label="邮箱  " prop="pass">
                     <el-input v-model="ruleForm2.email" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="密码" prop="checkPass">
+                <el-form-item label="密码  " prop="pass">
                     <el-input type="password" v-model="ruleForm2.password" auto-complete="off"></el-input>
                 </el-form-item>
+                <el-form-item label="确认密码" prop="checkPass">
+                    <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
+                </el-form-item>
                 <el-form-item>
-                    <el-button class="button" type="primary" @click="submitForm('ruleForm2')">提交</el-button>
-
+                    <el-button class="button" type="primary" @click="submitForm('ruleForm2')">
+                        确认注册
+                    </el-button>
+                </el-form-item>
+                <el-form-item>
+                    <el-button class="button" type="primary">
+                        <router-link to="/a" style="text-decoration: none; color:white">
+                            返回登录
+                        </router-link>
+                    </el-button>
                 </el-form-item>
             </el-form>
 
@@ -24,11 +35,7 @@
 
             <div class="textButton">
 
-                <div class="account"> 还没有账户？</div>
-
-                <el-button class="text" type="text">
-                    <router-link to="d" style="text-decoration: none; color:#33CCCC">注册新账号</router-link>
-                </el-button>
+                <div class="account"> Define a new work style!</div>
 
             </div>
 
@@ -38,6 +45,7 @@
 
 </template>
 
+
 <script>
 
   import project from '@/assets/icons/nav_bar/project.png'
@@ -45,12 +53,40 @@
 
   export default {
     data () {
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'))
+        } else {
+          if (this.ruleForm2.checkPass !== '') {
+            this.$refs.ruleForm2.validateField('checkPass')
+          }
+          callback()
+        }
+      }
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'))
+        } else if (value !== this.ruleForm2.password) {
+          callback(new Error('两次输入密码不一致!'))
+        } else {
+          callback()
+        }
+      }
       return {
         project,
         logo,
         ruleForm2: {
           email: '',
-          password: ''
+          password: '',
+          checkPass: ''
+        },
+        rules2: {
+          password: [
+            {validator: validatePass, trigger: 'blur'}
+          ],
+          checkPass: [
+            {validator: validatePass2, trigger: 'blur'}
+          ]
         }
       }
     },
@@ -81,10 +117,12 @@
         margin-left: -90px;
     }
 
-    .login {
+    .Register {
         position: absolute;
-        top: 50%;
+        top: 45%;
         left: 50%;
+        width: 280px;
+        height: 400px;
         transform: translate(-50%, -50%);
     }
 
@@ -116,13 +154,14 @@
     }
 
     .button {
-        width: 280px;
+        width: 270px;
         height: 40px;
+        /*margin-left:-5px;*/
         margin-top: 20px;
     }
 
     .line {
-        width: 280px;
+        width: 270px;
         height: 1px;
         margin-top: 50px;
         margin-left: 10px;
@@ -132,15 +171,20 @@
     .textButton {
         display: flex;
         flex-direction: row;
+        margin-left: 18px;
+        /*justify-content: center;*/
+        /*align-items: center;*/
         margin-top: 10px;
     }
 
     .account {
         font-size: 14px;
         display: flex;
-        color: black;
+        justify-content: center;
+        align-items: center;
+        color: #33CCCC;
         margin-top: 10px;
-        margin-left: 50px;
+        margin-left: 45px;
     }
 
     .text {
