@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import RecentTask from '@/components/RecentTask.vue'
+import MyTask from '@/components/MyTask.vue'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: RecentTask
+    component: MyTask
   }
 ]
 
