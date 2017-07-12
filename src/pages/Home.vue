@@ -41,9 +41,13 @@
           </div>
           <el-badge v-show="messageCount>0" :value="messageCount" class="item">
           </el-badge>
-          <div @click="currentMenu='setting'">
+
+          <avatar-dropdown>
+            <div @click="currentMenu='setting'">
             <img id="avatar" :src="avatarDefault">
           </div>
+          </avatar-dropdown>
+
         </div>
       </div>
     </div>
@@ -62,7 +66,8 @@
   import iconMy from '@/assets/icons/nav_bar/my-profile.png'
   import iconMessage from '@/assets/icons/nav_bar/message.png'
   import avatarDefault from '@/assets/icons/nav_bar/blank-avatar.png'
-  import addIcon from '@/components/AddIcon.vue'
+  import AddIcon from '@/components/AddIcon.vue'
+  import AvatarDropdown from '@/components/AvatarDropdown.vue'
   export default {
     data () {
       return {
@@ -97,7 +102,8 @@
     components: {
       Project,
       My,
-      addIcon
+      AddIcon,
+      AvatarDropdown
     },
     computed: {},
     methods: {
