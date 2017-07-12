@@ -11,10 +11,7 @@
             <task-card v-for="task, index in list" :key="index"
                        :title="task"></task-card>
         </draggable>
-        <footer class="process-foot">
-            <img :src="addIcon" alt="..." class="icon">
-            <span class="text">添加任务</span>
-        </footer>
+        <new-task></new-task>
     </div>
 </template>
 
@@ -22,8 +19,10 @@
   import Draggable from 'vuedraggable'
 
   import addIcon from '@/assets/icons/nav_bar/add.png'
+
   import TaskCard from './TaskCard.vue'
   import Badge from '../Badge.vue'
+  import NewTask from './NewTask.vue'
 
   export default {
     props: {
@@ -39,7 +38,8 @@
     components: {
       TaskCard,
       Badge,
-      Draggable
+      Draggable,
+      NewTask
     },
     computed: {
       dragOptions () {
@@ -54,8 +54,7 @@
 
 <style lang="scss" scoped>
     .ghost {
-        opacity: .5;
-        background: #C8EBFB;
+        opacity: 0.3;
     }
 
     .process-board {
