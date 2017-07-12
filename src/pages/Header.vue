@@ -1,17 +1,54 @@
 /**
-* Created by dustar on 2017/7/10.
+* Created by dustar on 2017/7/12.
 */
 
 <template>
-  <div id="home-container">
-    <project v-if="currentMode === Mode.project"></project>
-    <my v-else-if="currentMode === Mode.my" v-on:leaveMy="leaveMy"></my>
+  <div id="home-header">
+    <div id="home-left">
+      <div id="project-header" v-if="currentMode === Mode.project || (currentMode === Mode.my && lastMode === Mode.project)">
+        <div id="project-icon"><img :src="iconProject"></div>
+        <div id="project-name">{{ projectName }}</div>
+      </div>
+      <div id="index-header" v-else-if="currentMode === Mode.index">
+        <div id="index-name">{{ websiteName }}</div>
+      </div>
+      <div id="project-search">
+        <el-input
+          placeholder="在个人项目中搜索"
+          icon="search"
+          v-model="searchBarInput">
+        </el-input>
+      </div>
+      <div id="project-add">
+        <add-icon></add-icon>
+      </div>
+    </div>
+    <div id="home-right">
+      <div class="home-menu">
+        <div class="home-menu-item" :class='{currentmenu: currentMenu === "feedback"}'
+             @click="currentMenu='feedback'">
+          <img :src="iconFeedback">
+        </div>
+        <div class="home-menu-item" :class='{currentmenu: currentMenu === "my"}'
+             @click="currentMode=Mode.my;currentMenu='my'">
+          <img :src="iconMy">
+        </div>
+        <div class="home-menu-item" :class='{currentmenu: currentMenu === "message"}' @click="currentMenu='message'">
+          <img :src="iconMessage">
+        </div>
+        <el-badge v-show="messageCount>0" :value="messageCount" class="item">
+        </el-badge>
+        <avatar-dropdown>
+          <div @click="currentMenu='setting'">
+            <img id="avatar" :src="avatarDefault">
+          </div>
+        </avatar-dropdown>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import Project from './Project.vue'
-  import My from './My.vue'
   import iconProject from '@/assets/icons/nav_bar/project.png'
   import iconProjectOn from '@/assets/icons/nav_bar/project-on.png'
   import iconAdd from '@/assets/icons/nav_bar/add.png'
@@ -53,8 +90,6 @@
     },
     mixins: [],
     components: {
-      Project,
-      My,
       AddIcon,
       AvatarDropdown
     },
@@ -80,12 +115,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  #home-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
   img {
     width: 20px;
     height: 20px;

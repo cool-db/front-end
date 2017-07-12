@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from 'PAGES/Home.vue'
+import Header from 'PAGES/Header.vue'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: Home
+    component: Header
   }
 ]
 
