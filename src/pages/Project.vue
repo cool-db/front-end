@@ -258,6 +258,8 @@
     width: 350px;
     top: 98px;
     right: 0px;
+    height: calc(100vh - 98px);
+    overflow-y: scroll;
     box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.20);
 
   }
@@ -275,7 +277,6 @@
   }
   .rightbar-content {
     background: #F8F8F8;
-    height: 549px;
   }
   .rightbar-name {
     font-size: 18px;

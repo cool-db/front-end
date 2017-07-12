@@ -39,6 +39,12 @@
           { isUser: true, avatar: sort, name: '薛英琛', checked: false },
           { isUser: true, avatar: filter, name: '西蒙', checked: false },
           { isUser: true, avatar: executive, name: '谢天', checked: false },
+          { isUser: true, avatar: sort, name: '薛英琛', checked: false },
+          { isUser: true, avatar: filter, name: '西蒙', checked: false },
+          { isUser: true, avatar: executive, name: '谢天', checked: false },
+          { isUser: true, avatar: sort, name: '薛英琛', checked: false },
+          { isUser: true, avatar: filter, name: '西蒙', checked: false },
+          { isUser: true, avatar: executive, name: '谢天', checked: false },
           { isUser: true, avatar: sort, name: '谢地', checked: false }
         ],
         dates: [
