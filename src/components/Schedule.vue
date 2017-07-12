@@ -54,7 +54,7 @@
 
 <style>
   .schedule {
-    margin-top:50px;
+    margin-top:14px;
     display:flex;
     /*height:500px;*/
     flex-direction:column;
@@ -89,10 +89,10 @@
   .pages{
     display:flex;
     flex-direction:column;
-    margin-top:30px;
+    margin-top:6px;
   }
   .line{
-    height:8px;
+    height:11px;
     width:187px;
     background-color:#33CCCC;
   }

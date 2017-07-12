@@ -58,8 +58,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1000px;
+    width: 995px;
     padding: 10px;
+    margin-left:13px;
+    /*margin-right:25px;*/
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    border-bottom-color:#A1BDBF;
   }
 
   .left{
@@ -109,13 +114,14 @@
   }
 
   .plane{
-    height: 25px;
-    width: 25px;
+    height: 15px;
+    width: 15px;
   }
 
   .address{
     font-size: 14px;
-    color: #3A3A3A;
+    color: #979797;
+    margin-left: 5px;
   }
 
   .rline1{

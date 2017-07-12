@@ -7,7 +7,7 @@
           {{date}}
         </div>
       </div>
-      <schedule-item v-for="(item, index) in fake"
+      <schedule-item class="a" v-for="(item, index) in fake"
                      :key="index"
                      :timeSlot="item.timeSlot"
                      :alarmDisplay="item.alarmDisplay"
@@ -55,16 +55,22 @@
 
 <style scoped>
   .dateSchedule {
-    margin-top:50px;
+    margin-top:20px;
     left: 60px;
     top: 30px;
     width:1040px;
-    background-color: #E7F1F0 ;
+    background-color: #E7F1F0;
+    border-radius: 4px;
+    padding-bottom:10px;
   }
-
+  .a:last-child
+  {
+    border-bottom-color: transparent;
+  }
   .bread-wrapper{
     display: flex;
     flex-direction: column;
+    margin-top:5px;
   }
   .picture {
     height: 23px;
