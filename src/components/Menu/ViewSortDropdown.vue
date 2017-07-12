@@ -43,7 +43,7 @@
     width: 100%;
   }
   .dropdown {
-    width: 200px;
+    width: 340px;
   }
   .item {
     display: flex;

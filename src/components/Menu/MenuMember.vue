@@ -10,7 +10,7 @@
         class="search-bar"
         icon="close"
         :on-icon-click="clearInput"
-        placeholder="输入用户名或邮箱，可查找成员或邀请新成员"
+        placeholder="输入用户名或邮箱，可查找或邀请新成员"
         @select="handleSelect"
         v-model="current"
       >
