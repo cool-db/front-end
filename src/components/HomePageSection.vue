@@ -3,7 +3,23 @@
     <div class="iOwnProject">
       <div class="headline1">
         我拥有的项目
-        <div class="line" id="line1"></div>
+        <div class="line"></div>
+      </div>
+      <div class="Projects">
+        <homepage-project></homepage-project>
+        <homepage-project></homepage-project>
+        <el-card class="box-card" id="addProject">
+          <img class="addIcon" :src="add" />
+          <div>创建新项目</div>
+        </el-card>
+      </div>
+      
+    </div>
+    
+    <div class="participatedProject">
+      <div class="headline1">
+        我参与的项目
+        <div class="line"></div>
       </div>
       <div class="Projects">
         <homepage-project></homepage-project>
@@ -18,9 +34,9 @@
     <div class="achievedProject">
       <div class="headline1">
         已归档的项目
-        <div class="line" id="line2"></div>
+        <el-button type="text" id="display" @click="dispaly">{{displayOrConceal}}</el-button>
       </div>
-      <div class="Projects">
+      <div class="Projects" v-if="displayAchieved">
         <homepage-project></homepage-project>
         <homepage-project></homepage-project>
         <homepage-project></homepage-project>
@@ -35,9 +51,25 @@
 
 <script>
   import homepageProject from 'COMPONENTS/HomepageProject'
+  import add from '@/assets/icons/new_item/add.png'
   export default {
     data () {
-      return {}
+      return {
+        add,
+        displayAchieved: false,
+        displayOrConceal: '显示'
+      }
+    },
+    methods: {
+      dispaly: function () {
+        if (this.displayOrConceal === '显示') {
+          this.displayOrConceal = '隐藏'
+          this.displayAchieved = true
+        } else {
+          this.displayOrConceal = '显示'
+          this.displayAchieved = false
+        }
+      }
     },
     components: {
       homepageProject
@@ -85,9 +117,41 @@
     margin-bottom: 50px;
   }
   
+  #addProject{
+    width: 240px;
+    height: 120px;
+    margin-left: 50px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: #B3BDC6;
+  }
+  
+  .addIcon{
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+  }
   .achievedProject{
     display: flex;
     flex-direction: column;
     width: 1000px;
+    align-items: center;
   }
+  
+  #display{
+    margin-top: -8px;
+    margin-left: 30px;
+    font-size: 16px;
+  }
+  
+  .participatedProject{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+  }
+  
 </style>
