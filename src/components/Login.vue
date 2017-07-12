@@ -27,7 +27,7 @@
         <div class="account"> 还没有账户？</div>
 
         <el-button class="text" type="text">
-          <router-link to="d">注册新账号</router-link>
+          <router-link to="d" style="text-decoration: none; color:#33CCCC">注册新账号</router-link>
         </el-button>
 
       </div>

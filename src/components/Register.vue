@@ -17,7 +17,16 @@
           <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button class="button" type="primary" @click="submitForm('ruleForm2')">确认注册</el-button>
+          <el-button class="button" type="primary" @click="submitForm('ruleForm2')">
+            确认注册
+          </el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button class="button" type="primary">
+            <router-link to="/a" style="text-decoration: none; color:white">
+              返回登录
+           </router-link>
+          </el-button>
         </el-form-item>
       </el-form>
 
@@ -111,7 +120,7 @@
 
   .Register {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     width:280px;
     height:400px;
