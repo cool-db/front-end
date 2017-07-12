@@ -94,6 +94,7 @@
                     background-color: #E7F1F0;
                     line-height: 16px;
                     overflow-y: visible;
+                    margin-right: 5px;
                 }
             }
 
