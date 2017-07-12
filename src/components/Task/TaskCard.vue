@@ -5,7 +5,7 @@
             <div>
                 <check-box :checked="checked" :disabled="disabled"
                            class="check"></check-box>
-                <span>任务名称</span>
+                <span>{{title}}</span>
             </div>
             <img src="" alt="..." class="avatar">
         </div>
@@ -24,6 +24,9 @@
   import Badge from '../Badge.vue'
 
   export default {
+    props: {
+      title: String
+    },
     data () {
       return {
         checked: false,
@@ -42,7 +45,7 @@
         box-sizing: border-box;
         position: relative;
         min-height: 40px;
-        margin: 0 8px;
+        margin: 10px 8px;
         cursor: pointer;
 
         .transition {
@@ -61,7 +64,7 @@
         .head {
             background-color: #fff;
             height: 40px;
-            font-size: 16px;
+            font-size: 15px;
             display: flex;
             flex-direction: row;
             justify-content: space-between;

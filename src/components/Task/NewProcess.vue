@@ -38,7 +38,7 @@
         .words {
             display: inline-block;
             color: #A1BDBF;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
             margin-bottom: 15px;
         }

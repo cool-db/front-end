@@ -2,12 +2,15 @@
     <div class="process-board">
         <header class="process-head">
             <div class="left">
-                <span class="state">已完成</span>
+                <span class="state">{{processName}}</span>
                 <badge>12</badge>
             </div>
             <i class="el-icon-more"></i>
         </header>
-        <task-card></task-card>
+        <draggable v-model="list" class="drag-wrapper" :options="dragOptions">
+            <task-card v-for="task, index in list" :key="index"
+                       :title="task"></task-card>
+        </draggable>
         <footer class="process-foot">
             <img :src="addIcon" alt="..." class="icon">
             <span class="text">添加任务</span>
@@ -16,32 +19,54 @@
 </template>
 
 <script>
+  import Draggable from 'vuedraggable'
+
   import addIcon from '@/assets/icons/nav_bar/add.png'
   import TaskCard from './TaskCard.vue'
   import Badge from '../Badge.vue'
 
   export default {
+    props: {
+      processName: String,
+      taskList: Array
+    },
     data () {
       return {
-        addIcon
+        addIcon,
+        list: this.taskList
       }
     },
     components: {
       TaskCard,
-      Badge
+      Badge,
+      Draggable
+    },
+    computed: {
+      dragOptions () {
+        return {
+          group: 'task',
+          ghostClass: 'ghost'
+        }
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
+    .ghost {
+        opacity: .5;
+        background: #C8EBFB;
+    }
+
     .process-board {
         width: 290px;
-        height: 100%;
+        height: calc(100vh - 117px);
         background-color: #E7F1F0;
         margin-right: 20px;
         box-sizing: border-box;
         border-bottom: 5px solid #33CCCC;
         border-radius: 4px;
+        overflow-y: scroll;
 
         &:first-child {
             margin-left: 15px;
@@ -52,7 +77,7 @@
             flex-direction: row;
             justify-content: space-between;
             margin: 13px 15px 13px 25px;
-            font-size: 18px;
+            font-size: 16px;
             color: #888888;
 
             .left {
@@ -70,10 +95,14 @@
             }
         }
 
+        .drag-wrapper {
+            min-height: 20px;
+        }
+
         .process-foot {
             display: flex;
             flex-direction: row;
-            margin: 10px 15px 0 25px;
+            margin: 10px 15px 15px 25px;
             cursor: pointer;
 
             .icon {
