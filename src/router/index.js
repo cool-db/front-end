@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from 'PAGES/Home.vue'
-import HomepageSection from 'COMPONENTS/HomepageSection.vue'
+import Home from 'PAGES/Home.vue'
+// import ScheduleItem from 'COMPONENTS/ScheduleItem.vue'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: HomepageSection
+    component: Home
   }
 ]
 
