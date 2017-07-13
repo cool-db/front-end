@@ -8,9 +8,9 @@
 
       <home-card
         v-for="n in 6"
+        :key="n"
         projName="项目名称"
-        projNote="项目说明"
-        :key="n"></home-card>
+        projNote="项目说明"></home-card>
 
       <el-card class="new-proj">
         <div class="new-proj-box">
@@ -25,9 +25,9 @@
 
       <home-card
         v-for="n in 5"
+        :key="n"
         projName="项目名称"
-        projNote="项目说明"
-        :key="n"></home-card>
+        projNote="项目说明"></home-card>
 
     </div>
   </div>
@@ -36,14 +36,12 @@
 <script>
   import HomeCard from '@/components/HomeCard.vue'
   import Badge from '@/components/Badge.vue'
-  import img from '@/assets/logo.png'
   export default {
     components: {HomeCard, Badge},
     data () {
       return {
         ownCount: 6,
-        joinCount: 5,
-        img
+        joinCount: 5
       }
     }
   }
@@ -54,6 +52,8 @@
     display: flex;
     display: -webkit-flex;
     justify-content: center;
+    height: calc(100vh - 49px);
+    overflow-y: scroll;
   }
 
   .home-page-box{

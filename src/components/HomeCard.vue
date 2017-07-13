@@ -1,6 +1,11 @@
 <template>
   <div class="home-card-box">
-    <el-card class="single-proj" :style="{backgroundImage: 'url(' + picBg + ')' }">
+    <!--<el-card class="single-proj" :style="{backgroundImage: 'url(' + coverDemo + ')' }" v-if="attr">-->
+      <!--<div class="proj-name">{{projName}}</div>-->
+      <!--<div class="proj-note">{{projNote}}</div>-->
+    <!--</el-card>-->
+
+    <el-card class="single-proj" :style="{backgroundImage: 'url(' + coverMedia + ')' }">
       <div class="proj-name">{{projName}}</div>
       <div class="proj-note">{{projNote}}</div>
     </el-card>
@@ -9,11 +14,13 @@
 </template>
 
 <script>
-  import picBg from '@/assets/cover-demo.jpg'
+  import coverDemo from '@/assets/cover-demo.jpg'
+  import coverMedia from '@/assets/cover-media.jpg'
   export default {
     data () {
       return {
-        picBg
+        coverDemo,
+        coverMedia
       }
     },
     props: ['projName', 'projNote']
@@ -34,12 +41,12 @@
   .proj-name {
     font-size: 18px;
     padding-bottom: 5px;
-    color: #888;
+    color: white;
   }
 
   .proj-note {
     font-size: 16px;
     padding-top: 5px;
-    color: #888;
+    color: white;
   }
 </style>
