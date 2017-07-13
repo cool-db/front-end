@@ -1,7 +1,9 @@
 import hello from './hello'
-import process from './process'
+import task from './task'
+import user from './user'
 
 export default {
   hello,
-  process
+  task,
+  user
 }

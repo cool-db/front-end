@@ -3,7 +3,7 @@
  */
 
 import { addNamespace } from '@/util/commonUtil'
-const namespace = addNamespace('users')
+const namespace = addNamespace('user')
 
 export const INCREASE = namespace('INCREASE')
 export const DOWN = namespace('DOWN')
@@ -25,12 +25,12 @@ const state = {
     }, {
       name: '谢地',
       avatar: null,
-      email: '381029382@qq.com',
+      email: '444449382@qq.com',
       permission: 0
     }, {
       name: 'Andi Obama',
       avatar: null,
-      email: '381029382@qq.com',
+      email: '19922382@qq.com',
       permission: 1
     }
   ],
@@ -49,7 +49,7 @@ const getters = {
   members: state => state.members,
   permissions: state => state.permissions,
   usersCount: state => state.members.length,
-  permissionsCount: state => state.permissions.length,
+  permissionsCount: state => state.permissions.length
 }
 
 const actions = {

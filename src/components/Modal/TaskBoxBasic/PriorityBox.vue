@@ -5,50 +5,35 @@
 <template>
   <div class="PriorityBox">
     <div id="priority-title">优先级</div>
-    <priority-select :items="items" :owner="mode" @changeP="changeP">
+    <priority-select :items="emers" :owner="data.emergency" @changeP="changeP">
       <div id="priority-info">
-        <img id="priority-avatar" :src="items[mode].icon">
-        <span id="priority-name" :class="'mode-'+mode">{{items[mode].title}}</span>
+        <img id="priority-avatar" :src="emers[data.emergency].icon">
+        <span id="priority-name" :class="'mode-'+data.emergency">{{emers[data.emergency].title}}</span>
       </div>
     </priority-select>
   </div>
 </template>
 
 <script>
-  import Vital from '@/assets/icons/new_item/priority-vital.png'
-  import Emer from '@/assets/icons/new_item/priority-emergent.png'
-  import Easy from '@/assets/icons/new_item/priority-easy.png'
   import PrioritySelect from './PrioritySelect.vue'
+  import {mapGetters} from 'vuex'
   export default {
     components: {PrioritySelect},
-    name: 'PriorityBox',
     data () {
       return {
-        Modes: {
-          easy: 0,
-          emer: 1,
-          vital: 2
-        },
-        isSet: true,
-        Vital,
-        Emer,
-        Easy,
-        items: [],
-        mode: 0
-
+        isSet: true
       }
     },
+    computed: mapGetters([
+      'emers'
+    ]),
+    props: ['data'],
     methods: {
       changeP (command) {
-        this.mode = parseInt(command)
+        this.data.emergency = parseInt(command)
+        // this.mode = parseInt(command)
+        // this.ce(parseInt(command))
       }
-    },
-    created () {
-      this.items = [
-        {icon: this.Easy, title: '普通'},
-        {icon: this.Emer, title: '紧急'},
-        {icon: this.Vital, title: '非常紧急'}
-      ]
     }
   }
 </script>

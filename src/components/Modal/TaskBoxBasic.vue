@@ -5,10 +5,10 @@
 <template>
     <div id="TaskBoxBasic">
       <div class="taskBox">
-        <owner-box class="taskSubBox rightBorder" id="ownerBox"></owner-box>
-        <deadline-box class="taskSubBox rightBorder" id="deadlineBox"></deadline-box>
-        <priority-box class="taskSubBox rightBorder" id="priorityBox">priorityBox</priority-box>
-        <repeat-box class="taskSubBox" id="repeatBox">repeatBox</repeat-box>
+        <owner-box :data="data" class="taskSubBox rightBorder" id="ownerBox"></owner-box>
+        <deadline-box :data="data" class="taskSubBox rightBorder" id="deadlineBox"></deadline-box>
+        <priority-box :data="data" class="taskSubBox rightBorder" id="priorityBox">priorityBox</priority-box>
+        <repeat-box :data="data" class="taskSubBox" id="repeatBox">repeatBox</repeat-box>
       </div>
     </div>
 </template>
@@ -18,6 +18,7 @@
   import DeadlineBox from './TaskBoxBasic/DeadlineBox.vue'
   import PriorityBox from './TaskBoxBasic/PriorityBox.vue'
   import RepeatBox from './TaskBoxBasic/RepeatBox.vue'
+
   export default {
     components: {
       RepeatBox,
@@ -25,7 +26,7 @@
       DeadlineBox,
       OwnerBox
     },
-    name: 'TaskBoxBasic'
+    props: ['data']
   }
 </script>
 

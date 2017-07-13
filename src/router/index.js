@@ -8,34 +8,67 @@ import Schedule from 'PAGES/Schedule.vue'
 import File from 'PAGES/File.vue'
 import My from 'PAGES/My.vue'
 import PersonalSetting from 'PAGES/PersonalSetting.vue'
+import TaskModal from 'COMPONENTS/TaskModal.vue'
+import HomePageSection from 'PAGES/HomePageSection.vue'
 
 Vue.use(Router)
 
+// const routes = [{
+//   path: '/',
+//   component: Header,
+//   redirect: '/project',
+//   children: [{
+//     path: '/project',
+//     redirect: '/project/task',
+//     component: Project,
+//     children: [{
+//       path: '/project/task',
+//       component: TaskHome
+//     }, {
+//       path: '/project/schedule',
+//       component: Schedule
+//     }, {
+//       path: '/project/file',
+//       component: File
+//     }]
+//   }, {
+//     path: '/my',
+//     component: My
+//   }]
+// }]
 const routes = [{
   path: '/',
   component: Header,
   redirect: '/project',
-  children: [{
-    path: '/project',
-    redirect: '/project/task',
-    component: Project,
-    children: [{
-      path: '/project/task',
-      component: TaskHome
+  children: [
+    {
+      path: 'home',
+      component: HomePageSection
+    },
+    {
+      path: '/project',
+      redirect: '/project/task',
+      component: Project,
+      children: [{
+        path: '/project/task',
+        component: TaskHome
+      }, {
+        path: '/project/schedule',
+        component: Schedule
+      }, {
+        path: '/project/file',
+        component: File
+      }]
     }, {
-      path: '/project/schedule',
-      component: Schedule
+      path: '/my',
+      component: My
     }, {
-      path: '/project/file',
-      component: File
+      path: '/setting',
+      component: PersonalSetting
     }]
-  }, {
-    path: '/my',
-    component: My
-  }, {
-    path: '/setting',
-    component: PersonalSetting
-  }]
+}, {
+  path: '/modal',
+  component: TaskModal
 }]
 
 export default new Router({
