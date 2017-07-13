@@ -1,29 +1,47 @@
 <template>
   <div class="home-card-box">
-    <!--<el-card class="single-proj" :style="{backgroundImage: 'url(' + coverDemo + ')' }" v-if="attr">-->
-      <!--<div class="proj-name">{{projName}}</div>-->
-      <!--<div class="proj-note">{{projNote}}</div>-->
-    <!--</el-card>-->
 
-    <el-card class="single-proj" :style="{backgroundImage: 'url(' + coverMedia + ')' }">
+    <el-card class="single-proj" :style="{backgroundImage: 'url(' + tellBackground + ')' }">
       <div class="proj-name">{{projName}}</div>
       <div class="proj-note">{{projNote}}</div>
     </el-card>
-  </div>
 
+  </div>
 </template>
 
 <script>
-  import coverDemo from '@/assets/cover-demo.jpg'
-  import coverMedia from '@/assets/cover-media.jpg'
+  import EiCapitan from '@/assets/proj_background/EI_Capitan.png'
+  import EiCapitan2 from '@/assets/proj_background/EI_Capitan_2.png'
+  import MilkyWay from '@/assets/proj_background/Milky_Way.png'
+  import Sierra2 from '@/assets/proj_background/Sierra_2.png'
+  import Yosemite2 from '@/assets/proj_background/Yosemite_2.png'
   export default {
     data () {
       return {
-        coverDemo,
-        coverMedia
+        EiCapitan,
+        EiCapitan2,
+        MilkyWay,
+        Sierra2,
+        Yosemite2
       }
     },
-    props: ['projName', 'projNote']
+    props: ['projName', 'projNote'],
+    computed: {
+      tellBackground: function () {
+        var randomNum = Math.random()
+        if (randomNum < 0.2) {
+          return EiCapitan
+        } else if (randomNum < 0.4) {
+          return EiCapitan2
+        } else if (randomNum < 0.6) {
+          return MilkyWay
+        } else if (randomNum < 0.8) {
+          return Sierra2
+        } else {
+          return Yosemite2
+        }
+      }
+    }
   }
 </script>
 
