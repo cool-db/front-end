@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import emoji from '@/assets/icons/my_profile/emoji.png'
+  import emoji from '@/assets/icons/my_profile/new-project.png'
 
   import { addProject } from 'API/projectApi'
 
@@ -66,6 +66,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .emoji{
+      margin: 15px;
     }
 
     .newProject1 {
