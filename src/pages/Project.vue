@@ -116,7 +116,7 @@
     methods: {
       changeTab (tabName) {
         this.currentPage = tabName
-        this.$router.push(`/project/${tabName}`)
+        this.$router.push(`/project/${this.$route.params.pid}/${tabName}`)
       }
     }
   }

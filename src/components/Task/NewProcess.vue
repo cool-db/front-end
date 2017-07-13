@@ -52,7 +52,6 @@
         padding-top: 13px;
         padding-left: 25px;
         padding-right: 20px;
-        margin-left: 20px;
 
         .words {
             display: inline-block;

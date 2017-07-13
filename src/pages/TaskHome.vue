@@ -50,5 +50,7 @@
         height: 100%;
         width: 100%;
         overflow-x: scroll;
+        padding-left: 15px;
+        box-sizing: border-box;
     }
 </style>

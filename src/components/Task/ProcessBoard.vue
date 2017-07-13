@@ -81,10 +81,6 @@
         border-radius: 4px;
         overflow-y: scroll;
 
-        &:first-child {
-            margin-left: 15px;
-        }
-
         .process-head {
             display: flex;
             flex-direction: row;

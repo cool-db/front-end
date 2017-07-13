@@ -29,7 +29,7 @@
                     </div>
                     <div class="home-menu-item"><img :src="iconMessage"></div>
                     <avatar-dropdown>
-                        <img id="avatar" :src="avatar?avatar:avatarDefault">
+                        <img id="avatar" :src="avatar ? avatar : avatarDefault">
                     </avatar-dropdown>
                 </div>
             </div>
@@ -159,6 +159,7 @@
         padding-left: 5px;
         line-height: 49px;
     }
+
     #avatar {
         width: 40px;
         height: 40px;
