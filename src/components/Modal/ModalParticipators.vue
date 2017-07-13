@@ -3,53 +3,54 @@
 */
 
 <template>
-    <div class="container">
-      <div class="header">
-        <img class="icon" :src="pIcon">
-        <span>参与者</span>
-      </div>
-
-      <div class="avatar-wall">
-        <div class="avatar-container" v-for="user in users">
-          <img class="avatar" :src="user.avatar">
-        </div>
-        <select-member :users="otherusers" @onChange="this.alert('hi')" :owner="0" class="add"></select-member>
-      </div>
-
+  <div class="container">
+    <div class="header">
+      <img class="icon" :src="pIcon">
+      <span>参与者</span>
     </div>
+
+    <div class="avatar-wall">
+      <div class="avatar-container" v-for="user in pts">
+        <img class="avatar" :src="user.avatar">
+      </div>
+      <select-member :users="mems" @onChange="" :owner="0" class="add"></select-member>
+    </div>
+
+  </div>
 </template>
 
 <script>
   import pIcon from '@/assets/icons/new_item/participator.png'
   import SelectMember from '../SelectMember.vue'
+  import {mapState} from 'vuex'
   export default {
     components: {SelectMember},
     data () {
       return {
         pIcon,
         hovered: false,
-        otherusers: [
-          {avatar: pIcon}
-        ],
-        users: [
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon}
-        ]
+        mems: null
       }
+    },
+    computed: {
+      ...mapState({
+        'pts': state => state.task.task.members,
+        'members': state => state.user.users
+      })
+    },
+    created () {
+      this.changeMems()
+//      this.pts.forEach(i => console.log(i.id))
+//      console.log('---')
+//      this.members.forEach(i => console.log(i.id))
+    },
+    methods: {
+      changeMems () {
+        this.mems = this.members.filter((u) => {
+          return this.pts.findIndex(v => u.id === v.id) === -1
+        })
+      }
+
     }
   }
 </script>
@@ -84,24 +85,28 @@
     margin-left: 0px;
     margin-right: 10px;
   }
+
   .avatar-wall {
     display: flex;
     flex-direction: row;
     margin: 8px 20px 8px 25px;
     flex-wrap: wrap;
   }
+
   .avatar-container {
     margin: 5.5px;
   }
+
   .avatar {
     width: 25px;
     height: 25px;
-    border-radius: 100%;
-    border: #686868 0.5px solid;
+    border-radius: 50%;
   }
-  .container:hover{
+
+  .container:hover {
     color: #33CCCC;
   }
+
   .add {
     margin-left: 6px;
     margin-top: 6px;

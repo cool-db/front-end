@@ -22,7 +22,7 @@
           </el-button>
         </el-form-item>
         <el-form-item>
-          <el-button class="button btn-back" @click="this.$router.replace('/auth')">
+          <el-button class="button btn-back" @click="back()">
             <!--<router-link to="/auth" replace>-->
             返回登录
             <!--</router-link>-->
@@ -92,6 +92,9 @@
       }
     },
     methods: {
+      back () {
+        this.$router.replace('/home')
+      },
       requestRegister: function () {
         register(this.ruleForm.email, this.ruleForm.password).then(({id}) => {
           localStorage.token = id

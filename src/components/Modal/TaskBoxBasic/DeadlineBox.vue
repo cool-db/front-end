@@ -6,7 +6,7 @@
   <div class="DeadlineBox">
     <div id="deadline-title">截止时间</div>
 
-    <deadline-select :value2="data.ddl">
+    <deadline-select>
       <img id="deadline-avatar" :src="iconCalendar">
     </deadline-select>
   </div>

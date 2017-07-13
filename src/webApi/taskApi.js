@@ -17,16 +17,21 @@ function getTaskList (projectId) {
   return util.httpGet(util.baseURL + 'task/list?projectId=' +  projectId)
 }
 
-function updateInfo (taskId, executorId, userId) {
-  return util.httpPut(util.baseURL + 'task/item', {
+function updateInfo (taskId, userId, name, content, ddl, ownerId, emergencyType) {
+  return util.httpPut(util.baseURL + 'task', {
     taskId: taskId,
-    executorId: executorId,
-    userId: userId
+    name: name,
+    userId: userId,
+    content: content,
+    ddl: ddl,
+    ownerId: ownerId,
+    emergencyType: emergencyType
   })
 }
 
-function getInfo (projectId, taskId) {
-  return util.httpGet(util.baseURL + 'task/item?projectId=' + projectId + '&taskId' + taskId)
+
+function getInfo (taskId) {
+  return util.httpGet(util.baseURL + 'task/?taskId=' + taskId)
 }
 
 function updateState (taskId, userId, state) {
@@ -67,10 +72,11 @@ function updateSubtaskState (subtaskId, userId) {
   })
 }
 
-function addMember (taskId, participatorIds) {
-  return util.httpDel(util.baseURL + 'task/participator', {
+function addMember (taskId, userId, participatorId) {
+  return util.httpPost(util.baseURL + 'task/participator', {
     taskId: taskId,
-    participatorIds: participatorIds
+    userId: userId,
+    participatorId: participatorId
   })
 }
 
@@ -85,6 +91,14 @@ function getMemberList (taskId) {
   return util.httpGet(util.httpGet + 'task/participator/list?taskId=' + taskId)
 }
 
+function deleteAttachFile (fileId, taskId, userId) {
+  console.log(fileId, taskId, userId, "last")
+  return util.httpPost(util.baseURL + 'task/attachment', {
+    fileId: fileId,
+    taskId: taskId,
+    userId: userId
+  })
+}
 
 module.exports = {
   createTask,
@@ -100,5 +114,6 @@ module.exports = {
   updateSubtaskState,
   addMember,
   deleteMember,
-  getMemberList
+  getMemberList,
+  deleteAttachFile
 }

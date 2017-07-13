@@ -5,10 +5,10 @@
 <template>
   <div class="owner-box">
     <div id="owner-title">执行者</div>
-    <owner-select :users="members" :owner="data.executorId" @changeOwner="changeOwner">
+    <owner-select :users="members" :owner="exId">
       <div id="owner-info">
-        <img id="owner-avatar" :src="isSet?members[data.executorId].avatar:blankAvatar">
-        <span id="owner-name" :class="isSet?'':'grey'">{{isSet ? members[data.executorId].name : '未认领'}}</span>
+        <img id="owner-avatar" :src="members.find(u => exId === u.id).avatar">
+        <span id="owner-name">{{ members.find(u => exId === u.id).name }}</span>
       </div>
     </owner-select>
 
@@ -19,7 +19,7 @@
   import OwnerSelect from './OwnerSelect.vue'
   import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
 
-  import {mapGetters} from 'vuex'
+  import {mapState, mapGetters} from 'vuex'
 
   export default {
     data () {
@@ -28,17 +28,21 @@
         isSet: false
       }
     },
-    props: ['data'],
-    computed: mapGetters([
-      'members'
-    ]),
-    methods: {
-      changeOwner (command) {
-        command = parseInt(command)
-        this.data.executorId = command >= 0 ? command : null
-        this.isSet = this.data.executorId !== null
-      }
+    computed: {
+      ...mapGetters([
+        'members'
+      ]),
+      ...mapState({
+        exId: state => state.task.task.executorId
+      })
     },
+//    methods: {
+//      changeOwner (command) {
+//        command = parseInt(command)
+//        this.data.executorId = command >= 0 ? command : null
+//        this.isSet = this.data.executorId !== null
+//      }
+//    },
     components: {
       OwnerSelect
     }
@@ -47,8 +51,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .OwnerBox {
-  }
 
   #owner-title {
     font-size: 12px;

@@ -3,7 +3,7 @@
 */
 
 <template>
-  <el-dropdown class="container" trigger="click" :menu-align="'start'" @command="handleCommand">
+  <el-dropdown class="container" trigger="click" :menu-align="'start'" @command="handleDate">
     <slot>
     error
     </slot>
@@ -29,7 +29,7 @@
       'items'
     ],
     methods: {
-      handleCommand (command) {
+      handleDate (command) {
         console.log(command + '1')
         this.$emit('changeMode', command)
       }

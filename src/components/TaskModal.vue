@@ -26,7 +26,8 @@
   import TaskContent from '@/components/Modal/TaskContent.vue'
   import ModalFooterInput from '@/components/Modal/ModalFooterInput.vue'
 
-  import { mapGetters, mapState } from 'vuex'
+  import {mapState, mapGetters, mapActions} from 'vuex'
+  import {INITTASK} from 'MODULE/task'
 
   export default {
     components: {
@@ -36,11 +37,17 @@
       ModalFooterInput
     },
     computed: {
-      ...mapGetters([
-        'task'
-      ]),
+      ...mapGetters(['task']),
       ...mapState({
-        progressName: state => state.task.task.progressName
+        'progressName': state => state.task.task.progressName
+      })
+    },
+    mounted () {
+      this.initTask(44).catch(err => this.$message.error(err))
+    },
+    methods: {
+      ...mapActions({
+        'initTask': INITTASK
       })
     }
   }

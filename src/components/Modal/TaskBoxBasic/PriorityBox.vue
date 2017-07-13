@@ -30,7 +30,7 @@
         'emers'
       ]),
       ...mapState({
-        emerIndex: state => state.task.task.emergency
+        emerIndex: state => state.task.task.emergencyType
       })
     }
   }

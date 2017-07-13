@@ -19,13 +19,13 @@
             <img :src="user.avatar">
           </div>
           <div class="my-name">
-            {{user.name?user.name:'无姓名'}}
+            {{user.name ? user.name : '无姓名'}}
             <el-dropdown>
               <span class="my-per">
-                {{ user.permission }} <i class="el-icon-caret-bottom"></i>
+                {{ permissions[0]?permissions[0]:'游客' }} <i class="el-icon-caret-bottom"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>{{ user.permission?user.permission:'default' }}</el-dropdown-item>
+                <el-dropdown-item>{{ permissions[0]?permissions[0]:'游客' }}</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
@@ -39,8 +39,14 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
   export default {
-    props: ['user']
+    props: ['user'],
+    computed: {
+      ...mapGetters([
+        'permissions'
+      ])
+    }
   }
 </script>
 
@@ -57,6 +63,7 @@
     display: flex;
     flex-direction: row;
   }
+
   .info-panel {
     width: 200px;
     height: 100%;
@@ -65,13 +72,15 @@
     flex-direction: column;
     align-items: center;
   }
-  .my-avatar img{
+
+  .my-avatar img {
     width: 90px;
     height: 90px;
     margin-top: 20px;
     border: white solid 0.5px;
     border-radius: 100%;
   }
+
   .my-name {
     font-size: 18px;
     line-height: 24px;
@@ -79,6 +88,7 @@
     margin-top: 10px;
     color: white;
   }
+
   .my-email {
     font-size: 16px;
     line-height: 24px;
@@ -86,21 +96,25 @@
     /*margin-top: 10px;*/
     color: #A1BDBF;
   }
+
   .my-per {
     cursor: pointer;
     color: #dddddd;
     font-size: 14px;
     margin-left: 5px;
   }
+
   .my-per i {
     font-size: 5px;
   }
+
   .my-per:hover {
     color: #33cccc;
   }
+
   .task-btn, .per-btn {
     background: yellow;
-    width:104px;
+    width: 104px;
     height: 50%;
   }
 </style>

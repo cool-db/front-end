@@ -11,7 +11,8 @@
       <el-dropdown-item disabled>可选择用户列表</el-dropdown-item>
       <el-dropdown-item v-for="(user, key) in users" :key="user.id" :command="''+user.id">
           <span class="user">
-            <div :class="owner.id === user.id?'active':''" class="user-item"><img class="avatar" :src="user.avatar">{{user.name}}</div>
+            <div :class="owner.id === user.id?'active':''" class="user-item"><img class="avatar"
+                                                                                  :src="user.avatar">{{user.name}}</div>
             <div v-if="owner.id === user.id"><i class="el-icon-check"></i></div>
           </span>
       </el-dropdown-item>
@@ -21,8 +22,8 @@
 
 <script>
   import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
-  import {mapMutations} from 'vuex'
-  import {CHANGEEXECUTOR} from 'MODULE/task'
+  import {mapActions, mapState} from 'vuex'
+  import {ADDMEMBER} from 'MODULE/task'
   export default {
     data () {
       return {
@@ -34,12 +35,17 @@
       'users',
       'owner'
     ],
+    computed: {
+      ...mapState({
+        'taskid': state => state.task.task.taskId
+      })
+    },
     methods: {
       handleData (command) {
-        this.changeE(parseInt(command))
+        this.changeE({partId: parseInt(command), taskId: this.taskid}).catch(err => this.$message.error(err))
       },
-      ...mapMutations({
-        changeE: CHANGEEXECUTOR
+      ...mapActions({
+        changeE: ADDMEMBER
       })
     }
   }
