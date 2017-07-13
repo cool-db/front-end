@@ -9,9 +9,11 @@
 </template>
 
 <script>
+  import picBg from '@/assets/cover-demo.jpg'
   export default {
     data () {
       return {
+        picBg
       }
     },
     props: ['projName', 'projNote']
@@ -22,8 +24,8 @@
   .home-card-box{
     margin: 5px 8px;
     cursor: pointer;
-    background-image: url(/src/assets/cover-demo.jpg);
-    background-position: center;
+    /*background-image: url("/src/assets/cover-demo.jpg");*/
+    /*background-position: center;*/
   }
 
   .single-proj{

@@ -13,6 +13,8 @@
         <img :src="iconAdd" alt="add"/>
       </el-card>
 
+      <!--<img :src="picBg"/>-->
+
     </div>
   </div>
 </template>
@@ -20,12 +22,14 @@
 <script>
   import HomeCard from '@/components/HomeCard.vue'
   import iconAdd from '@/assets/icons/index/add-new-task-list.png'
+  import picBg from '@/assets/cover-demo.jpg'
   export default {
     components: {
       HomeCard},
     data () {
       return {
-        iconAdd
+        iconAdd,
+        picBg
       }
     }
   }
