@@ -38,6 +38,7 @@
   import HomeCard from '@/components/HomeCard.vue'
   import Badge from '@/components/Badge.vue'
   import img from '@/assets/logo.png'
+
   export default {
     components: {HomeCard, Badge},
     data () {
@@ -46,6 +47,12 @@
         joinCount: 5,
         img
       }
+    },
+    methods () {
+
+    },
+    created () {
+
     }
   }
 </script>
