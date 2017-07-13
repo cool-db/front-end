@@ -16,6 +16,7 @@ export const ADDMEMBER = namespace('ADDMEMBER')
 export const SAVETASK = namespace('SAVETASK')
 export const SHOWTASKMODAL = namespace('SHOWTASKMODAL')
 export const HIDETASKMODAL = namespace('HIDETASKMODAL')
+export const CHANGEEMER = namespace('CHANGEEMER')
 
 const state = {
   show: false,
@@ -74,9 +75,9 @@ const mutations = {
   // [CHANGEEXECUTOR] (state, id) {
   //   state.task.executorId = id
   // },
-  // [CHANGEEMER] (state, emer) {
-  //   state.task.emergency = emer
-  // },
+  [CHANGEEMER] (state, emer) {
+    state.task.emergency = emer
+  },
   // [ADDCOMMENT] (state, comment) {
   //   state.task.comment.push(comment)
   // },

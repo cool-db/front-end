@@ -4,9 +4,7 @@
     <div class="divider"></div>
     <rich-editor :text.sync="data.content">task</rich-editor>
     <task-box-basic class="box" :data="data"></task-box-basic>
-    <!--<modal-task-list class="box"></modal-task-list>-->
     <modal-file-list class="box" :data="data"></modal-file-list>
-    <!--<modal-calendar-list class="box"></modal-calendar-list>-->
     <modal-new-attach-box class="box" :data="data"></modal-new-attach-box>
     <modal-participators class="box" :data="data"></modal-participators>
   </div>
@@ -15,10 +13,8 @@
 <script>
   import TextEdit from '../TextEdit.vue'
   import RichEditor from './RichEditor.vue'
-  //  import ModalTaskList from './ModalTaskList.vue'
   import ModalFileList from './ModalFileList.vue'
   import TaskBoxBasic from './TaskBoxBasic.vue'
-  //  import ModalCalendarList from './ModalCalendarList.vue'
   import ModalNewAttachBox from './ModalNewAttachBox.vue'
   import ModalParticipators from './ModalParticipators.vue'
 
@@ -45,8 +41,6 @@
       RichEditor,
       TaskBoxBasic,
       ModalFileList
-      // ModalTaskList,
-      // ModalCalendarList
     }
   }
 </script>
