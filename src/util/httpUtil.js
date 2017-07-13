@@ -9,7 +9,6 @@ import request from 'superagent'
  * @return {Function} errXhrWrapper
  */
 const baseXhr = (errHandler) => ({url, method = 'GET', body = null}) => {
-
   return new Promise((resolve, reject) =>
     request(method, url)
       .send(body)
@@ -24,7 +23,6 @@ const baseXhr = (errHandler) => ({url, method = 'GET', body = null}) => {
       })
   ).catch(errHandler)
 }
-
 
 /**
  * error-handler是直接更改位于root的toast的状态

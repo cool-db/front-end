@@ -27,7 +27,7 @@
                     <el-input v-model="formLabelAlign.website"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary">保存修改</el-button>
+                    <el-button type="primary" @click="saveModify">保存修改</el-button>
                     <el-button>清空内容</el-button>
                 </el-form-item>
             </el-form>
@@ -41,15 +41,17 @@
   import logo from '@/assets/logo.png'
   import Avatar from './Avatar.vue'
 
+  import { changeUserInformation, getUserInformation } from 'API/userApi'
+
   export default {
     data () {
       return {
         labelPosition: 'right',
         formLabelAlign: {
-          name: '王丹丹',
+          name: '',
           birthday: '',
-          website: 'www.github.com',
-          phonenumber: '15392919283',
+          website: '',
+          phonenumber: '',
           avatar: logo
         },
         project,
@@ -59,7 +61,19 @@
     },
     components: {
       Avatar
-    }
+    },
+    methods: {
+      saveModify () {
+        changeUserInformation()
+      },
+      getInfo () {
+        getUserInformation(21)
+          .then(item => {
+            this.data = item
+          }).catch(err => this.$message.error(err.message))
+      }
+    },
+    created () {}
   }
 
 </script>
