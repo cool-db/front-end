@@ -1,6 +1,6 @@
 <template>
     <div class="home-card-box" @click="jumpToProject">
-        <el-card class="single-proj" :style="{backgroundImage: 'url(' + picBg + ')' }">
+        <el-card class="single-proj" :style="{backgroundImage: 'url(' + tellBackground + ')' }">
             <div class="proj-name">{{projName}}</div>
             <div class="proj-note">{{projNote}}</div>
         </el-card>
@@ -8,17 +8,41 @@
 </template>
 
 <script>
-  import picBg from '@/assets/cover-demo.jpg'
+  import EiCapitan from '@/assets/proj_background/EI_Capitan.png'
+  import EiCapitan2 from '@/assets/proj_background/EI_Capitan_2.png'
+  import MilkyWay from '@/assets/proj_background/Milky_Way.png'
+  import Sierra2 from '@/assets/proj_background/Sierra_2.png'
+  import Yosemite2 from '@/assets/proj_background/Yosemite_2.png'
   export default {
     data () {
       return {
-        picBg
+        EiCapitan,
+        EiCapitan2,
+        MilkyWay,
+        Sierra2,
+        Yosemite2
       }
     },
     props: ['projName', 'projNote', 'id'],
     methods: {
       jumpToProject () {
         this.$router.push(`/project/${this.id}`)
+      }
+    },
+    computed: {
+      tellBackground: function () {
+        const randomNum = Math.random()
+        if (randomNum < 0.2) {
+          return EiCapitan
+        } else if (randomNum < 0.4) {
+          return EiCapitan2
+        } else if (randomNum < 0.6) {
+          return MilkyWay
+        } else if (randomNum < 0.8) {
+          return Sierra2
+        } else {
+          return Yosemite2
+        }
       }
     }
   }
@@ -35,15 +59,15 @@
         height: 148px;
     }
 
-    .proj-name {
-        font-size: 18px;
-        padding-bottom: 5px;
-        color: #888;
-    }
+  .proj-name {
+    font-size: 18px;
+    padding-bottom: 5px;
+    color: white;
+  }
 
-    .proj-note {
-        font-size: 16px;
-        padding-top: 5px;
-        color: #888;
-    }
+  .proj-note {
+    font-size: 16px;
+    padding-top: 5px;
+    color: white;
+  }
 </style>
