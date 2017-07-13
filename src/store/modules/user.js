@@ -75,10 +75,10 @@ const actions = {
     }).catch(err => console.log(err))
   },
   [INVITE] ({commit, state}, {pId, uId, email}) {
-    return addPerson(info, pId).then(({members}) => {
-      commit(MADDMEMBERS, uid, members)
-      // state.members = members
-    }).catch(err => console.log(err))
+    // return addPerson(info, pId).then(({members}) => {
+    //   commit(MADDMEMBERS, uid, members)
+    //   // state.members = members
+    // }).catch(err => console.log(err))
   }
 
 }

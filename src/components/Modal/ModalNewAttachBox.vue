@@ -12,7 +12,6 @@
 <script>
   import iconAdd from '@/assets/icons/new_item/add-subtask.png'
   export default {
-    name: 'ModalNewAttachBox',
     data () {
       return {
         iconAdd,
@@ -25,6 +24,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .container {
+    cursor: pointer;
     background: white;
     border-radius: 4px;
     border: 0.5px #e8e8e8 solid;

@@ -10,10 +10,10 @@
       </div>
 
       <div class="avatar-wall">
-        <div class="avatar-container" v-for="user in users">
+        <div class="avatar-container" v-for="user in pts">
           <img class="avatar" :src="user.avatar">
         </div>
-        <select-member :users="otherusers" @onChange="this.alert('hi')" :owner="0" class="add"></select-member>
+        <select-member :users="members" @onChange="this.alert('hi')" :owner="0" class="add"></select-member>
       </div>
 
     </div>
@@ -22,34 +22,22 @@
 <script>
   import pIcon from '@/assets/icons/new_item/participator.png'
   import SelectMember from '../SelectMember.vue'
+  import {mapState} from 'vuex'
   export default {
     components: {SelectMember},
     data () {
       return {
         pIcon,
-        hovered: false,
-        otherusers: [
-          {avatar: pIcon}
-        ],
-        users: [
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon},
-          {avatar: pIcon}
-        ]
+        hovered: false
       }
+    },
+    computed: {
+      ...mapState({
+        pts: state => state.task.task.members,
+        members: state => state.user.users
+      })
+    },
+    methods: {
     }
   }
 </script>
@@ -96,8 +84,7 @@
   .avatar {
     width: 25px;
     height: 25px;
-    border-radius: 100%;
-    border: #686868 0.5px solid;
+    border-radius: 50%;
   }
   .container:hover{
     color: #33CCCC;

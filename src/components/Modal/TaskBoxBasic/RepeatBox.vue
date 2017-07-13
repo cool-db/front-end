@@ -5,10 +5,10 @@
 <template>
   <div class="RepeatBox">
     <div id="repeat-title">重复</div>
-    <repeat-select :mode="data.repeat" :items="repeats" @changeR="changeR">
+    <repeat-select :mode="repeatIndex" :items="repeats">
       <div id="repeat-info">
         <img id="repeat-avatar" :src="repeatIcon">
-        <span id="repeat-name" :class="data.repeat !== 0?'':'grey'">{{ repeats[data.repeat] }}</span>
+        <span id="repeat-name" :class="repeatIndex !== 0?'':'grey'">{{ repeats[repeatIndex] }}</span>
       </div>
     </repeat-select>
 
@@ -18,28 +18,23 @@
 <script>
   import repeatIcon from '@/assets/icons/new_item/repeat.png'
   import RepeatSelect from './RepeatSelect.vue'
-
-  import {mapGetters} from 'vuex'
+  import { mapGetters, mapState } from 'vuex'
 
   export default {
     components: {RepeatSelect},
-    name: 'RepeatBox',
     data () {
       return {
         repeatIcon
       }
     },
     props: ['data'],
-    computed: mapGetters([
-      'repeats'
-    ]),
-
-    methods: {
-      changeR (command) {
-        this.data.repeat = parseInt(command)
-//        this.$alert(parseInt(command))
-//        this.cr(parseInt(command))
-      }
+    computed: {
+      ...mapGetters([
+        'repeats'
+      ]),
+      ...mapState({
+        repeatIndex: state => state.task.task.repeat
+      })
     }
   }
 </script>

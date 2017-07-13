@@ -11,8 +11,8 @@
 </template>
 
 <script>
-  import activeIcon from '@/assets/icons/new_item/add-participator.png'
-  import normalIcon from '@/assets/icons/new_item/add-subtask.png'
+  import activeIcon from '@/assets/icons/new_item/part.png'
+  import normalIcon from '@/assets/icons/new_item/parta.png'
   import OwnerSelect from './Modal/TaskBoxBasic/OwnerSelect.vue'
   export default {
     components: {OwnerSelect},

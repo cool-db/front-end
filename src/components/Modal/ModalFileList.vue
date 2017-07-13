@@ -1,23 +1,25 @@
 <template>
+  <div>
+    <modal-attach-head
+      type="文件" :icon="icon">
+    </modal-attach-head>
     <div>
-        <modal-attach-head
-                type="日程" :icon="icon">
-        </modal-attach-head>
-        <div>
-            <multi-list :list="fileList">
-                <template slot="item" scope="scope">
-                    <modal-attach-body
-                            :executor="scope.props.executor"
-                            :avatar="scope.props.avatar">
-                        <div class="file-slot" @mouseenter="currentMouseOn = scope.index" @mouseleave="currentMouseOn = null">
-                          <div class="item"><img class="img" :src="scope.props.icon"><div>{{scope.props.filename}}</div></div>
-                          <modal-attach-delete :index="scope.index" :mouse="currentMouseOn"></modal-attach-delete>
-                        </div>
-                    </modal-attach-body>
-                </template>
-            </multi-list>
-        </div>
+      <multi-list :list="relatefiles">
+        <template slot="item" scope="scope">
+          <modal-attach-body
+            :executor="scope.props.userName"
+            :avatar="scope.props.avatar">
+            <div class="file-slot" @mouseenter="currentMouseOn = scope.index" @mouseleave="currentMouseOn = null">
+              <div class="item"><img class="img" :src="scope.props.icon">
+                <div>{{scope.props.name}}</div>
+              </div>
+              <modal-attach-delete :index="scope.index" :mouse="currentMouseOn"></modal-attach-delete>
+            </div>
+          </modal-attach-body>
+        </template>
+      </multi-list>
     </div>
+  </div>
 </template>
 
 <script>
@@ -27,6 +29,8 @@
 
   import file from '@/assets/icons/new_item/related-file.png'
   import ModalAttachDelete from './ModalAttachDelete.vue'
+
+  import {mapState} from 'vuex'
 
   export default {
     data () {
@@ -50,6 +54,11 @@
         }]
       }
     },
+    computed: {
+      ...mapState({
+        relatefiles: state => state.task.task.files
+      })
+    },
     components: {
       ModalAttachDelete,
       ModalAttachHead,
@@ -60,17 +69,19 @@
 </script>
 
 <style lang="scss" scoped>
-    .file-slot {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
+  .file-slot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   .img {
     height: 20px;
     width: 20px;

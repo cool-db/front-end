@@ -4,15 +4,18 @@
 
 <template>
   <transition name="fade">
-    <img v-if="index===mouse" :src="hovered?active:del" @mouseenter="hovered=true" @mouseleave="hovered=false">
+    <img v-if="index===mouse" :src="hovered?active:del" @mouseenter="hovered=true" @mouseleave="hovered=false" @click="rmFiles(index)">
   </transition>
 </template>
 
 <script>
   import del from '@/assets/icons/drop_down_menu/delete.png'
   import active from '@/assets/icons/my_profile/red-delete.png'
+
+  import { REMOVERELATEFILES } from 'MODULE/task'
+  import { mapActions, mapState } from 'vuex'
+
   export default {
-    name: 'ModalAttachDelete',
     data () {
       return {
         del,
@@ -20,13 +23,33 @@
         hovered: false
       }
     },
-    props: ['mouse', 'index']
+    computed: {
+      ...mapState({
+        'taskid': state => state.task.task.taskId
+      })
+    },
+    props: ['mouse', 'index'],
+    methods: {
+      ...mapActions({
+        rmf: REMOVERELATEFILES
+      }),
+      rmFiles (index) {
+        this.$confirm('确认刪除该文件？')
+          .then(_ => {
+            console.log(this.taskid, index)
+            this.rmf(this.taskid, index).then().catch(err => { this.$message.error(err) })
+          })
+          .catch(_ => {
+          })
+      }
+    }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   img {
+    cursor: pointer;
     height: 20px;
     width: 20px;
     margin-left: 10px;

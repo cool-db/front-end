@@ -3,7 +3,7 @@
 */
 
 <template>
-  <el-dropdown trigger="click" :menu-align="'start'" @command="handleCommand">
+  <el-dropdown trigger="click" :menu-align="'start'" @command="handleDate">
     <slot class="el-dropdown-link">
       Error
     </slot>
@@ -19,23 +19,27 @@
 </template>
 
 <script>
-    export default {
-      name: 'RepeatSelect',
-      data () {
-        return {
+  import {mapMutations} from 'vuex'
+  import {CHANGEREPEAT} from 'MODULE/task'
+  export default {
+    name: 'RepeatSelect',
+    data () {
+      return {}
+    },
+    props: [
+      'mode',
+      'items'
+    ],
 
-        }
+    methods: {
+      handleDate (command) {
+        this.changeRepeat(parseInt(command))
       },
-      props: [
-        'mode',
-        'items'
-      ],
-      methods: {
-        handleCommand (command) {
-          this.$emit('changeR', command)
-        }
-      }
+      ...mapMutations({
+        changeRepeat: CHANGEREPEAT
+      })
     }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -46,14 +50,17 @@
     align-items: center;
     justify-content: space-between;
   }
+
   .r-item {
     color: #475669;
     display: flex;
     align-items: center;
   }
+
   .active {
-    color:#33CCCC;
+    color: #33CCCC;
   }
+
   i {
     color: #13CE66;
   }

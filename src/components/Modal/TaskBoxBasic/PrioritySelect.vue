@@ -3,7 +3,7 @@
 */
 
 <template>
-    <el-dropdown trigger="click" :menu-align="'start'" @command="handleCommand">
+    <el-dropdown trigger="click" :menu-align="'start'" @command="handleDate">
         <slot class="el-dropdown-link">
             Error
         </slot>
@@ -31,7 +31,7 @@
       'owner'
     ],
     methods: {
-      handleCommand (command) {
+      handleDate (command) {
         this.changeEmer(parseInt(command))
       },
       ...mapMutations({

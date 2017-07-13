@@ -3,30 +3,26 @@
 */
 
 <template>
-  <el-dropdown trigger="click" :menu-align="'start'" @command="handleCommand">
+  <el-dropdown trigger="click" :menu-align="'start'" @command="handleData">
     <slot class="el-dropdown-link">
       Error
     </slot>
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item disabled>可选择用户列表</el-dropdown-item>
-        <el-dropdown-item :command="'-1'">
+    <el-dropdown-menu slot="dropdown">
+      <el-dropdown-item disabled>可选择用户列表</el-dropdown-item>
+      <el-dropdown-item v-for="(user, key) in users" :key="user.id" :command="''+user.id">
           <span class="user">
-            <div :class="owner===null?'active':''" class="user-item"><img class="avatar" :src="blankAvatar">未认领</div>
-            <div v-if="owner === null"><i class="el-icon-check"></i></div>
+            <div :class="owner.id === user.id?'active':''" class="user-item"><img class="avatar" :src="user.avatar">{{user.name}}</div>
+            <div v-if="owner.id === user.id"><i class="el-icon-check"></i></div>
           </span>
-        </el-dropdown-item>
-        <el-dropdown-item v-for="(user, key) in users" :key="key" :command="key.toString()">
-          <span class="user">
-            <div :class="owner===key?'active':''" class="user-item"><img class="avatar" :src="user.avatar">{{user.name}}</div>
-            <div v-if="owner === key"><i class="el-icon-check"></i></div>
-          </span>
-        </el-dropdown-item>
-      </el-dropdown-menu>
+      </el-dropdown-item>
+    </el-dropdown-menu>
   </el-dropdown>
 </template>
 
 <script>
   import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
+  import {mapMutations} from 'vuex'
+  import {CHANGEEXECUTOR} from 'MODULE/task'
   export default {
     data () {
       return {
@@ -39,9 +35,12 @@
       'owner'
     ],
     methods: {
-      handleCommand (command) {
-        this.$emit('changeOwner', command)
-      }
+      handleData (command) {
+        this.changeE(parseInt(command))
+      },
+      ...mapMutations({
+        changeE: CHANGEEXECUTOR
+      })
     }
   }
 </script>
@@ -55,18 +54,22 @@
     align-items: center;
     justify-content: space-between;
   }
+
   .user-item {
     color: #475669;
     display: flex;
     align-items: center;
   }
+
   .active {
-    color:#33CCCC;
+    color: #33CCCC;
   }
+
   .avatar {
     height: 20px;
     padding-right: 10px;
   }
+
   i {
     color: #13CE66;
   }
