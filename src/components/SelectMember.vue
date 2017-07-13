@@ -4,18 +4,18 @@
 
 <template>
     <div class="select-member">
-      <owner-select :users="users" :owner="owner" @changeOwner="onChange">
+      <part-select :users="users" :owner="owner" @changeOwner="onChange">
         <img :src="isHovered?activeIcon:normalIcon" @mouseenter="isHovered=true" @mouseleave="isHovered=false">
-      </owner-select>
+      </part-select>
     </div>
 </template>
 
 <script>
   import activeIcon from '@/assets/icons/new_item/part.png'
   import normalIcon from '@/assets/icons/new_item/parta.png'
-  import OwnerSelect from './Modal/TaskBoxBasic/OwnerSelect.vue'
+  import PartSelect from './Modal/TaskBoxBasic/PartSelect.vue'
   export default {
-    components: {OwnerSelect},
+    components: {PartSelect},
     data () {
       return {
         activeIcon,

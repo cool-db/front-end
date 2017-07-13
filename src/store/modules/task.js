@@ -7,7 +7,7 @@ import Emer from '@/assets/icons/new_item/priority-emergent.png'
 import Easy from '@/assets/icons/new_item/priority-easy.png'
 
 import {addNamespace} from '@/util/commonUtil'
-import {getInfo, updateInfo, deleteAttachFile} from 'API/taskApi'
+import {getInfo, updateInfo, deleteAttachFile, addMember} from 'API/taskApi'
 const namespace = addNamespace('task')
 
 export const DELETE = namespace('DELETE')
@@ -24,6 +24,7 @@ export const CHANGEDDL = namespace('CHANGEDDL')
 export const CHANGEEXECUTOR = namespace('CHANGEEXECUTOR')
 export const REMOVERELATEFILES = namespace('REMOVERELATEFILES')
 export const REMOVEFILE = namespace('REMOVEFILE')
+export const PUSHMEMBER = namespace('PUSHMEMBER')
 
 const state = {
   show: false,
@@ -121,12 +122,19 @@ const mutations = {
   },
   [REMOVEFILE] (state, index) {
     state.task.files.splice(index, 1)
+  },
+  [PUSHMEMBER] (state, participators) {
+    state.task.members = participators
   }
 }
 
 const actions = {
-  [ADDMEMBER] (state, member) {
-    state.task.members.push(member)
+  [ADDMEMBER] ({state, commit}, {taskId, partId}) {
+    const userId = parseInt(localStorage.getItem('token'))
+    console.log(userId, taskId, partId)
+    addMember(taskId, userId, partId).then(({participators}) => {
+      commit(PUSHMEMBER, participators)
+    })
   },
   [INITTASK] ({commit, state}, taskId) {
     getInfo(taskId)
@@ -142,8 +150,8 @@ const actions = {
     )
   },
   [REMOVERELATEFILES] ({state, commit}, {taskId, index}) {
-    const userId = localStorage.getItem('token')
-    console.log(userId, index, state.task.files[index].id)
+    const userId = parseInt(localStorage.getItem('token'))
+    console.log(userId, taskId, state.task.files[index].id)
     deleteAttachFile(state.task.files[index].id, taskId, userId).then(() => {
       commit(REMOVEFILE, index)
     })

@@ -71,10 +71,11 @@ function updateSubtaskState (subtaskId, userId) {
   })
 }
 
-function addMember (taskId, participatorIds) {
-  return util.httpDel(util.baseURL + 'task/participator', {
+function addMember (taskId, userId, participatorId) {
+  return util.httpPost(util.baseURL + 'task/participator', {
     taskId: taskId,
-    participatorIds: participatorIds
+    userId: userId,
+    participatorId: participatorId
   })
 }
 
@@ -90,7 +91,8 @@ function getMemberList (taskId) {
 }
 
 function deleteAttachFile (fileId, taskId, userId) {
-  return util.httpDel(util.baseURL + 'task/attachment', {
+  console.log(fileId, taskId, userId, "last")
+  return util.httpPost(util.baseURL + 'task/attachment', {
     fileId: fileId,
     taskId: taskId,
     userId: userId
@@ -111,5 +113,6 @@ module.exports = {
   updateSubtaskState,
   addMember,
   deleteMember,
-  getMemberList
+  getMemberList,
+  deleteAttachFile
 }

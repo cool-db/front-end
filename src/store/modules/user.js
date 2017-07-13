@@ -26,6 +26,26 @@ const state = {
       'id': 1,
       'name': 'xt',
       'permission': 2
+    },
+    {
+      'id': 99,
+      'name': 'cuicui@cuicui.cn',
+      'permission': 0
+    },
+    {
+      'id': 33,
+      'name': 'xt',
+      'permission': 2
+    },
+    {
+      'id': 77,
+      'name': 'cuicui@cuicui.cn',
+      'permission': 0
+    },
+    {
+      'id': 44,
+      'name': 'xt',
+      'permission': 2
     }
   ],
   permissions: [

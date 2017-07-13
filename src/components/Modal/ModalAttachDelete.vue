@@ -36,8 +36,8 @@
       rmFiles (index) {
         this.$confirm('确认刪除该文件？')
           .then(_ => {
-            console.log(this.taskid, index)
-            this.rmf(this.taskid, index).then().catch(err => { this.$message.error(err) })
+            console.log({taskId: this.taskid, index: index})
+            this.rmf({taskId: this.taskid, index: index}).then().catch(err => { this.$message.error(err) })
           })
           .catch(_ => {
           })
