@@ -5,8 +5,8 @@
       <el-checkbox v-model="checked" id="checkbox"></el-checkbox>
       <div id="body">
         <div id="row1">
-          <div id="taskName">{{taskName}}</div>
-          <div id="projectName">{{projectName}}</div>
+          <div id="taskName">{{item.name}}</div>
+          <div id="projectName">{{item.ddl}}</div>
         </div>
         <div id="fatherTask">{{fatherTask}}</div>
       </div>
@@ -29,7 +29,8 @@
         deadline: '下周二',
         fatherTask: '属于任务：' + '父任务名称'
       }
-    }
+    },
+    props: ['item']
   }
 </script>
 

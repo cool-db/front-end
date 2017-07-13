@@ -1,10 +1,10 @@
 /**
  * Created by xueyingchen.
  */
-import { createTask, getTaskList, updateState } from 'API/taskApi'
-import { listProgress, createProgress, delProgress } from 'API/projectApi'
+import {createTask, getTaskList, updateState, getRecentTask} from 'API/taskApi'
+import {listProgress, createProgress, delProgress} from 'API/projectApi'
 
-import { addNamespace, getIndexByAttr } from '@/util/commonUtil'
+import {addNamespace, getIndexByAttr} from '@/util/commonUtil'
 const namespace = addNamespace('process')
 
 export const INITDATA = namespace('INITDATA')
@@ -15,9 +15,11 @@ export const CHANGEPROCESSNAME = namespace('CHANGEPROCESSNAME')
 export const CHANGETASKORDER = namespace('CHANGETASKORDER')
 export const DELETEPROCESS = namespace('DELETEPROCESS')
 export const CHANGETASKSTATE = namespace('CHANGETASKSTATE')
-
-const MINITDATA = namespace('MINITDATA')
+export const INITRECENTDATA = namespace('INITRECENTDATA')
+export const COMMITRECENTDATA = namespace('COMMITRECENTDATA')
+export const MINITRECENTDATA = namespace('MINITRECENTDATA')
 const MADDTASK = namespace('MADDTASK')
+const MINITDATA = namespace('MINITDATA')
 const MCHANGETASKSTATE = namespace('CHANGETASKSTATE')
 
 function getProcess (tasks, processes) {
@@ -32,7 +34,8 @@ function getProcess (tasks, processes) {
 }
 
 const state = {
-  data: []
+  data: [],
+  recent: []
 }
 
 const getters = {}
@@ -52,6 +55,13 @@ const actions = {
         commit(MINITDATA, getProcess(tasks, progressList))
       })
   },
+  [INITRECENTDATA] ({commit}) {
+    const uid = localStorage.getItem('token')
+    getRecentTask(uid)
+      .then(({recentTask}) => {
+        commit(MINITRECENTDATA, recentTask)
+      })
+  },
   [ADDPROCESS] ({commit}, {pName, pid, uid}) {
     return createProgress(pName, pid, uid)
   },
@@ -65,6 +75,9 @@ const actions = {
 }
 
 const mutations = {
+  [COMMITRECENTDATA] (state, data) {
+    state.recent = data
+  },
   [DELETE] (state, index) {
     state.data.splice(index, 1)
   },
