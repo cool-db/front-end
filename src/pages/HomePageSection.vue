@@ -73,7 +73,7 @@
       }
     },
     created () {
-      const id = localStorage.token
+      const id = Number(localStorage.token)
       this.getAllProject(id)
         .then(({projects}) => this.classifyProject(projects, id))
         .then(data => {
