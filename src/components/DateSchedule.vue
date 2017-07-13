@@ -7,14 +7,22 @@
                     {{date}}
                 </div>
             </div>
-            <schedule-item class="a" v-for="(item, index) in fake"
-                           :key="index"
-                           :timeSlot="item.timeSlot"
-                           :alarmDisplay="item.alarmDisplay"
-                           :alarm="item.alarm"
-                           :scheduleContent="item.scheduleContent"
-                           :address="item.address">
-            </schedule-item>
+            <!--<schedule-item class="a" v-for="(item, index) in fake"-->
+                           <!--:key="index"-->
+                           <!--:timeSlot="item.timeSlot"-->
+                           <!--:alarmDisplay="item.alarmDisplay"-->
+                           <!--:alarm="item.alarm"-->
+                           <!--:scheduleContent="item.scheduleContent"-->
+                           <!--:address="item.address">-->
+            <!--</schedule-item>-->
+          <schedule-item class="a" v-for="(item, index) in fake"
+                         :key="index"
+                         :timeSlot="item.timeSlot"
+                         :alarmDisplay="item.alarmDisplay"
+                         :alarm="item.alarm"
+                         :scheduleContent="item.scheduleContent"
+                         :address="item.address">
+          </schedule-item>
         </div>
 
 

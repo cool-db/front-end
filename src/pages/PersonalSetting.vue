@@ -3,7 +3,7 @@
         <div id="setting">
             <div id="leftSection">
                 <div class="usercard">
-                    <avatar :src="null" class="my-avatar"></avatar>
+                    <avatar :src="" class="my-avatar"></avatar>
                     <div id="username">{{name}}</div>
                 </div>
                 <el-card id="selector">
