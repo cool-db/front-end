@@ -23,6 +23,7 @@
     margin: 5px 8px;
     cursor: pointer;
     background-image: url(/src/assets/cover-demo.jpg);
+    background-position: center;
   }
 
   .single-proj{
