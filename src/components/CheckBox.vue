@@ -5,34 +5,35 @@
 <script>
   import state from '@/assets/icons/index/state.png'
   import stateComplete from '@/assets/icons/index/state-complete.png'
-  import stateDisable from '@/assets/icons/index/state-disable.png'
+
+  import { mapActions } from 'vuex'
+  import { CHANGETASKSTATE } from 'MODULE/process'
 
   export default {
     props: {
-      disabled: Boolean,
-      checked: Boolean
-    },
-    data () {
-      return {
-        disable: this.disabled,
-        check: this.checked
-      }
+      checked: Boolean,
+      id: Number,
+      pIndex: Number,
+      tIndex: Number
     },
     computed: {
       imgUrl () {
-        if (!this.disable) {
-          return this.check ? stateComplete : state
-        } else {
-          return stateDisable
-        }
+        return this.checked ? stateComplete : state
       }
     },
     methods: {
       handleClick () {
-        if (!this.disable) {
-          this.check = !this.check
-        }
-      }
+        this.changeTaskState({
+          taskId: this.id,
+          userId: Number(localStorage.token),
+          checked: !this.checked,
+          tIndex: this.tIndex,
+          pIndex: this.pIndex
+        }).catch(err => this.$message.error(err.message))
+      },
+      ...mapActions({
+        changeTaskState: CHANGETASKSTATE
+      })
     }
   }
 </script>

@@ -35,7 +35,8 @@
     methods: {
       handleClick () {
         this.addTask({
-          id: this.id,
+          uid: Number(localStorage.token),
+          pid: this.id,
           name: this.content
         }).then(() => {
           this.isEdit = false

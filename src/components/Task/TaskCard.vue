@@ -1,10 +1,11 @@
 <template>
     <div class="card">
-        <div class="transition"></div>
+        <div :class="transtionState"></div>
         <div class="head">
             <div>
-                <check-box :checked="checked" :disabled="disabled"
-                           class="check"></check-box>
+                <check-box :checked="task.state"
+                           class="check" :id="task.taskId"
+                           :pIndex="pIndex" :tIndex="tIndex"></check-box>
                 <span>{{task.name}}</span>
             </div>
             <img src="" alt="..." class="avatar">
@@ -20,15 +21,12 @@
   import CheckBox from '../CheckBox.vue'
   import Badge from '../Badge.vue'
 
+  import { mapState } from 'vuex'
+
   export default {
     props: {
-      task: Object
-    },
-    data () {
-      return {
-        checked: this.task.state,
-        disabled: false
-      }
+      pIndex: Number,
+      tIndex: Number
     },
     components: {
       CheckBox,
@@ -38,6 +36,26 @@
       ddlFormat (value) {
         const date = new Date(value)
         return `${date.getMonth() + 1}月${date.getDate()}日截止`
+      }
+    },
+    methods: {},
+    computed: {
+      ...mapState({
+        data: state => state.process.data
+      }),
+      task () {
+        return this.data[this.pIndex].tasks[this.tIndex]
+      },
+      transtionState () {
+        const classState = (state) => `transition ${state}-emer`
+        switch (this.task.emergencyType) {
+          case 0:
+            return classState('normal')
+          case 1:
+            return classState('much')
+          case 2:
+            return classState('very')
+        }
       }
     }
   }
@@ -56,8 +74,19 @@
             width: 5px;
             transition: width 0.2s;
             height: 100%;
-            background-color: #FF4949;
             border-radius: 5px 0 0 5px;
+        }
+
+        .very-emer {
+            background-color: #FF4949;
+        }
+
+        .much-emer {
+            background-color: #F7BA2A;
+        }
+
+        .normal-emer {
+            background-color: #3E5568;
         }
 
         &:hover .transition {

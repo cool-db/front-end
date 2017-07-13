@@ -28,13 +28,18 @@
         addProcess: ADDPROCESS
       }),
       addProcessReload () {
-        const pid = this.$route.params.pid
+        const pid = Number(this.$route.params.pid)
+        const input = this.input
+        const uid = Number(localStorage.token)
         this.addProcess({
-          pName: this.input,
+          pName: input,
           pid,
-          uid: localStorage.token
-        }).then(() => this.addProcess())
-          .catch(err => this.$message.error(err.message))
+          uid
+        }).then(_ => this.initData({
+          pId: pid
+        })).then(_ => {
+          this.input = ''
+        }).catch(err => this.$message.error(err.message))
       }
     }
   }

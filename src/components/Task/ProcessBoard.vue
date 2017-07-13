@@ -2,23 +2,26 @@
     <div class="process-board">
         <header class="process-head">
             <div class="left">
-                <text-edit :content.sync="taskName" class="state"></text-edit>
+                <text-edit :content.sync="name" :onChange="onChange" class="state"></text-edit>
                 <badge>{{taskNumber}}</badge>
             </div>
-            <span class="el-dropdown-link">
+            <span class="el-dropdown-link" @click="deleteProcess">
                 <i class="el-icon-close"></i>
             </span>
         </header>
         <draggable v-model="list" class="drag-wrapper" :options="dragOptions">
-            <task-card v-for="task, index in list" :key="task.id"
-                       :task="task"></task-card>
+            <task-card v-for="task, index in list"
+                       :key="task.id"
+                       :pIndex="pIndex"
+                       :tIndex="index"></task-card>
         </draggable>
-        <new-task :id="processID"></new-task>
+        <new-task :id="pid"></new-task>
     </div>
 </template>
 
 <script>
   import Draggable from 'vuedraggable'
+  import { mapMutations, mapActions } from 'vuex'
 
   import addIcon from '@/assets/icons/nav_bar/add.png'
 
@@ -27,11 +30,13 @@
   import NewTask from './NewTask.vue'
   import TextEdit from '../TextEdit.vue'
 
+  import { CHANGEPROCESSNAME, CHANGETASKORDER, DELETEPROCESS, INITDATA } from 'MODULE/process'
+
   export default {
     props: {
-      processName: String,
-      taskList: Array,
-      processID: Number
+      pIndex: Number,
+      pid: Number,
+      name: String
     },
     data () {
       return {
@@ -52,17 +57,48 @@
           ghostClass: 'ghost'
         }
       },
+      list: {
+        get () {
+          return this.$store.state.process.data[this.pIndex].tasks
+        },
+        set (value) {
+          this.$store.commit(CHANGETASKORDER, {
+            index: this.pIndex,
+            value
+          })
+        }
+      },
       taskNumber () {
         return this.list.filter(item => !item.state).length
-      },
-      list () {
-        return this.taskList
-      },
-      taskName () {
-        return this.processName
       }
     },
-    methods: {}
+    methods: {
+      ...mapMutations({
+        changeProcessName: CHANGEPROCESSNAME
+      }),
+      ...mapActions({
+        delProcess: DELETEPROCESS,
+        initData: INITDATA
+      }),
+      onChange (value) {
+        this.changeProcessName({
+          index: this.pIndex,
+          name: value
+        })
+      },
+      deleteProcess () {
+        const projectId = this.$route.params.pid
+        this.$confirm('确认删除流程？')
+          .then(_ => {
+            this.delProcess({
+              pid: this.pid,
+              uid: Number(localStorage.token)
+            }).then(() => this.initData({
+              pId: projectId
+            })).catch(err => this.$message.error(err.message))
+          }).catch(_ => {})
+      }
+    }
   }
 </script>
 

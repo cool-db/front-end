@@ -1,9 +1,12 @@
 <template>
     <div class="task-home">
-        <process-board v-if="process.length > 0" v-for="item, index in process" :key="item.id"
-                       :processName="item.name"
-                       :taskList="item.tasks"
-                       :processID="item.id"></process-board>
+        <process-board v-if="process.length > 0"
+                       v-for="item, index in process"
+                       :key="item.id"
+                       :pIndex="index"
+                       :pid="item.id"
+                       :name="item.name">
+        </process-board>
         <new-process></new-process>
     </div>
 </template>
@@ -13,7 +16,7 @@
   import ProcessBoard from 'COMPONENTS/Task/ProcessBoard.vue'
   import NewProcess from 'COMPONENTS/Task/NewProcess.vue'
 
-  import {INITDATA} from 'MODULE/process'
+  import { INITDATA } from 'MODULE/process'
 
   export default {
     data () {
@@ -34,10 +37,9 @@
       })
     },
     created () {
-      const pid = this.$route.params.pid
+      const pId = this.$route.params.pid
       this.initData({
-        uId: localStorage.token,
-        pId: pid
+        pId
       }).catch(err => this.$message.error(err.message))
     }
   }

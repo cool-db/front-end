@@ -17,9 +17,7 @@
                             v-model="searchBarInput">
                     </el-input>
                 </div>
-                <div id="project-add">
-                    <add-icon></add-icon>
-                </div>
+                <add-icon></add-icon>
             </div>
             <div id="home-right">
                 <div class="home-menu">
@@ -84,12 +82,6 @@
         width: 20px;
         height: 20px;
         margin: 15px 10px 15px 10px;
-    }
-
-    #project-add {
-        cursor: pointer;
-        height: 100%;
-        margin-top: 13px;
     }
 
     #home-left img {
