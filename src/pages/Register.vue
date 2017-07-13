@@ -112,13 +112,20 @@
     margin-left: -90px;
   }
 
-  .Register {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    width: 290px;
-    height: 400px;
-    transform: translate(-50%, -50%);
+  /*.Register {*/
+  /*position: absolute;*/
+  /*top: 45%;*/
+  /*left: 50%;*/
+  /*width: 290px;*/
+  /*height: 400px;*/
+  /*transform: translate(-50%, -50%);*/
+  /*}*/
+
+  .Register{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 100px;
   }
 
   .register-logo{
@@ -145,19 +152,19 @@
   }
 
   /*.line {*/
-    /*width: 280px;*/
-    /*height: 1px;*/
-    /*margin-top: 50px;*/
-    /*margin-left: 10px;*/
-    /*background-color: #C0C0C0;*/
+  /*width: 280px;*/
+  /*height: 1px;*/
+  /*margin-top: 50px;*/
+  /*margin-left: 10px;*/
+  /*background-color: #C0C0C0;*/
   /*}*/
 
   /*footer{*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*font-size: 16px;*/
-    /*color: #3CC;*/
-    /*margin-top: 15px;*/
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*font-size: 16px;*/
+  /*color: #3CC;*/
+  /*margin-top: 15px;*/
   /*}*/
 </style>

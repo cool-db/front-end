@@ -77,11 +77,18 @@
     margin-left: -90px;
   }
 
-  .login {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  /*.login {*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+  /*}*/
+
+  .login{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 100px;
   }
 
   .login-logo{
