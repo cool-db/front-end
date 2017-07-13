@@ -218,7 +218,7 @@
   .file-master-2-box{
     display: flex;
     display: -webkit-flex;
-    width: 800px;
+    width: 952px;
     justify-content: flex-start;
     margin-top: 20px;
     flex-wrap: wrap;
