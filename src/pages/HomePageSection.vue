@@ -7,13 +7,13 @@
       <home-card
         v-for="n in 5"
         projName="项目名称"
-        projNote="项目说明"></home-card>
+        projNote="项目说明"
+        :key="n"></home-card>
 
       <el-card class="new-proj">
         <img :src="iconAdd" alt="add"/>
       </el-card>
 
-      <!--<img :src="picBg"/>-->
 
     </div>
   </div>
