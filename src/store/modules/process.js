@@ -1,64 +1,61 @@
 /**
  * Created by xueyingchen.
  */
-import { createTask } from 'API/taskApi.js'
+import { createTask, getTaskList } from 'API/taskApi'
+import { listProgress } from 'API/projectApi'
 
-const ID = 21
+const userId = 21
+// const projectId = 12
 
-import { addNamespace, getList, getIndexByAttr } from '@/util/commonUtil'
+import { addNamespace, getIndexByAttr } from '@/util/commonUtil'
 const namespace = addNamespace('process')
 
+export const INITDATA = namespace('INITDATA')
 export const DELETE = namespace('DELETE')
 export const ADDTASK = namespace('ADDTASK')
 export const ADDPROCESS = namespace('ADDPROCESS')
 export const CHANGEPROCESSNAME = namespace('CHANGEPROCESSNAME')
 
-const getTaskItem = (id) => ({
-  'id': 1,
-  'name': 'asd',
-  'content': 'sdfvx',
-  'progressId': id,
-  'state': true,
-  'ddl': '2017-07-12T23:30:00',
-  'emergencyType': 0
-})
+const MINITDATA = namespace('MINITDATA')
+const MADDTASK = namespace('MADDTASK')
 
-const progressList = [{
-  id: 1,
-  name: '准备开始',
-  order: 1
-}, {
-  id: 2,
-  name: '正在进行',
-  order: 2
-}]
-
-function getProcess (tasks) {
+function getProcess (tasks, processes) {
   let result = {}
-  tasks.forEach(item => {
-    result[item.progressId] ? result[item.progressId].push(item) : result[item.progressId] = [item]
+  processes.forEach(item => {
+    result[item.id] = []
   })
-  return progressList.map(item => Object.assign(item, {
+  tasks.forEach(item => result[item.progressId].push(item))
+  return processes.map(item => Object.assign(item, {
     tasks: result[item.id]
   }))
 }
 
-function getRandomTask () {
-  return getTaskItem((1.5 + Math.random()) | 0)
-}
-
 const state = {
-  data: getProcess(getList(getRandomTask, 15))
+  data: [{
+    id: 0,
+    name: '',
+    order: 0,
+    tasks: []
+  }]
 }
 
 const getters = {}
 
 const actions = {
-  [ADDTASK] ({state}, {id, name}) {
+  [ADDTASK] ({commit, state}, {id, name}) {
+    console.log(id, name)
     const idx = getIndexByAttr(id, state.data, 'id')
-    return createTask(name, ID, idx).then(item => {
-      state.data[idx].tasks.push(item)
+    return createTask(name, userId, id).then(item => {
+      commit(MADDTASK, {index: idx, task: item})
     })
+  },
+  [INITDATA] ({commit}, {uId, pId}) {
+    const processList = listProgress(pId)
+    const taskList = getTaskList(pId, uId)
+    return Promise.all([processList, taskList])
+      .then(([{progressList}, {tasks}]) => {
+        commit(MINITDATA, getProcess(tasks, progressList))
+      })
   }
 }
 
@@ -74,6 +71,12 @@ const mutations = {
   },
   [CHANGEPROCESSNAME] (state, index, title) {
     state.data[index].title = title
+  },
+  [MINITDATA] (state, data) {
+    state.data = data
+  },
+  [MADDTASK] (state, {index, task}) {
+    state.data[index].tasks.push(task)
   }
 }
 

@@ -4,7 +4,7 @@
         <img :src="addIcon" alt="..." class="icon">
         <span class="text">添加任务</span>
     </footer>
-    <div v-else class="editor" @blur="isEdit = false">
+    <div v-else class="editor">
         <el-input class="input"
                   type="textarea"
                   :autosize="{ minRows: 2 }"
@@ -34,10 +34,12 @@
     },
     methods: {
       handleClick () {
-        this.isEdit = false
         this.addTask({
           id: this.id,
           name: this.content
+        }).then(() => {
+          this.isEdit = false
+          this.content = ''
         }).catch(err => this.$message.error(err.message))
       },
       ...mapActions({

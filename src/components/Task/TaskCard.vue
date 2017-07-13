@@ -10,7 +10,7 @@
             <img src="" alt="..." class="avatar">
         </div>
         <div class="body">
-            <badge class="normal-tag">{{task.ddl | ddlFormat}}</badge>
+            <badge v-if="task.ddl" class="normal-tag">{{task.ddl | ddlFormat}}</badge>
             <i class="icon el-icon-date"></i>
         </div>
     </div>

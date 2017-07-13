@@ -10,7 +10,7 @@
             </span>
         </header>
         <draggable v-model="list" class="drag-wrapper" :options="dragOptions">
-            <task-card v-for="task, index in list" :key="index"
+            <task-card v-for="task, index in list" :key="task.id"
                        :task="task"></task-card>
         </draggable>
         <new-task :id="processID"></new-task>
@@ -35,9 +35,7 @@
     },
     data () {
       return {
-        addIcon,
-        list: this.taskList,
-        taskName: this.processName
+        addIcon
       }
     },
     components: {
@@ -56,6 +54,12 @@
       },
       taskNumber () {
         return this.list.filter(item => !item.state).length
+      },
+      list () {
+        return this.taskList
+      },
+      taskName () {
+        return this.processName
       }
     },
     methods: {}
