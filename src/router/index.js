@@ -18,10 +18,12 @@ Vue.use(Router)
 const routes = [{
   path: '/',
   component: Auth,
+  redirect: '/main',
   children: [{
     path: '/main',
     component: Header,
     redirect: '/home',
+    meta: { requiresAuth: true },
     children: [{
       path: '/home',
       component: HomePageSection
@@ -55,8 +57,26 @@ const routes = [{
   }]
 }]
 
-export default new Router({
+const router = new Router({
   routes,
   mode: 'history',
   strict: process.env.NODE_ENV !== 'production'
 })
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!token) {
+      next({
+        path: '/auth',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
+
+export default router
