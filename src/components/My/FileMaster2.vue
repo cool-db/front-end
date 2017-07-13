@@ -2,7 +2,15 @@
   <div class="file-master-2-main">
     <div class="file-master-2-box">
 
-      <single-file v-for="n in 5" fileInfo="邱宇航.avi" :key="n"></single-file>
+      <!--这里是数据测试区-->
+      <single-file fileName="邱宇航" fileType=".git"></single-file>
+      <single-file fileName="邱宇航" fileType=".html"></single-file>
+      <single-file fileName="邱宇航" fileType=".rar"></single-file>
+      <single-file fileName="邱宇航" fileType=".mp3"></single-file>
+      <single-file fileName="邱宇航" fileType=".ppt"></single-file>
+      <single-file fileName="邱宇航" fileType=".png"></single-file>
+      <single-file fileName="邱宇航" fileType=""></single-file>
+      <single-file fileName="邱宇航-2" fileType=".html"></single-file>
 
       <div class="uploader-last">
         <el-upload
