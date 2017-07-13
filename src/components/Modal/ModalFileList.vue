@@ -7,7 +7,7 @@
       <multi-list :list="relatefiles">
         <template slot="item" scope="scope">
           <modal-attach-body
-            :executor="scope.props.userName"
+            :executor="scope.props.ownerName"
             :avatar="scope.props.avatar">
             <div class="file-slot" @mouseenter="currentMouseOn = scope.index" @mouseleave="currentMouseOn = null">
               <div class="item"><img class="img" :src="scope.props.icon">

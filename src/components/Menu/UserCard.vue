@@ -12,7 +12,7 @@
       placement="left-start"
       :visible-arrow="false"
       width="180"
-      trigger="click">
+      trigger="hover">
       <div class="card">
         <div class="info-panel">
           <div class="my-avatar">
@@ -21,16 +21,16 @@
           <div class="my-name">
             {{user.name ? user.name : '无姓名'}}
             <el-dropdown>
-              <span class="my-per">
-                {{ permissions[0]?permissions[0]:'游客' }} <i class="el-icon-caret-bottom"></i>
+              <span class="my-per" v-if="user.permission===0">
+                {{ permissions[user.permission] }} <i class="el-icon-caret-bottom"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>{{ permissions[0]?permissions[0]:'游客' }}</el-dropdown-item>
+                <el-dropdown-item>{{ permissions[user.permission] }}</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
           <div class="my-email">
-            {{user.email}}
+            {{user.email ? user.email : ''}}
           </div>
         </div>
       </div>
@@ -39,13 +39,12 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
   export default {
     props: ['user'],
-    computed: {
-      ...mapGetters([
-        'permissions'
-      ])
+    data () {
+      return {
+        permissions: ['创建者', '管理员', '普通用户']
+      }
     }
   }
 </script>

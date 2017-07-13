@@ -11,7 +11,7 @@
 
     <div class="avatar-wall">
       <div class="avatar-container" v-for="user in pts">
-        <img class="avatar" :src="user.avatar">
+        <user-card :user="user"><img class="avatar" :src="user.avatar"></user-card>
       </div>
       <select-member :users="mems" @onChange="" :owner="0" class="add"></select-member>
     </div>
@@ -22,9 +22,10 @@
 <script>
   import pIcon from '@/assets/icons/new_item/participator.png'
   import SelectMember from '../SelectMember.vue'
+  import UserCard from 'COMPONENTS/Menu/UserCard.vue'
   import {mapState} from 'vuex'
   export default {
-    components: {SelectMember},
+    components: {SelectMember, UserCard},
     data () {
       return {
         pIcon,
