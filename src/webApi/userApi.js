@@ -16,26 +16,16 @@ function logout (user_id, token) {
   return util.httpDel(util.baseURL + 'login', {id: user_id, token: token})
 }
 
-function register (email, password) {
-  return util.httpPost(util.baseURL + 'user', {email: email, password: password})
+function register (email, password, name = 'user') {
+  return util.httpPost(util.baseURL + 'user', {email: email, password: password, name: name})
 }
 
-function getUserInformation (id, token) {
-  return util.httpGet(util.baseURL + 'user/?id=' + id + '&token=' + token)
+function getUserInformation (id) {
+  return util.httpGet(util.baseURL + 'user/?id=' + id)
 }
 
-function changeUserInformation (id, token, name, address, gender, phonenumber, job, website, birthday) {
-  return util.httpPut(util.baseURL + 'user/', {
-    id: id,
-    token: token,
-    name: name,
-    address: address,
-    gender: gender,
-    phonenumber: phonenumber,
-    job: job,
-    website: website,
-    birthday: birthday
-  })
+function changeUserInformation (info) {
+  return util.httpPut(util.baseURL + 'user/', info)
 }
 
 //接口参数不全

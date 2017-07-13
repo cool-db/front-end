@@ -14,7 +14,7 @@ function deleteTask (projectId, taskId, userId) {
 }
 
 function getTaskList (projectId, userId) {
-  return util.httpGet(util.baseURL + 'task/list?projectId=” + = projectId “&userId=“ + userId')
+  return util.httpGet(util.baseURL + 'task/list?projectId=' +  projectId +  '&userId=' + userId)
 }
 
 function updateInfo (taskId, executorId, userId) {
@@ -26,7 +26,7 @@ function updateInfo (taskId, executorId, userId) {
 }
 
 function getInfo (projectId, taskId) {
-  return util.httpGet(util.baseURL + 'task/item?projectId=” + = projectId “&taskId” += taskId')
+  return util.httpGet(util.baseURL + 'task/item?projectId=' + projectId + '&taskId' + taskId)
 }
 
 function updateState (taskId, userId) {
@@ -49,7 +49,7 @@ function deleteSubTask (subtaskId, userId) {
 }
 
 function getSubtaskList (subtaskId) {
-  return util.httpGet(util.baseURL + 'subtask/list/?subtaskId=” += subtaskId')
+  return util.httpGet(util.baseURL + 'subtask/list/?subtaskId=' + subtaskId)
 }
 
 function updateSubtaskInfo (subtaskId, subtaskExecutorId) {
@@ -81,7 +81,7 @@ function deleteMember (taskId, participatorIds) {
 }
 
 function getMemberList (taskId) {
-  return util.httpGet(util.httpGet + 'task/participator/list?taskId=“ + taskId')
+  return util.httpGet(util.httpGet + 'task/participator/list?taskId=' + taskId)
 }
 
 
