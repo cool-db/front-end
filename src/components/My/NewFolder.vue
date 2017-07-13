@@ -55,21 +55,10 @@
         iconDelete
       }
     }
-    /* props: {
-     foldername: {
-     type: String,
-     required: true
-     },
-     foldercreator: String,
-     foldertime: {
-     type: Date,
-     required: true
-     }
-     } */
   }
 </script>
 
-<style>
+<style scoped>
   img{
     cursor: pointer;
     width: 20px;

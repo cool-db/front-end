@@ -23,7 +23,7 @@
         </el-form-item>
         <el-form-item>
           <el-button class="button" type="primary">
-            <router-link to="/a" style="text-decoration: none; color:white">
+            <router-link to="/auth" replace style="text-decoration: none; color:white">
               返回登录
            </router-link>
           </el-button>
@@ -54,7 +54,7 @@
 
   export default {
     data () {
-      var validatePass = (rule, value, callback) => {
+      let validatePass = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请输入密码'))
         } else {
@@ -64,7 +64,7 @@
           callback()
         }
       }
-      var validatePass2 = (rule, value, callback) => {
+      let validatePass2 = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请再次输入密码'))
         } else if (value !== this.ruleForm2.password) {
