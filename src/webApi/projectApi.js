@@ -35,12 +35,11 @@ function delProgress (progressid, userid, usertoken) {
   })
 }
 
-function createProgress (progressName, projectId, userid, usertoken) {
-  return util.httpDel(util.baseURL + 'project/progress', {
+function createProgress (progressName, projectId, userid) {
+  return util.httpPost(util.baseURL + 'project/progress', {
     progressName: progressName,
     projectId: projectId,
-    userId: userid,
-    userToken: usertoken
+    userId: userid
   })
 }
 
@@ -89,8 +88,8 @@ function moveProject (projectid, ownid, ownertoken, ownIdTo) {
   })
 }
 
-function getProjectList (ownid) {
-  return util.httpGet(util.baseURL + 'project/list?ownerId=' + ownid)
+function getProjectList (userId) {
+  return util.httpGet(util.baseURL + 'project/list?userId=' + userId)
 }
 
 function changeProjectInfo (projectId, ownerId, ownerToken, projectName, projectDiscription) {
@@ -115,10 +114,9 @@ function delProject (projectId, ownerId, ownerToken) {
   })
 }
 
-function addProject (ownerId, ownerToken, projectName, projectDiscription) {
+function addProject (ownerId, projectName, projectDiscription) {
   return util.httpPost(util.baseURL + 'project', {
     ownerId: ownerId,
-    ownerToken: ownerToken,
     projectName: projectName,
     projectDescription: projectDiscription
   })

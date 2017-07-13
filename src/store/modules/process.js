@@ -2,10 +2,9 @@
  * Created by xueyingchen.
  */
 import { createTask, getTaskList } from 'API/taskApi'
-import { listProgress } from 'API/projectApi'
+import { listProgress, createProgress } from 'API/projectApi'
 
 const userId = 21
-// const projectId = 12
 
 import { addNamespace, getIndexByAttr } from '@/util/commonUtil'
 const namespace = addNamespace('process')
@@ -31,43 +30,34 @@ function getProcess (tasks, processes) {
 }
 
 const state = {
-  data: [{
-    id: 0,
-    name: '',
-    order: 0,
-    tasks: []
-  }]
+  data: []
 }
 
 const getters = {}
 
 const actions = {
   [ADDTASK] ({commit, state}, {id, name}) {
-    console.log(id, name)
     const idx = getIndexByAttr(id, state.data, 'id')
     return createTask(name, userId, id).then(item => {
       commit(MADDTASK, {index: idx, task: item})
     })
   },
-  [INITDATA] ({commit}, {uId, pId}) {
+  [INITDATA] ({commit}, {pId}) {
     const processList = listProgress(pId)
-    const taskList = getTaskList(pId, uId)
+    const taskList = getTaskList(pId)
     return Promise.all([processList, taskList])
       .then(([{progressList}, {tasks}]) => {
         commit(MINITDATA, getProcess(tasks, progressList))
       })
+  },
+  [ADDPROCESS] ({commit}, {pName, pid, uid}) {
+    return createProgress(pName, pid, uid)
   }
 }
 
 const mutations = {
   [DELETE] (state, index) {
     state.data.splice(index, 1)
-  },
-  [ADDPROCESS] (state, name) {
-    state.data.push({
-      title: name,
-      tasks: []
-    })
   },
   [CHANGEPROCESSNAME] (state, index, title) {
     state.data[index].title = title

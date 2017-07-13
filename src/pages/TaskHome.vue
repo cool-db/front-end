@@ -1,6 +1,6 @@
 <template>
     <div class="task-home">
-        <process-board v-for="item, index in process" :key="item.id"
+        <process-board v-if="process.length > 0" v-for="item, index in process" :key="item.id"
                        :processName="item.name"
                        :taskList="item.tasks"
                        :processID="item.id"></process-board>
@@ -34,9 +34,10 @@
       })
     },
     created () {
+      const pid = this.$route.params.pid
       this.initData({
-        uId: 21,
-        pId: 12
+        uId: localStorage.token,
+        pId: pid
       }).catch(err => this.$message.error(err.message))
     }
   }

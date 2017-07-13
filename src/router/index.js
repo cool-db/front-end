@@ -9,16 +9,18 @@ import File from 'PAGES/File.vue'
 import My from 'PAGES/My.vue'
 import PersonalSetting from 'PAGES/PersonalSetting.vue'
 import HomePageSection from 'PAGES/HomePageSection.vue'
-import Auth from 'PAGES/Auth.vue'
+// import Auth from 'PAGES/Auth.vue'
 import Login from 'PAGES/Login.vue'
 import Register from 'PAGES/Register.vue'
+import TaskModal from 'COMPONENTS/TaskModal.vue'
 
 Vue.use(Router)
 
 const routes = [{
   path: '/',
-  component: Auth,
-  redirect: '/main',
+  component: TaskModal,
+  // component: Auth,
+  // redirect: '/main',
   children: [{
     path: '/main',
     component: Header,

@@ -6,17 +6,35 @@
         </span>
         <el-input v-model="input" placeholder="新建任务列表"></el-input>
         <span class="btn-group">
-            <el-button type="primary">保存</el-button>
-            <el-button type="text">取消</el-button>
+            <el-button type="primary" @click="addProcessReload">保存</el-button>
+            <el-button type="text" @click="input = ''">取消</el-button>
         </span>
     </div>
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+  import { INITDATA, ADDPROCESS } from 'MODULE/process'
+
   export default {
     data () {
       return {
         input: ''
+      }
+    },
+    methods: {
+      ...mapActions({
+        initData: INITDATA,
+        addProcess: ADDPROCESS
+      }),
+      addProcessReload () {
+        const pid = this.$route.params.pid
+        this.addProcess({
+          pName: this.input,
+          pid,
+          uid: localStorage.token
+        }).then(() => this.addProcess())
+          .catch(err => this.$message.error(err.message))
       }
     }
   }
@@ -34,6 +52,7 @@
         padding-top: 13px;
         padding-left: 25px;
         padding-right: 20px;
+        margin-left: 20px;
 
         .words {
             display: inline-block;

@@ -4,12 +4,12 @@
 
 <template>
     <div id="TaskBoxBasic">
-      <div class="taskBox">
-        <owner-box :data="data" class="taskSubBox rightBorder" id="ownerBox"></owner-box>
-        <deadline-box :data="data" class="taskSubBox rightBorder" id="deadlineBox"></deadline-box>
-        <priority-box :data="data" class="taskSubBox rightBorder" id="priorityBox">priorityBox</priority-box>
-        <repeat-box :data="data" class="taskSubBox" id="repeatBox">repeatBox</repeat-box>
-      </div>
+        <div class="taskBox">
+            <owner-box :data="data" class="taskSubBox rightBorder" id="ownerBox"></owner-box>
+            <deadline-box :data="data" class="taskSubBox rightBorder" id="deadlineBox"></deadline-box>
+            <priority-box :data="data" class="taskSubBox rightBorder" id="priorityBox">priorityBox</priority-box>
+            <repeat-box :data="data" class="taskSubBox" id="repeatBox">repeatBox</repeat-box>
+        </div>
     </div>
 </template>
 
@@ -32,24 +32,27 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .taskBox {
-    background: #ffffff;
-    flex:1;
-    border: 0.5px #dedede solid;
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-  }
-  .taskSubBox {
-    flex: 1;
-    padding: 10px 18px 0px 18px;
-  }
-  .rightBorder {
-    border-right: 0.5px #dedede solid;
-  }
+    .taskBox {
+        background: #ffffff;
+        flex: 1;
+        border: 0.5px #dedede solid;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+    }
 
-  #repeatBox {
-    min-width: 90px;
-  }
+    .taskSubBox {
+        flex: 1;
+        padding: 10px 18px 0 18px;
+        cursor: pointer;
+    }
+
+    .rightBorder {
+        border-right: 0.5px #dedede solid;
+    }
+
+    #repeatBox {
+        min-width: 90px;
+    }
 
 </style>
