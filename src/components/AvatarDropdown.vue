@@ -29,7 +29,7 @@
 
       <el-dropdown-item divided>
         <div class="itemSection">
-          <div class="itemText exit">退出登录</div>
+          <div class="itemText exit" @click="logout">退出登录</div>
         </div>
       </el-dropdown-item>
 
@@ -45,6 +45,17 @@
       return {
         my,
         pe
+      }
+    },
+    methods: {
+      logout () {
+        this.$confirm('确认退出登录？')
+          .then(_ => {
+            localStorage.removeItem('token')
+            this.$router.go('/auth')
+          })
+          .catch(_ => {
+          })
       }
     }
   }

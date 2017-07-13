@@ -5,10 +5,10 @@
 <script>
 
   export default {
-//    created () {
-//      const token = localStorage.getItem('token')
-//      this.$router.replace(token ? '/home' : '/login')
-//    }
+    created () {
+      const token = localStorage.getItem('token')
+      this.$router.replace(token ? '/home' : '/auth')
+    }
   }
 </script>
 

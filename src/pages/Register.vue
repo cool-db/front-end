@@ -6,26 +6,26 @@
 
       <img class="picture" :src="logo">
 
-      <el-form class="myform" :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" >
+      <el-form class="myform" :model="ruleForm" :rules="rules2" ref="ruleForm" label-width="100px">
         <el-form-item label="邮箱  " prop="pass">
-          <el-input v-model="ruleForm2.email" auto-complete="off"></el-input>
+          <el-input v-model="ruleForm.email" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="密码  " prop="pass">
-          <el-input type="password" v-model="ruleForm2.password" auto-complete="off"></el-input>
+          <el-input type="password" v-model="ruleForm.password" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="确认密码" prop="checkPass">
-          <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
+          <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button class="button" type="primary" @click="submitForm('ruleForm2')">
+          <el-button class="button" type="primary" @click="submitForm('ruleForm')">
             确认注册
           </el-button>
         </el-form-item>
         <el-form-item>
-          <el-button class="button" type="primary">
-            <router-link to="/auth" replace style="text-decoration: none; color:white">
-              返回登录
-           </router-link>
+          <el-button class="button btn-back" @click="this.$router.replace('/auth')">
+            <!--<router-link to="/auth" replace>-->
+            返回登录
+            <!--</router-link>-->
           </el-button>
         </el-form-item>
       </el-form>
@@ -46,11 +46,11 @@
 </template>
 
 
-
 <script>
 
   import project from '@/assets/icons/nav_bar/project.png'
   import logo from '@/assets/logo.png'
+  import {register} from 'API/userApi'
 
   export default {
     data () {
@@ -58,8 +58,8 @@
         if (value === '') {
           callback(new Error('请输入密码'))
         } else {
-          if (this.ruleForm2.checkPass !== '') {
-            this.$refs.ruleForm2.validateField('checkPass')
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass')
           }
           callback()
         }
@@ -67,7 +67,7 @@
       let validatePass2 = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请再次输入密码'))
-        } else if (value !== this.ruleForm2.password) {
+        } else if (value !== this.ruleForm.password) {
           callback(new Error('两次输入密码不一致!'))
         } else {
           callback()
@@ -76,30 +76,35 @@
       return {
         project,
         logo,
-        ruleForm2: {
+        ruleForm: {
           email: '',
           password: '',
           checkPass: ''
         },
         rules2: {
           password: [
-            { validator: validatePass, trigger: 'blur' }
+            {validator: validatePass, trigger: 'blur'}
           ],
           checkPass: [
-            { validator: validatePass2, trigger: 'blur' }
+            {validator: validatePass2, trigger: 'blur'}
           ]
         }
       }
     },
     methods: {
-      Register: function () {
+      requestRegister: function () {
+        register(this.ruleForm.email, this.ruleForm.password).then(({id}) => {
+          localStorage.token = id
+          console.log('register successfully' + id)
+          this.$router.replace('/home')
+        }).catch(err => this.$message.error(err.message))
       },
       submitForm (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!')
+            this.requestRegister()
+            return true
           } else {
-            console.log('error submit!!')
             return false
           }
         })
@@ -122,8 +127,8 @@
     position: absolute;
     top: 45%;
     left: 50%;
-    width:280px;
-    height:400px;
+    width: 280px;
+    height: 400px;
     transform: translate(-50%, -50%);
   }
 
@@ -134,7 +139,7 @@
   .picture {
     height: 78px;
     width: 280px;
-    margin-top:-5px;
+    margin-top: -5px;
     margin-left: 0px;
     margin-bottom: 10px;
   }
@@ -158,21 +163,25 @@
     width: 270px;
     height: 40px;
     /*margin-left:-5px;*/
-    margin-top: 20px;
+    margin-top: 5px;
+  }
+
+  .btn-back {
+    margin-top: -30px;
   }
 
   .line {
     width: 270px;
     height: 1px;
     margin-top: 50px;
-    margin-left:10px;
+    margin-left: 10px;
     background-color: #C0C0C0;
   }
 
   .textButton {
     display: flex;
     flex-direction: row;
-    margin-left:18px;
+    margin-left: 18px;
     /*justify-content: center;*/
     /*align-items: center;*/
     margin-top: 10px;
