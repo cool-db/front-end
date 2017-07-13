@@ -4,7 +4,7 @@
             <div id="leftSection">
                 <div class="usercard">
                     <avatar :src="null" class="my-avatar"></avatar>
-                    <div id="username">李碧纯</div>
+                    <div id="username">{{name}}</div>
                 </div>
                 <el-card id="selector">
                     <div class="page-switch" :class="{'page-switch-active': pageSwitch === 0}" @click="pageSwitch=0">
@@ -17,8 +17,14 @@
             </div>
             <div id="rightSection">
                 <el-card class="box-card">
-                    <personal-information v-if="pageSwitch===0"></personal-information>
-                    <account-password v-else=""></account-password>
+                    <personal-information v-if="pageSwitch === 0"
+                                          :info="personInfo"
+                                          :getInfo="getInfo"
+                                          :clearAll="clearAll"></personal-information>
+                    <account-password v-else
+                                      :info="personInfo"
+                                      :getInfo="getInfo"
+                                      :clearAll="clearAll"></account-password>
                 </el-card>
             </div>
         </div>
@@ -30,10 +36,14 @@
   import PersonalInformation from 'COMPONENTS/PersonalInformation'
   import Avatar from 'COMPONENTS/Avatar'
 
+  import { getUserInformation } from 'API/userApi'
+
   export default {
     data () {
       return {
-        pageSwitch: 0
+        pageSwitch: 0,
+        name: '',
+        personInfo: {}
       }
     },
     components: {
@@ -41,7 +51,25 @@
       PersonalInformation,
       Avatar
     },
-    methods: {}
+    methods: {
+      getInfo (id) {
+        return getUserInformation(id)
+          .then(item => {
+            this.name = item.name
+            this.personInfo = item
+          }).catch(err => this.$message.error(err.message))
+      },
+      clearAll () {
+        for (let attr in this.personInfo) {
+          if (this.personInfo.hasOwnProperty(attr)) {
+            this.personInfo[attr] = ''
+          }
+        }
+      }
+    },
+    created () {
+      this.getInfo(1)
+    }
   }
 
 </script>
@@ -90,7 +118,6 @@
         align-items: center;
         width: 300px;
         height: 225px;
-        /*margin-top: 50px;*/
     }
 
     .page-switch {
@@ -98,9 +125,6 @@
         align-items: center;
         height: 65px;
         width: 300px;
-        /*margin-left: -20px;*/
-        /*margin-top: -20px;*/
-        /*background-color: #E7F1F0;*/
         color: #3E5568;
         padding-left: 60px;
         cursor: pointer;
