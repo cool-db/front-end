@@ -13,10 +13,10 @@ function createSchedule (scheduleName, scheduleContent, location, startTime, end
   })
 }
 
-function deleteSchedule (scheduleId, operatorId) {
+function deleteSchedule (scheduleId, userId) {
   return util.httpDel(util.baseURL + 'schedule/', {
     scheduleId: scheduleId,
-    operatorId: operatorId
+    userId: userId
   })
 }
 

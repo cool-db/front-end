@@ -1,6 +1,6 @@
 const util = require('../util/httpUtil.js')
 
-function createTask (name, creatorId, progressId, content="content") {
+function createTask (name, creatorId, progressId, content="默认内容") {
   return util.httpPost(util.baseURL + 'task', {
     name: name,
     creatorId: creatorId,
@@ -29,10 +29,11 @@ function getInfo (projectId, taskId) {
   return util.httpGet(util.baseURL + 'task/item?projectId=' + projectId + '&taskId' + taskId)
 }
 
-function updateState (taskId, userId) {
+function updateState (taskId, userId, state) {
   return util.httpPut(util.baseURL + 'task/state', {
     taskId: taskId,
-    userId: userId
+    userId: userId,
+    state: state
   })
 }
 

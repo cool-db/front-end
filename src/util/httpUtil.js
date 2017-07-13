@@ -13,6 +13,9 @@ const baseXhr = (errHandler) => ({url, method = 'GET', body = null}) => {
     request(method, url)
       .send(body)
       .end((err, res) => {
+        if(err) {
+          reject(err)
+        }
         if (res.statusCode === 200) {
           if (res.body.code === 200) {
             resolve(res.body.data)
@@ -65,8 +68,9 @@ export const httpPut = (url, body) => errorXhr({url, method: 'PUT', body})
 /**
  * delete函数
  * @param {String} url
+ * @param {Object} body
  * @return {Promise}
  */
-export const httpDel = (url) => errorXhr({url, method: 'DELETE', body})
+export const httpDel = (url, body) => errorXhr({url, method: 'DELETE', body})
 
 export const baseURL = 'http://123.207.222.112:5001/api/'

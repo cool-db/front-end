@@ -27,11 +27,10 @@ function changeProgressName (projectid, userid, token, progressname) {
   })
 }
 
-function delProgress (progressid, userid, usertoken) {
+function delProgress (progressid, userid) {
   return util.httpDel(util.baseURL + 'project/progress', {
     progressId: progressid,
     userId: userid,
-    userToken: usertoken
   })
 }
 
