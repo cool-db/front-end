@@ -2,10 +2,12 @@
   <div class="home-page-main">
     <div class="home-page-box">
 
-      <div class="home-page-header">我拥有的项目</div>
+      <div class="home-page-header">
+        <span style="margin-right: 6px">我拥有的项目</span><badge>{{ownCount}}</badge>
+      </div>
 
       <home-card
-        v-for="n in 5"
+        v-for="n in 6"
         projName="项目名称"
         projNote="项目说明"
         :key="n"></home-card>
@@ -17,6 +19,15 @@
         </div>
       </el-card>
 
+      <div class="home-page-header" >
+        <span style="margin-right: 6px">我参与的项目</span><badge>{{joinCount}}</badge>
+      </div>
+
+      <home-card
+        v-for="n in 5"
+        projName="项目名称"
+        projNote="项目说明"
+        :key="n"></home-card>
 
     </div>
   </div>
@@ -24,13 +35,15 @@
 
 <script>
   import HomeCard from '@/components/HomeCard.vue'
-  import picBg from '@/assets/cover-demo.jpg'
+  import Badge from '@/components/Badge.vue'
+  import img from '@/assets/logo.png'
   export default {
-    components: {
-      HomeCard},
+    components: {HomeCard, Badge},
     data () {
       return {
-        picBg
+        ownCount: 6,
+        joinCount: 5,
+        img
       }
     }
   }
@@ -47,14 +60,16 @@
     display: flex;
     display: -webkit-flex;
     width: 1100px;
-    margin: 30px;
     flex-wrap: wrap;
   }
 
   .home-page-header{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
     width: 100%;
     font-size: 18px;
-    margin: 20px;
+    margin: 40px 15px 8px 15px;
   }
 
   .new-proj{
@@ -82,5 +97,4 @@
     color: inherit;
     margin: 10px;
   }
-
 </style>
