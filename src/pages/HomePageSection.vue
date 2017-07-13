@@ -13,12 +13,15 @@
                  :id="item.id"
                  :key="item.id"></home-card>
 
-      <el-card class="new-proj">
-        <div class="new-proj-box" @click="dialogVisible = true">
-          <i class="el-icon-plus"></i>
-          <span style="font-size: 18px">创建新项目</span>
-        </div>
-      </el-card>
+      <div @click="dialogVisible = true">
+        <el-card class="new-proj">
+          <div class="new-proj-box">
+            <i class="el-icon-plus"></i>
+            <span style="font-size: 18px">创建新项目</span>
+          </div>
+        </el-card>
+      </div>
+
 
       <div class="home-page-header">
         <span style="margin-right: 6px">我参与的项目</span>
@@ -120,6 +123,10 @@
     width: 254px;
     height: 148px;
     color: #888;
+
+    &:hover {
+      color: #33CCCC;
+    }
   }
 
   .new-proj-box {
@@ -127,10 +134,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    &:hover {
-      color: #33CCCC;
-    }
   }
 
   .el-icon-plus {

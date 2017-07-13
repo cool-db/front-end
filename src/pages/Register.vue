@@ -1,55 +1,45 @@
 <template>
-
   <div class="Register">
-
     <div class="content">
 
-      <img class="picture" :src="logo">
+      <div class="register-logo"><img class="picture" :src="logo"></div>
 
       <el-form class="myform" :model="ruleForm" :rules="rules2" ref="ruleForm" label-width="100px">
-        <el-form-item label="邮箱  " prop="pass">
-          <el-input v-model="ruleForm.email" auto-complete="off"></el-input>
+        <el-form-item prop="pass">
+          <el-input v-model="ruleForm.email" auto-complete="off" placeholder="邮箱"></el-input>
         </el-form-item>
-        <el-form-item label="密码  " prop="pass">
-          <el-input type="password" v-model="ruleForm.password" auto-complete="off"></el-input>
+        <el-form-item prop="pass">
+          <el-input type="password" v-model="ruleForm.password" auto-complete="off" placeholder="密码"></el-input>
         </el-form-item>
-        <el-form-item label="确认密码" prop="checkPass">
-          <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off"></el-input>
+        <el-form-item prop="checkPass">
+          <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off" placeholder="确认密码"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button class="button" type="primary" @click="submitForm('ruleForm')">
-            确认注册
+            注册
           </el-button>
         </el-form-item>
         <el-form-item>
-          <el-button class="button btn-back" @click="back()">
-            <!--<router-link to="/auth" replace>-->
-            返回登录
-            <!--</router-link>-->
-          </el-button>
+
+          <router-link to="/auth" replace>
+            <el-button class="button btn-back" @click="this.$router.replace('/auth')">返回</el-button>
+          </router-link>
+
         </el-form-item>
       </el-form>
 
-      <div class="line">
-      </div>
-
-      <div class="textButton">
-
-        <div class="account"> Define a new work style!</div>
-
-      </div>
+      <!--<div class="line"></div>-->
+      <!--<footer>Define a new work style!</footer>-->
 
     </div>
-
   </div>
-
 </template>
 
 
 <script>
 
   import project from '@/assets/icons/nav_bar/project.png'
-  import logo from '@/assets/logo.png'
+  import logo from '@/assets/icons/index/Groupup.png'
   import {register} from 'API/userApi'
 
   export default {
@@ -121,51 +111,42 @@
 
 
 <style scoped>
-
   .myform {
     margin-left: -90px;
   }
 
-  .Register {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    width: 280px;
-    height: 400px;
-    transform: translate(-50%, -50%);
+  /*.Register {*/
+  /*position: absolute;*/
+  /*top: 45%;*/
+  /*left: 50%;*/
+  /*width: 290px;*/
+  /*height: 400px;*/
+  /*transform: translate(-50%, -50%);*/
+  /*}*/
+
+  .Register{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 100px;
   }
 
-  .content {
-    align-items: center;
+  .register-logo{
+    display: flex;
+    justify-content: center;
   }
 
   .picture {
-    height: 78px;
-    width: 280px;
+    height: 128px;
+    width: 128px;
     margin-top: -5px;
     margin-left: 0px;
     margin-bottom: 10px;
   }
 
-  .mail {
-    height: 60px;
-    width: 280px;
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-  }
-
-  .password {
-    height: 60px;
-    width: 280px;
-    display: flex;
-    flex-direction: row;
-  }
-
   .button {
-    width: 270px;
+    width: 280px;
     height: 40px;
-    /*margin-left:-5px;*/
     margin-top: 5px;
   }
 
@@ -173,38 +154,20 @@
     margin-top: -30px;
   }
 
-  .line {
-    width: 270px;
-    height: 1px;
-    margin-top: 50px;
-    margin-left: 10px;
-    background-color: #C0C0C0;
-  }
+  /*.line {*/
+  /*width: 280px;*/
+  /*height: 1px;*/
+  /*margin-top: 50px;*/
+  /*margin-left: 10px;*/
+  /*background-color: #C0C0C0;*/
+  /*}*/
 
-  .textButton {
-    display: flex;
-    flex-direction: row;
-    margin-left: 18px;
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    margin-top: 10px;
-  }
-
-  .account {
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #33CCCC;
-    margin-top: 10px;
-    margin-left: 45px;
-  }
-
-  .text {
-    color: #33CCCC;
-    margin-top: 1px;
-    margin-left: 20px;
-  }
-
-
+  /*footer{*/
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*font-size: 16px;*/
+  /*color: #3CC;*/
+  /*margin-top: 15px;*/
+  /*}*/
 </style>

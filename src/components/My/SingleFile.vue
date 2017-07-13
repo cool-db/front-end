@@ -78,6 +78,10 @@
     height: 180px;
   }
 
+  .single-file:hover{
+    background-color: #e7fef0;
+  }
+
   .file-pic{
     display: flex;
     display: -webkit-flex;
