@@ -11,7 +11,10 @@
         :key="n"></home-card>
 
       <el-card class="new-proj">
-        <img :src="iconAdd" alt="add"/>
+        <div class="new-proj-box">
+          <i class="el-icon-plus"></i>
+          <span style="font-size: 18px">创建新项目</span>
+        </div>
       </el-card>
 
 
@@ -21,14 +24,12 @@
 
 <script>
   import HomeCard from '@/components/HomeCard.vue'
-  import iconAdd from '@/assets/icons/index/add-new-task-list.png'
   import picBg from '@/assets/cover-demo.jpg'
   export default {
     components: {
       HomeCard},
     data () {
       return {
-        iconAdd,
         picBg
       }
     }
@@ -54,7 +55,6 @@
     width: 100%;
     font-size: 18px;
     margin: 20px;
-    color: #888;
   }
 
   .new-proj{
@@ -66,5 +66,21 @@
     cursor: pointer;
     width: 254px;
     height: 148px;
+    color: #888;
   }
+
+  .new-proj-box{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .el-icon-plus{
+    font-size: 30px;
+    color: inherit;
+    margin: 10px;
+  }
+
 </style>
