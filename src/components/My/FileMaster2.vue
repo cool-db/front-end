@@ -1,26 +1,21 @@
 <template>
   <div class="file-master-2-main">
-  <div class="file-master-2-box">
+    <div class="file-master-2-box">
 
-    <single-file fileInfo="邱宇航.avi"></single-file>
-    <single-file fileInfo="邱宇航.avi"></single-file>
-    <single-file fileInfo="邱宇航.avi"></single-file>
-    <single-file fileInfo="邱宇航.avi"></single-file>
-    <single-file fileInfo="邱宇航.avi"></single-file>
+      <single-file v-for="n in 5" fileInfo="邱宇航.avi"></single-file>
 
-    <div class="uploader-last">
-      <el-upload
-        class="avatar-uploader"
-        action="https://jsonplaceholder.typicode.com/posts/"
-        :show-file-list="false">
-        <img v-if="imageUrl" :src="imageUrl" class="avatar">
-        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-      </el-upload>
+      <div class="uploader-last">
+        <el-upload
+          class="avatar-uploader"
+          action="https://jsonplaceholder.typicode.com/posts/"
+          :show-file-list="false">
+          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+      </div>
+
+
     </div>
-
-
-
-  </div>
   </div>
 </template>
 
