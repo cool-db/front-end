@@ -2,15 +2,15 @@
     <div class="login">
         <div class="content">
             <img class="picture" :src="logo">
-            <el-form class="myform" :model="ruleForm2" ref="ruleForm2" label-width="100px">
+            <el-form class="myform" :model="ruleForm" ref="ruleForm" label-width="100px">
                 <el-form-item label="邮箱" prop="pass">
-                    <el-input v-model="ruleForm2.email" auto-complete="off"></el-input>
+                    <el-input v-model="ruleForm.email" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="密码" prop="checkPass">
-                    <el-input type="password" v-model="ruleForm2.password" auto-complete="off"></el-input>
+                    <el-input type="password" v-model="ruleForm.password" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button class="button" type="primary" @click="submitForm('ruleForm2')">提交</el-button>
+                    <el-button class="button" type="primary" @click="submitForm('ruleForm')">提交</el-button>
                 </el-form-item>
             </el-form>
             <div class="line">
@@ -31,26 +31,33 @@
   import project from '@/assets/icons/nav_bar/project.png'
   import logo from '@/assets/logo.png'
 
+  import { login } from 'API/userApi'
+
   export default {
     data () {
       return {
         project,
         logo,
-        ruleForm2: {
+        ruleForm: {
           email: '',
           password: ''
         }
       }
     },
     methods: {
-      Register: function () {
+      requestLogin: function () {
+        login(this.ruleForm.email, this.ruleForm.password).then(({id}) => {
+          localStorage.token = id
+          console.log('login successfully' + id)
+          this.$router.replace('/home')
+        }).catch(err => this.$message.error(err.message))
       },
       submitForm (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!')
+            this.requestLogin()
+            return true
           } else {
-            console.log('error submit!!')
             return false
           }
         })
