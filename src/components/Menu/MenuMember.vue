@@ -3,7 +3,7 @@
 */
 
 <template>
-    <div class="container">
+    <div class="member-menu-container">
         <el-input
                 @change="onChange"
                 class="search-bar"
@@ -18,7 +18,7 @@
             <transition name="fade">
                 <member-add-item :username="current" v-if="current !== ''"></member-add-item>
             </transition>
-            <member-item v-for="user in results" :user="user" :key="user.name" class="list-complete-item"></member-item>
+            <member-item v-for="user in members" :user="user" :key="user.id" class="list-complete-item"></member-item>
         </div>
     </div>
 </template>
@@ -27,7 +27,7 @@
   import MemberAddItem from './MemberAddItem.vue'
   import MemberItem from './MemberItem.vue'
   import MenuMemberSearch from './MenuMemberSearch.vue'
-  import { mapMutations, mapState } from 'vuex'
+  import { mapMutations, mapGetters } from 'vuex'
 
   export default {
     components: {
@@ -37,16 +37,13 @@
     },
     data () {
       return {
-        current: '',
-        users: [],
-        results: [],
-        ...mapState({
-          members: state => state.users.members,
-          permissions: state => state.users.permissions,
-          usersCount: state => state.users.usersCount,
-          permissionsCount: state => state.users.permissionsCount
-        })
+        current: ''
       }
+    },
+    computed: {
+      ...mapGetters([
+        'members'
+      ])
     },
     methods: {
       ...mapMutations({
@@ -67,31 +64,6 @@
           return (users.name.indexOf(queryString) === 0 || users.email.indexOf(queryString) === 0)
         }
       },
-      loadAll () {
-        return [
-          {
-            name: '西蒙',
-            avatar: null,
-            email: '381029382@qq.com',
-            permission: 'member'
-          }, {
-            name: '西门子',
-            avatar: null,
-            email: '381029382@qq.com',
-            permission: 'member'
-          }, {
-            name: '谢地',
-            avatar: null,
-            email: '381029382@qq.com',
-            permission: 'member'
-          }, {
-            name: 'Andi Obama',
-            avatar: null,
-            email: '381029382@qq.com',
-            permission: 'owner'
-          }
-        ]
-      },
       handleSelect (item) {
         console.log(item)
       },
@@ -100,7 +72,6 @@
       }
     },
     mounted () {
-      this.users = this.loadAll()
       this.results = this.users
     }
   }
@@ -108,9 +79,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .container {
+    .member-menu-container {
         flex: 1;
-        padding: 10px 10px 10px 10px;
+      padding: 10px 10px 10px 10px;
+      color: #F8F8F8;
     }
 
     .search-bar {
