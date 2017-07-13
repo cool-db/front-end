@@ -1,40 +1,40 @@
 <template>
-    <div class="home-page-main">
-        <div class="home-page-box">
-            <div class="home-page-header">
-                <span style="margin-right: 6px">我拥有的项目</span>
-                <badge>{{ownCount}}</badge>
-            </div>
+  <div class="home-page-main">
+    <div class="home-page-box">
+      <div class="home-page-header">
+        <span style="margin-right: 6px">我拥有的项目</span>
+        <badge>{{ownCount}}</badge>
+      </div>
 
-            <home-card v-if="ownCount"
-                       v-for="item in project.own"
-                       :projName="item.name"
-                       :projNote="item.description"
-                       :id="item.id"
-                       :key="item.id"></home-card>
+      <home-card v-if="ownCount"
+                 v-for="item in project.own"
+                 :projName="item.name"
+                 :projNote="item.description"
+                 :id="item.id"
+                 :key="item.id"></home-card>
 
-            <el-card class="new-proj">
-                <div class="new-proj-box" @click="dialogVisible = true">
-                    <i class="el-icon-plus"></i>
-                    <span style="font-size: 18px">创建新项目</span>
-                </div>
-            </el-card>
-
-            <div class="home-page-header">
-                <span style="margin-right: 6px">我参与的项目</span>
-                <badge>{{joinCount}}</badge>
-            </div>
-
-            <home-card v-if="joinCount"
-                       v-for="item in project.join"
-                       :projName="item.name"
-                       :projNote="item.description"
-                       :id="item.id"
-                       :key="item.id"></home-card>
-
+      <el-card class="new-proj">
+        <div class="new-proj-box" @click="dialogVisible = true">
+          <i class="el-icon-plus"></i>
+          <span style="font-size: 18px">创建新项目</span>
         </div>
-        <AddTaskModal :dialogVisible.sync="dialogVisible"></AddTaskModal>
+      </el-card>
+
+      <div class="home-page-header">
+        <span style="margin-right: 6px">我参与的项目</span>
+        <badge>{{joinCount}}</badge>
+      </div>
+
+      <home-card v-if="joinCount"
+                 v-for="item in project.join"
+                 :projName="item.name"
+                 :projNote="item.description"
+                 :id="item.id"
+                 :key="item.id"></home-card>
     </div>
+
+    <AddTaskModal :dialogVisible.sync="dialogVisible"></AddTaskModal>
+  </div>
 </template>
 
 <script>
@@ -92,57 +92,50 @@
 </script>
 
 <style scoped lang="scss">
-    .home-page-main {
-        display: flex;
-        height: calc(100vh - 49px);
-        display: -webkit-flex;
-        justify-content: center;
-        overflow-y: scroll;
-    }
+  .home-page-main {
+    height: calc(100vh - 49px);
+    overflow-y: scroll;
+    padding: 0 150px;
+  }
 
-    .home-page-box {
-        display: flex;
-        display: -webkit-flex;
-        width: 1100px;
-        flex-wrap: wrap;
-    }
+  .home-page-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 
-    .home-page-header {
-        display: flex;
-        display: -webkit-flex;
-        align-items: center;
-        width: 100%;
-        font-size: 18px;
-        margin: 40px 15px 8px 15px;
-    }
+  .home-page-header {
+    display: flex;
+    width: 100%;
+    margin: 30px 0 10px 20px;
+    font-size: 18px;
+  }
 
-    .new-proj {
-        display: flex;
-        display: -webkit-flex;
-        justify-content: center;
-        align-items: center;
-        margin: 5px 8px;
-        cursor: pointer;
-        width: 254px;
-        height: 148px;
-        color: #888;
-    }
+  .new-proj {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 8px;
+    cursor: pointer;
+    width: 254px;
+    height: 148px;
+    color: #888;
+  }
 
-    .new-proj-box {
-        display: flex;
-        display: -webkit-flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+  .new-proj-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
-        &:hover {
-            color: #33CCCC;
-        }
+    &:hover {
+      color: #33CCCC;
     }
+  }
 
-    .el-icon-plus {
-        font-size: 30px;
-        color: inherit;
-        margin: 10px;
-    }
+  .el-icon-plus {
+    font-size: 30px;
+    color: inherit;
+    margin: 10px;
+  }
 </style>
