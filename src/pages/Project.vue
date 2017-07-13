@@ -17,7 +17,7 @@
                 </div>
                 <transition name="el-zoom-in-center">
                     <div class="project-menu-item" :class='{currentmenu: currentMenu === "view"}'
-                         @click="currentMenu='view'" v-if="currentPage==='tasks'">
+                         @click="currentMenu='view'" v-if="currentPage==='task'">
                         <img id="icon-view" :src="iconView">
                     </div>
                 </transition>

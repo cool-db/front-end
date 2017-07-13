@@ -12,7 +12,7 @@
             <task-more></task-more>
         </div>
         <div slot="content">
-            <task-content></task-content>
+            <task-content :data="task"></task-content>
         </div>
         <div slot="footer">
             <modal-footer-input></modal-footer-input>
@@ -26,13 +26,18 @@
   import TaskContent from '@/components/Modal/TaskContent.vue'
   import ModalFooterInput from '@/components/Modal/ModalFooterInput.vue'
 
+  import {mapGetters} from 'vuex'
+
   export default {
     components: {
       ModalWrapper,
       TaskMore,
       TaskContent,
       ModalFooterInput
-    }
+    },
+    computed: mapGetters([
+      'task'
+    ])
   }
 </script>
 

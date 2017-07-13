@@ -5,10 +5,10 @@
 <template>
   <div class="RepeatBox">
     <div id="repeat-title">重复</div>
-    <repeat-select :mode="taskrepeat" :items="repeats" @changeR="changeR">
+    <repeat-select :mode="data.repeat" :items="repeats" @changeR="changeR">
       <div id="repeat-info">
         <img id="repeat-avatar" :src="repeatIcon">
-        <span id="repeat-name" :class="taskrepeat !== 0?'':'grey'">{{ repeats[taskrepeat] }}</span>
+        <span id="repeat-name" :class="data.repeat !== 0?'':'grey'">{{ repeats[data.repeat] }}</span>
       </div>
     </repeat-select>
 
@@ -19,30 +19,26 @@
   import repeatIcon from '@/assets/icons/new_item/repeat.png'
   import RepeatSelect from './RepeatSelect.vue'
 
-  import {mapGetters, mapMutations} from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     components: {RepeatSelect},
     name: 'RepeatBox',
     data () {
       return {
-        repeatIcon,
-        repeats: ['不重复', '每天重复', '每周重复', '每月重复', '每年重复']
+        repeatIcon
       }
     },
-
+    props: ['data'],
     computed: mapGetters([
-      'taskrepeat'
+      'repeats'
     ]),
 
     methods: {
-      ...mapMutations({
-        'cr': 'task/CHANGEREPEAT'
-      }),
       changeR (command) {
-//        this.taskrepeat = parseInt(command)
+        this.data.repeat = parseInt(command)
 //        this.$alert(parseInt(command))
-        this.cr(parseInt(command))
+//        this.cr(parseInt(command))
       }
     }
   }

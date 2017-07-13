@@ -1,14 +1,14 @@
 <template>
   <div>
-    <text-edit :content.sync="taskname"></text-edit>
+    <text-edit :content.sync="data.name"></text-edit>
     <div class="divider"></div>
-    <rich-editor :text.sync="taskcontent">task</rich-editor>
-    <task-box-basic class="box"></task-box-basic>
+    <rich-editor :text.sync="data.content">task</rich-editor>
+    <task-box-basic class="box" :data="data"></task-box-basic>
     <!--<modal-task-list class="box"></modal-task-list>-->
-    <modal-file-list class="box"></modal-file-list>
+    <modal-file-list class="box" :data="data"></modal-file-list>
     <!--<modal-calendar-list class="box"></modal-calendar-list>-->
-    <modal-new-attach-box class="box"></modal-new-attach-box>
-    <modal-participators class="box"></modal-participators>
+    <modal-new-attach-box class="box" :data="data"></modal-new-attach-box>
+    <modal-participators class="box" :data="data"></modal-participators>
   </div>
 </template>
 
@@ -22,8 +22,6 @@
   import ModalNewAttachBox from './ModalNewAttachBox.vue'
   import ModalParticipators from './ModalParticipators.vue'
 
-  import {mapGetters} from 'vuex'
-
   export default {
     data () {
       return {
@@ -36,12 +34,7 @@
         }]
       }
     },
-
-    computed: mapGetters([
-      'taskcontent',
-      'taskname',
-      'taskstate'
-    ]),
+    props: ['data'],
 
     methods: {},
 

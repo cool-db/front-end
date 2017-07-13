@@ -6,7 +6,7 @@
   <div class="DeadlineBox">
     <div id="deadline-title">截止时间</div>
 
-    <deadline-select :value2="taskddl">
+    <deadline-select :value2="data.ddl">
       <img id="deadline-avatar" :src="iconCalendar">
     </deadline-select>
   </div>
@@ -15,10 +15,9 @@
 <script>
   import iconCalendar from '@/assets/icons/nav_bar/calendar.png'
   import DeadlineSelect from './DeadlineSelect.vue'
-  import {mapGetters, mapMutations} from 'vuex'
   export default {
     components: {DeadlineSelect},
-    name: 'DeadlineBox',
+    props: ['data'],
     data () {
       return {
         iconCalendar,
@@ -26,18 +25,7 @@
         isSet: false
       }
     },
-    computed: mapGetters([
-      'taskddl'
-    ]),
-    watch: {
-      taskdll: function () {
-        // this.ce(this.taskdll)
-      }
-    },
     methods: {
-      ...mapMutations({
-        // 'ce': 'task/CHANGEEMER'
-      })
 //      changeP (command) {
 //        // this.mode = parseInt(command)
 //        this.ce(parseInt(command))
