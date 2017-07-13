@@ -1,157 +1,70 @@
 <template>
-  <div class="homepage">
-    <div class="iOwnProject">
-      <div class="headline1">
-        我拥有的项目
-        <div class="line"></div>
-      </div>
-      <div class="Projects">
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-        <el-card class="box-card" id="addProject">
-          <img class="addIcon" :src="add" />
-          <div>创建新项目</div>
-        </el-card>
-      </div>
-      
+  <div class="home-page-main">
+    <div class="home-page-box">
+
+      <div class="home-page-header">我拥有的项目</div>
+
+      <home-card
+        v-for="n in 5"
+        projName="项目名称"
+        projNote="项目说明"
+        :key="n"></home-card>
+
+      <el-card class="new-proj">
+        <img :src="iconAdd" alt="add"/>
+      </el-card>
+
+
     </div>
-    
-    <div class="participatedProject">
-      <div class="headline1">
-        我参与的项目
-        <div class="line"></div>
-      </div>
-      <div class="Projects">
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-      </div>
-    </div>
-    
-    <div class="achievedProject">
-      <div class="headline1">
-        已归档的项目
-        <el-button type="text" id="display" @click="dispaly">{{displayOrConceal}}</el-button>
-      </div>
-      <div class="Projects" v-if="displayAchieved">
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-        <homepage-project></homepage-project>
-      </div>
-    </div>
-    
   </div>
 </template>
 
 <script>
-  import homepageProject from 'COMPONENTS/HomepageProject'
-  import add from '@/assets/icons/new_item/add.png'
+  import HomeCard from '@/components/HomeCard.vue'
+  import iconAdd from '@/assets/icons/index/add-new-task-list.png'
+  import picBg from '@/assets/cover-demo.jpg'
   export default {
+    components: {
+      HomeCard},
     data () {
       return {
-        add,
-        displayAchieved: false,
-        displayOrConceal: '显示'
+        iconAdd,
+        picBg
       }
-    },
-    methods: {
-      dispaly: function () {
-        if (this.displayOrConceal === '显示') {
-          this.displayOrConceal = '隐藏'
-          this.displayAchieved = true
-        } else {
-          this.displayOrConceal = '显示'
-          this.displayAchieved = false
-        }
-      }
-    },
-    components: {
-      homepageProject
     }
   }
 </script>
 
 <style scoped>
-  .homepage{
+  .home-page-main{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 100px;
-    background-color: #F2F2F2;
+    display: -webkit-flex;
+    justify-content: center;
   }
-  
-  .iOwnProject{
+
+  .home-page-box{
     display: flex;
-    flex-direction: column;
-    width: 1000px;
-  }
-  
-  .headline1{
-    display: flex;
-    flex-direction: row;
-    font-size: 18px;
-    width: 1000px;
-    color: #565656;
-  }
-  
-  .line{
-    background-color: #565656;
-    height: 1px;
-    margin-left: 30px;
-    margin-top: 10px;
-    width: 800px;
-  }
-  
-  .Projects{
-    display: flex;
-    flex-direction: row;
+    display: -webkit-flex;
+    width: 1100px;
+    margin: 30px;
     flex-wrap: wrap;
-    margin-bottom: 50px;
   }
-  
-  #addProject{
-    width: 240px;
-    height: 120px;
-    margin-left: 50px;
-    margin-top: 30px;
+
+  .home-page-header{
+    width: 100%;
+    font-size: 18px;
+    margin: 20px;
+    color: #888;
+  }
+
+  .new-proj{
     display: flex;
-    flex-direction: column;
+    display: -webkit-flex;
+    justify-content: center;
     align-items: center;
-    font-size: 16px;
-    color: #B3BDC6;
+    margin: 5px 8px;
+    cursor: pointer;
+    width: 254px;
+    height: 148px;
   }
-  
-  .addIcon{
-    width: 50px;
-    height: 50px;
-    margin-left: 15px;
-    margin-bottom: 5px;
-  }
-  .achievedProject{
-    display: flex;
-    flex-direction: column;
-    width: 1000px;
-    align-items: center;
-  }
-  
-  #display{
-    margin-top: -8px;
-    margin-left: 30px;
-    font-size: 16px;
-  }
-  
-  .participatedProject{
-    display: flex;
-    flex-direction: column;
-    width: 1000px;
-  }
-  
 </style>

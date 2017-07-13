@@ -30,6 +30,7 @@
     display: flex;
     display: -webkit-flex;
     align-items: center;
+    cursor: pointer;
   }
   .each-calendar-main:hover{
     background-color: #e7fef0;
