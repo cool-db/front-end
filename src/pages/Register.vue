@@ -22,7 +22,7 @@
         <el-form-item>
 
           <router-link to="/auth" replace>
-            <el-button class="button btn-back" @click="this.$router.replace('/auth')">返回</el-button>
+            <el-button class="button btn-back">返回</el-button>
           </router-link>
 
         </el-form-item>
