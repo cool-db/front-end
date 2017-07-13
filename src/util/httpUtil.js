@@ -63,7 +63,9 @@ export const httpPost = (url, body) => errorXhr({url, method: 'POST', body})
  * @param {Object} body
  * @return {Promise}
  */
-export const httpPut = (url, body) => errorXhr({url, method: 'PUT', body})
+export const httpPut = (url, body) => {
+  errorXhr({url, method: 'PUT', body})
+}
 
 /**
  * delete函数

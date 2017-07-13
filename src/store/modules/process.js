@@ -1,10 +1,10 @@
 /**
  * Created by xueyingchen.
  */
-import { createTask, getTaskList, updateState } from 'API/taskApi'
+import { createTask, getTaskList, updateState, updateTaskOrder } from 'API/taskApi'
 import { listProgress, createProgress, delProgress } from 'API/projectApi'
 
-import { addNamespace, getIndexByAttr } from '@/util/commonUtil'
+import { addNamespace, getIndexByAttr, extractItem } from '@/util/commonUtil'
 const namespace = addNamespace('process')
 
 export const INITDATA = namespace('INITDATA')
@@ -12,13 +12,14 @@ export const DELETE = namespace('DELETE')
 export const ADDTASK = namespace('ADDTASK')
 export const ADDPROCESS = namespace('ADDPROCESS')
 export const CHANGEPROCESSNAME = namespace('CHANGEPROCESSNAME')
-export const CHANGETASKORDER = namespace('CHANGETASKORDER')
 export const DELETEPROCESS = namespace('DELETEPROCESS')
 export const CHANGETASKSTATE = namespace('CHANGETASKSTATE')
+export const ASNYCCHANGETASKORDER = namespace('ASNYCCHANGETASKORDER')
 
 const MINITDATA = namespace('MINITDATA')
 const MADDTASK = namespace('MADDTASK')
 const MCHANGETASKSTATE = namespace('CHANGETASKSTATE')
+export const CHANGETASKORDER = namespace('CHANGETASKORDER')
 
 function getProcess (tasks, processes) {
   let result = {}
@@ -61,6 +62,15 @@ const actions = {
   [CHANGETASKSTATE] ({commit}, {taskId, userId, checked, pIndex, tIndex}) {
     return updateState(taskId, userId, checked)
       .then(_ => commit(MCHANGETASKSTATE, {pIndex, tIndex, checked}))
+  },
+  [ASNYCCHANGETASKORDER] ({state, commit}, {userId, index, value}) {
+    const process = state.data[index]
+    if (process.tasks.length < value.length) {
+      const taskId = extractItem(process.tasks, value)
+      commit(CHANGETASKORDER, {index, value})
+      return updateTaskOrder(taskId, userId, process.id)
+    }
+    commit(CHANGETASKORDER, {index, value})
   }
 }
 

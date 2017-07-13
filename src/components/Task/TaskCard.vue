@@ -1,16 +1,16 @@
 <template>
-    <div class="card" @click="openModal">
+    <div class="card">
         <div :class="transtionState"></div>
         <div class="head">
             <div>
                 <check-box :checked="task.state"
                            class="check" :id="task.taskId"
                            :pIndex="pIndex" :tIndex="tIndex"></check-box>
-                <span>{{task.name}}</span>
+                <span @click="openModal">{{task.name}}</span>
             </div>
-            <img src="" alt="..." class="avatar">
+            <img src="" alt="..." class="avatar" @click="openModal">
         </div>
-        <div class="body">
+        <div class="body" @click="openModal">
             <badge v-if="task.ddl" class="normal-tag">{{task.ddl | ddlFormat}}</badge>
             <i class="icon el-icon-date"></i>
         </div>

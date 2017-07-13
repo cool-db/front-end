@@ -92,11 +92,18 @@ function getMemberList (taskId) {
 }
 
 function deleteAttachFile (fileId, taskId, userId) {
-  console.log(fileId, taskId, userId, "last")
   return util.httpPost(util.baseURL + 'task/attachment', {
     fileId: fileId,
     taskId: taskId,
     userId: userId
+  })
+}
+
+function updateTaskOrder (taskId, userId, progressIdTo) {
+  return util.httpPut(util.baseURL + 'task/order', {
+    taskId: taskId,
+    userId: userId,
+    progressIdTo: progressIdTo
   })
 }
 
@@ -115,5 +122,6 @@ module.exports = {
   addMember,
   deleteMember,
   getMemberList,
-  deleteAttachFile
+  deleteAttachFile,
+  updateTaskOrder
 }

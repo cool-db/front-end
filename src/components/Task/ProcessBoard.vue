@@ -30,7 +30,7 @@
   import NewTask from './NewTask.vue'
   import TextEdit from '../TextEdit.vue'
 
-  import { CHANGEPROCESSNAME, CHANGETASKORDER, DELETEPROCESS, INITDATA } from 'MODULE/process'
+  import { CHANGEPROCESSNAME, DELETEPROCESS, INITDATA, ASNYCCHANGETASKORDER } from 'MODULE/process'
 
   export default {
     props: {
@@ -62,9 +62,10 @@
           return this.$store.state.process.data[this.pIndex].tasks
         },
         set (value) {
-          this.$store.commit(CHANGETASKORDER, {
+          this.$store.dispatch(ASNYCCHANGETASKORDER, {
             index: this.pIndex,
-            value
+            value,
+            userId: Number(localStorage.token)
           })
         }
       },
