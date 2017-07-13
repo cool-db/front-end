@@ -89,8 +89,8 @@ function moveProject (projectid, ownid, ownertoken, ownIdTo) {
   })
 }
 
-function getProjectList (ownid, ownertoken) {
-  return util.httpGet(util.baseURL + 'project/list?ownerId=' + ownid + '&ownerToken=' + ownertoken)
+function getProjectList (ownid) {
+  return util.httpGet(util.baseURL + 'project/list?ownerId=' + ownid)
 }
 
 function changeProjectInfo (projectId, ownerId, ownerToken, projectName, projectDiscription) {
