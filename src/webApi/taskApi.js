@@ -13,8 +13,8 @@ function deleteTask (projectId, taskId, userId) {
   return util.httpDel(util.baseURL + 'task', {projectId: projectId, taskId: taskId, userId: userId})
 }
 
-function getTaskList (projectId, userId) {
-  return util.httpGet(util.baseURL + 'task/list?projectId=' +  projectId +  '&userId=' + userId)
+function getTaskList (projectId) {
+  return util.httpGet(util.baseURL + 'task/list?projectId=' +  projectId)
 }
 
 function updateInfo (taskId, executorId, userId) {
