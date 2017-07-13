@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import ownerSelect from './ownerSelect.vue'
+  import OwnerSelect from './OwnerSelect.vue'
   import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
 
   import {mapGetters} from 'vuex'
@@ -40,7 +40,7 @@
       }
     },
     components: {
-      ownerSelect
+      OwnerSelect
     }
   }
 </script>
