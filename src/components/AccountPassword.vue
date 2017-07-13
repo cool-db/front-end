@@ -30,7 +30,7 @@
         <div class="input-bar">
           <div class="text">手机号码</div>
           <div>
-            <el-input class="mail-input" :disabled="true" v-model="tel" placeholder="请输入内容"></el-input>
+            <el-input class="mail-input" :disabled="true" v-model="phonenumber" placeholder="请输入内容"></el-input>
           </div>
         </div>
         <div class="btn-bar">
@@ -54,7 +54,7 @@
         project,
         input: '',
         email: '',
-        tel: '1333'
+        phonenumber: '1333'
       }
     }
   }
