@@ -17,6 +17,8 @@ export const SAVETASK = namespace('SAVETASK')
 export const SHOWTASKMODAL = namespace('SHOWTASKMODAL')
 export const HIDETASKMODAL = namespace('HIDETASKMODAL')
 export const CHANGEEMER = namespace('CHANGEEMER')
+export const CHANGENAME = namespace('CHANGENAME')
+export const CHANGECONTENT = namespace('CHANGECONTENT')
 
 const state = {
   show: false,
@@ -40,6 +42,7 @@ const state = {
       'avatar': null
     }],
     'progressId': 1,
+    'progressName': '已完成',
     'emergency': 1,
     'comments': [],
     'files': [],
@@ -66,12 +69,12 @@ const mutations = {
   // [CHANGESTATE] (state, checked) {
   //   state.task.state = checked
   // },
-  // [CHANGENAME] (state, name) {
-  //   state.task.name = name
-  // },
-  // [CHANGECONTENT] (state, content) {
-  //   state.task.content = content
-  // },
+  [CHANGENAME] (state, name) {
+    state.task.name = name
+  },
+  [CHANGECONTENT] (state, content) {
+    state.task.content = content
+  },
   // [CHANGEEXECUTOR] (state, id) {
   //   state.task.executorId = id
   // },

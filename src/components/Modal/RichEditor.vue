@@ -24,7 +24,8 @@
 
   export default {
     props: {
-      text: String
+      text: String,
+      onChange: Function
     },
     data () {
       return {
@@ -52,8 +53,7 @@
       },
       save () {
         this.editable = false
-
-        this.$emit('update:text', this.richData)
+        this.onChange ? this.onChange(this.richData) : this.$emit('update:text', this.richData)
       }
     }
   }

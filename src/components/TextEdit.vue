@@ -11,7 +11,8 @@
 <script>
   export default {
     props: {
-      content: String
+      content: String,
+      onChange: Function
     },
     data () {
       return {
@@ -42,7 +43,7 @@
         const etv = e.target.value
         node.style.width = `${parseInt(getComputedStyle(node).fontSize) * etv.length}px`
         const value = etv || this.content
-        this.$emit('update:content', value)
+        this.onChange ? this.onChange(value) : this.$emit('update:content', value)
       }
     }
   }

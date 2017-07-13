@@ -5,7 +5,7 @@
                 任务列表
             </span>
             <span>
-                已完成
+                {{progressName}}
             </span>
         </div>
         <div slot="drop-down">
@@ -26,7 +26,7 @@
   import TaskContent from '@/components/Modal/TaskContent.vue'
   import ModalFooterInput from '@/components/Modal/ModalFooterInput.vue'
 
-  import {mapGetters} from 'vuex'
+  import { mapGetters, mapState } from 'vuex'
 
   export default {
     components: {
@@ -35,9 +35,14 @@
       TaskContent,
       ModalFooterInput
     },
-    computed: mapGetters([
-      'task'
-    ])
+    computed: {
+      ...mapGetters([
+        'task'
+      ]),
+      ...mapState({
+        progressName: state => state.task.task.progressName
+      })
+    }
   }
 </script>
 
