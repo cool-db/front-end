@@ -153,10 +153,9 @@ const actions = {
         commit(SETTASK, data)
       })
   },
-  [SAVETASK] (state) {
+  [SAVETASK] ({state}) {
     const userId = localStorage.getItem('token')
     const task = state.task
-    console.log(state.task)
     updateInfo(task.taskId, userId, task.name, task.content, task.ddl, task.executorId, task.emergencyType).then(
     )
   },

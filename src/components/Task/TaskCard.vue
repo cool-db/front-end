@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card" @click="openModal">
         <div :class="transtionState"></div>
         <div class="head">
             <div>
@@ -21,7 +21,9 @@
   import CheckBox from '../CheckBox.vue'
   import Badge from '../Badge.vue'
 
-  import { mapState } from 'vuex'
+  import { mapState, mapActions, mapMutations } from 'vuex'
+
+  import {INITTASK, SHOWTASKMODAL} from 'MODULE/task'
 
   export default {
     props: {
@@ -38,7 +40,18 @@
         return `${date.getMonth() + 1}月${date.getDate()}日截止`
       }
     },
-    methods: {},
+    methods: {
+      ...mapActions({
+        'initTask': INITTASK
+      }),
+      ...mapMutations({
+        showDialog: SHOWTASKMODAL
+      }),
+      openModal () {
+        this.initTask(this.task.taskId)
+          .then(_ => this.showDialog())
+      }
+    },
     computed: {
       ...mapState({
         data: state => state.process.data

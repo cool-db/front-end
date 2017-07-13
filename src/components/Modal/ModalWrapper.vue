@@ -1,9 +1,9 @@
 <template>
-  <el-dialog
-    :visible="visible"
-    :lock-scroll="true"
-    :show-close="false"
-    size="small">
+    <el-dialog
+            :visible="visible"
+            :lock-scroll="true"
+            :show-close="false"
+            size="small">
         <span slot="title">
             <modal-header :onClose="closeModal">
                 <span slot="title">
@@ -14,38 +14,45 @@
                 </div>
             </modal-header>
         </span>
-    <slot name="content">默认信息</slot>
-    <span slot="footer" class="dialog-footer">
+        <slot name="content">默认信息</slot>
+        <span slot="footer" class="dialog-footer">
             <slot name="footer"></slot>
         </span>
-  </el-dialog>
+    </el-dialog>
 </template>
 
 <script>
   import ModalHeader from './ModalHeader.vue'
-  import {mapActions} from 'vuex'
-  import {SAVETASK} from 'MODULE/task'
-  import {INITDATA} from 'MODULE/process'
+  import { mapActions, mapState, mapMutations } from 'vuex'
+  import { SAVETASK, HIDETASKMODAL } from 'MODULE/task'
+  import { INITDATA } from 'MODULE/process'
+
   export default {
-    data () {
-      return {
-        visible: true
-      }
-    },
     components: {
       ModalHeader
     },
     methods: {
       closeModal () {
+        const pId = this.$route.params.pid
         this.saveTask().then(() => {
-          this.initData().then(() => {
-            this.visible = false
+          console.log(1)
+          this.initData({pId}).then(() => {
+            this.hideDialog()
+            console.log(2)
           })
-        }).catch(err => this.$message.error(err))
+        }).catch(err => this.$message.error(err.message))
       },
       ...mapActions({
         'saveTask': SAVETASK,
         'initData': INITDATA
+      }),
+      ...mapMutations({
+        hideDialog: HIDETASKMODAL
+      })
+    },
+    computed: {
+      ...mapState({
+        visible: state => state.task.show
       })
     }
   }

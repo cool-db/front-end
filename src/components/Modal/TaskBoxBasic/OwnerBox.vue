@@ -3,23 +3,23 @@
 */
 
 <template>
-  <div class="owner-box">
-    <div id="owner-title">执行者</div>
-    <owner-select :users="members" :owner="exId">
-      <div id="owner-info">
-        <img id="owner-avatar" :src="members.find(u => exId === u.id).avatar">
-        <span id="owner-name">{{ members.find(u => exId === u.id).name }}</span>
-      </div>
-    </owner-select>
+    <div class="owner-box">
+        <div id="owner-title">执行者</div>
+        <owner-select :users="members" :owner="exId">
+            <div id="owner-info">
+                <img id="owner-avatar" :src="members.find(u => exId === u.id).avatar">
+                <span id="owner-name">{{ members.find(u => exId === u.id).name }}</span>
+            </div>
+        </owner-select>
 
-  </div>
+    </div>
 </template>
 
 <script>
   import OwnerSelect from './OwnerSelect.vue'
   import blankAvatar from '@/assets/icons/nav_bar/blank-avatar.png'
 
-  import {mapState, mapGetters} from 'vuex'
+  import { mapState, mapGetters } from 'vuex'
 
   export default {
     data () {
@@ -52,26 +52,26 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  #owner-title {
-    font-size: 12px;
+    #owner-title {
+        font-size: 12px;
 
-  }
+    }
 
-  #owner-info {
-    font-size: 14px;
-    line-height: 40px;
-    display: inline-flex;
-    align-items: center;
-    flex-direction: row;
+    #owner-info {
+        font-size: 14px;
+        line-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        flex-direction: row;
 
-  }
+    }
 
-  #owner-avatar {
-    height: 22px;
-    margin-right: 8px;
-  }
+    #owner-avatar {
+        height: 22px;
+        margin-right: 8px;
+    }
 
-  .grey {
-    color: #C0C0C0;
-  }
+    .grey {
+        color: #C0C0C0;
+    }
 </style>

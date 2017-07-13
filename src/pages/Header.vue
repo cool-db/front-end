@@ -37,6 +37,7 @@
                 <router-view></router-view>
             </transition>
         </div>
+        <task-modal></task-modal>
     </div>
 </template>
 
@@ -51,6 +52,8 @@
 
   import AddIcon from '@/components/AddIcon.vue'
   import AvatarDropdown from '@/components/AvatarDropdown.vue'
+  import TaskModal from '@/components/TaskModal.vue'
+
   export default {
     data () {
       return {
@@ -69,7 +72,8 @@
     },
     components: {
       AddIcon,
-      AvatarDropdown
+      AvatarDropdown,
+      TaskModal
     },
     computed: {},
     methods: {}

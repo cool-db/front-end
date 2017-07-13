@@ -43,7 +43,7 @@
       })
     },
     mounted () {
-      this.initTask(44).catch(err => this.$message.error(err))
+//      this.initTask(44).catch(err => this.$message.error(err))
     },
     methods: {
       ...mapActions({
