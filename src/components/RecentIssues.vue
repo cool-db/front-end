@@ -6,8 +6,8 @@
     </div>
     <div id="line"></div>
     <div id="items">
-      <recent-issue-item></recent-issue-item>
-      <recent-issue-item></recent-issue-item>
+      <recent-issue-item v-for="(recent, key) in recents" :key="key" :item="recent"></recent-issue-item>
+      <!--<recent-issue-item></recent-issue-item>-->
     </div>
 
   </div>
@@ -15,11 +15,26 @@
 
 <script>
   import RecentIssueItem from 'COMPONENTS/RecentIssueItem'
+  import {mapState, mapActions} from 'vuex'
+  import {INITRECENTDATA} from 'MODULE/process'
   export default {
     data () {
       return {
         count: 2
       }
+    },
+    computed: {
+      ...mapState({
+        'recents': state => state.process.recent
+      })
+    },
+    methods: {
+      ...mapActions({
+        'loadRecent': INITRECENTDATA
+      })
+    },
+    created () {
+      this.loadRecent()
     },
     components: {
       RecentIssueItem
@@ -28,7 +43,7 @@
 </script>
 
 <style scoped="">
-  #recentIssues{
+  #recentIssues {
     margin: 5% auto auto 10%;
     display: flex;
     flex-direction: column;
@@ -37,7 +52,7 @@
     height: 640px;
   }
 
-  #bar{
+  #bar {
     display: flex;
     flex-direction: row;
     margin-left: 3%;
@@ -46,7 +61,7 @@
     height: 25px;
   }
 
-  #headline{
+  #headline {
     display: flex;
     flex-direction: row;
     font-family: PingFangSC-Regular;
@@ -54,7 +69,7 @@
     color: #888888;
   }
 
-  #countHint{
+  #countHint {
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -70,7 +85,7 @@
     padding-right: 10px;
   }
 
-  #line{
+  #line {
     display: flex;
     flex-direction: column;
     margin-left: 3%;
@@ -81,7 +96,7 @@
     height: 3px;
   }
 
-  #items{
+  #items {
     margin-left: 3%;
   }
 </style>

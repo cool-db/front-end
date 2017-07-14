@@ -91,6 +91,10 @@ function getMemberList (taskId) {
   return util.httpGet(util.httpGet + 'task/participator/list?taskId=' + taskId)
 }
 
+function getRecentTask (uid) {
+  return util.httpGet(util.httpGet + 'user/recent?userId=' + uid)
+}
+
 function deleteAttachFile (fileId, taskId, userId) {
   return util.httpPost(util.baseURL + 'task/attachment', {
     fileId: fileId,

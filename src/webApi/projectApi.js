@@ -121,6 +121,11 @@ function addProject (ownerId, projectName, projectDiscription) {
   })
 }
 
+function inviteTo (projectId, userId, email) {
+
+
+}
+
 module.exports = {
   listProgress,
   changeOrder,

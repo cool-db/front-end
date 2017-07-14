@@ -3,14 +3,14 @@
     <div class="file-master-2-box">
 
       <!--这里是数据测试区-->
-      <single-file fileName="邱宇航" fileType=".avi"></single-file>
-      <single-file fileName="邱宇航" fileType=".pptx"></single-file>
-      <single-file fileName="邱宇航" fileType=".zip"></single-file>
-      <single-file fileName="邱宇航" fileType=".mp3"></single-file>
-      <single-file fileName="邱宇航" fileType=".docx"></single-file>
-      <single-file fileName="邱宇航" fileType=""></single-file>
-      <single-file fileName="邱宇航" fileType=".jpg"></single-file>
-      <single-file fileName="邱宇航" fileType=".html"></single-file>
+      <single-file v-for="file in files" :fileName="file.Name" :fileType="''+file.t" :key="file.Id"></single-file>
+      <!--<single-file fileName="邱宇航" fileType=".pptx"></single-file>-->
+      <!--<single-file fileName="邱宇航" fileType=".zip"></single-file>-->
+      <!--<single-file fileName="邱宇航" fileType=".mp3"></single-file>-->
+      <!--<single-file fileName="邱宇航" fileType=".docx"></single-file>-->
+      <!--<single-file fileName="邱宇航" fileType=""></single-file>-->
+      <!--<single-file fileName="邱宇航" fileType=".jpg"></single-file>-->
+      <!--<single-file fileName="邱宇航" fileType=".html"></single-file>-->
 
 
       <div class="uploader-last">
@@ -24,31 +24,47 @@
       </div>
 
 
-
     </div>
   </div>
 </template>
 
 <script>
   import SingleFile from '@/components/My/SingleFile.vue'
+  import {mapState, mapActions} from 'vuex'
+  import {INITFILES} from 'MODULE/file'
   export default {
     components: {SingleFile},
     data () {
       return {
         imageUrl: ''
       }
+    },
+    computed: {
+      ...mapState(
+        {
+          'files': state => state.file.files
+        })
+    },
+    methods: {
+      ...mapActions({
+        initFiles: INITFILES
+      })
+    },
+    mounted () {
+      const pId = this.$route.params.pid
+      this.initFiles(pId).catch(err => this.$message.error(err.message))
     }
   }
 </script>
 
 <style scoped>
-  .file-master-2-main{
+  .file-master-2-main {
     display: flex;
     display: -webkit-flex;
     justify-content: center;
   }
 
-  .file-master-2-box{
+  .file-master-2-box {
     display: flex;
     display: -webkit-flex;
     width: 952px;
@@ -57,7 +73,7 @@
     flex-wrap: wrap;
   }
 
-  .uploader-last{
+  .uploader-last {
     display: flex;
     display: -webkit-flex;
     justify-content: center;
@@ -72,9 +88,11 @@
     position: relative;
     overflow: hidden;
   }
+
   .avatar-uploader:hover {
     border-color: #20a0ff;
   }
+
   .avatar-uploader-icon {
     font-size: 28px;
     color: #8c939d;
@@ -83,6 +101,7 @@
     line-height: 178px;
     text-align: center;
   }
+
   .avatar {
     width: 178px;
     height: 178px;

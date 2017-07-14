@@ -4,6 +4,7 @@
 
 import {addNamespace} from '@/util/commonUtil'
 import {getPersonList} from 'API/projectApi'
+import {getAvatar} from 'API/userApi'
 
 const namespace = addNamespace('user')
 
@@ -14,8 +15,11 @@ export const RESET = namespace('RESET')
 export const INVITE = namespace('INVITE')
 export const FINISHINVITE = namespace('FINISHINVITE')
 export const MADDMEMBERS = namespace('MADDMEMBERS')
+export const GETAVATAR = namespace('GETAVATAR')
+export const SETAVATAR = namespace('SETAVATAR')
 
 const state = {
+  avatar: null,
   users: [
     {
       'id': 4,
@@ -83,7 +87,12 @@ const mutations = {
   [MADDMEMBERS] (state, items) {
     state.users = items
     // console.log(state.users)
+  },
+  [SETAVATAR] (state, avatar) {
+    state.avatar = avatar
+    console.log(avatar)
   }
+
 }
 
 const actions = {
@@ -92,13 +101,23 @@ const actions = {
     return getPersonList(pId).then(({members}) => {
       commit(MADDMEMBERS, members)
       // state.members = members
-    }).catch(err => console.log(err))
+    }).catch(err => console.log(err.message))
   },
   [INVITE] ({commit, state}, {pId, uId, email}) {
     // return addPerson(info, pId).then(({members}) => {
     //   commit(MADDMEMBERS, uid, members)
     //   // state.members = members
     // }).catch(err => console.log(err))
+  },
+  [GETAVATAR] ({commit}) {
+    // return addPerson(info, pId).then(({members}) => {
+    //   commit(MADDMEMBERS, uid, members)
+    //   // state.members = members
+    // }).catch(err => console.log(err))
+    const uid = localStorage.getItem('token')
+    getAvatar(uid).then(({ avatar }) => {
+      commit(SETAVATAR, avatar)
+    })
   }
 
 }
