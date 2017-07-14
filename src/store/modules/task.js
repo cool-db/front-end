@@ -129,7 +129,7 @@ const mutations = {
   },
   [SETTASK] (state, data) {
     state.task = data
-    state.task.repeat = parseInt(Math.random() * 5)
+    state.task.repeat = 0
   },
   [REMOVEFILE] (state, index) {
     state.task.files.splice(index, 1)
