@@ -90,7 +90,6 @@ const mutations = {
   },
   [SETAVATAR] (state, avatar) {
     state.avatar = avatar
-    console.log(avatar)
   }
 
 }

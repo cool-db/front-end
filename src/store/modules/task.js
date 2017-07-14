@@ -156,8 +156,7 @@ const actions = {
   [SAVETASK] ({state}) {
     const userId = localStorage.getItem('token')
     const task = state.task
-    updateInfo(task.taskId, userId, task.name, task.content, task.ddl, task.executorId, task.emergencyType).then(
-    )
+    updateInfo(task.taskId, userId, task.name, task.content, task.ddl, task.executorId, task.emergencyType)
   },
   [REMOVERELATEFILES] ({state, commit}, {taskId, index}) {
     const userId = parseInt(localStorage.getItem('token'))
