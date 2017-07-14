@@ -111,7 +111,8 @@
       MenuMember
     },
     created () {
-      this.initUserData(1)
+      const pid = this.$route.params.pid
+      this.initUserData(pid)
     },
     watch: {
       currentPage: function () {
