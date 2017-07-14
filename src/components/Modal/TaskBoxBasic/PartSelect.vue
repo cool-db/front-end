@@ -42,7 +42,7 @@
     },
     methods: {
       handleData (command) {
-        this.changeE({partId: parseInt(command), taskId: this.taskid}).catch(err => this.$message.error(err))
+        this.changeE({partId: parseInt(command), taskId: this.taskid}).catch(err => this.$message.error(err.message))
       },
       ...mapActions({
         changeE: ADDMEMBER

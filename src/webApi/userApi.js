@@ -24,6 +24,11 @@ function getUserInformation (id) {
   return util.httpGet(util.baseURL + 'user/?id=' + id)
 }
 
+function getAvatar (id) {
+  console.log('avatar', id)
+  return util.httpGet(util.baseURL + 'user/avatar?id=' + id)
+}
+
 function changeUserInformation (info) {
   return util.httpPut(util.baseURL + 'user/', info)
 }
@@ -49,5 +54,6 @@ module.exports = {
   getUserInformation,
   changeUserInformation,
   changeAvatar,
-  changePassword
+  changePassword,
+  getAvatar
 }
